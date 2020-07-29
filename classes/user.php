@@ -1,6 +1,8 @@
 <?php
 
 require 'messages.php';
+require 'userManager.php';
+require 'db.php';
 
 class user
 {
@@ -9,13 +11,47 @@ class user
     private $password;
     private $is_admin;
 
-    public function __construct()
+    public function __construct($id, $username, $password, $is_admin)
     {
-        //SUIVRE TUTO OPENCLASSROOM POUR FAIRE UN TRUC CORRECT (PAS DE DB DANS USER)
-            $this->id = $_SESSION['user']['id'];
-            $this->username = $_SESSION['user']['username'];
-            $this->password = $_SESSION['user']['password'];
-            $this->is_admin = $_SESSION['user']['is_admin'];
+        try {
+            $this->id = $this->setId($id);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+        try {
+            $this->username = $this->setUsername($username);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+        try {
+            $this->password = $this->setPassword($password);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+        try {
+            $this->is_admin = $this->setIsAdmin($is_admin);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+    public function hydrate(array $donnees)
+    {
+        foreach ($donnees as $key => $value)
+        {
+            // On récupère le nom du setter correspondant à l'attribut.
+            $method = 'set'.ucfirst($key);
+
+            // Si le setter correspondant existe.
+            if (method_exists($this, $method))
+            {
+                try {
+                    $this->$method($value);
+                } catch (Exception $e) {
+                    echo $e->getMessage();
+                }
+                // On appelle le setter.
+            }
+        }
     }
 
     /**
@@ -23,7 +59,7 @@ class user
      */
     public function setId($id)
     {
-        if (!is_int($id)){
+        if (!is_int($id)) {
             throw new Exception('L\'id doit être un entier');
         }
         $this->id = $id;
@@ -41,6 +77,10 @@ class user
         $q->bindParam(':username', $username, PDO::PARAM_STR);
         $q->execute();
         $login_check = $q->fetch();*/
+        $db = new db();
+        $manager = new userManager($db);
+        $list = $manager->getList();
+        $login_check = $list->fetch(PDO::FETCH_ASSOC);
         //username pattern
         $username_required = preg_match("/^(?=.*[A-Za-z0-9]$)[A-Za-z][A-Za-z\d\-\_]{3,19}$/", $username);
         if (!$username_required) {
@@ -51,10 +91,9 @@ class user
         if (!empty($login_check)) {
             $errors[] = "Cet utilisateur existe déjà.";
         }
-        if (empty($errors)){
+        if (empty($errors)) {
             $this->username = $username;
-        }
-        else{
+        } else {
             $message = new messages($errors);
             throw new Exception($message->renderMessage());
         }
@@ -121,4 +160,4 @@ class user
         return $this->is_admin;
     }
 }
-
+$user = new user()
