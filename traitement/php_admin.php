@@ -1,6 +1,7 @@
 <?php
-//Récupération de l'image
+//A supprimer plus tard, il y'aura une connexion unique
 $bdd = new PDO('mysql:host=localhost;dbname=memory;charset=utf8', 'root', '');
+//Récupération de l'image
 
 if(isset($_POST["valid_img"], $_FILES["paires"]) && !empty($_FILES["paires"]["name"]))
     {        
