@@ -6,9 +6,9 @@
     $recup_users = $query_recup_users->fetchAll(PDO::FETCH_ASSOC);
     $nb_users = count($recup_users);    
     //Récupère les scores
-    $query_recup_score = $bdd->query('SELECT * FROM score');
+    $query_recup_score = $bdd->query('SELECT score.id, score, login, score.nb_paires FROM utilisateurs INNER JOIN score');
     $recup_score = $query_recup_score->fetchAll(PDO::FETCH_ASSOC);
-    $nb_score = count($recup_score);
+    $nb_score = count($recup_score);   
     //Upload d'images pour les paires
     try
         {

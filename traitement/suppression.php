@@ -16,4 +16,12 @@
             $suppression_user->execute([$id_user]);
             header('Location:../admin.php');
         }
+    //Suppression score
+    if(isset($_GET["id_score"]))
+        {
+            $id_score = $_GET["id_score"];
+            $suppression_score = $bdd->prepare('DELETE FROM score WHERE id=?');
+            $suppression_score->execute([$id_score]);
+            header('Location:../admin.php');
+        }
 ?>

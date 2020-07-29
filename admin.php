@@ -14,7 +14,7 @@
     <title>Admin</title>
 </head>
 <body>
-    <main>
+    <main id="main_admin">
     <section>
         <table class="table">
             <thead class="thead-dark">        
@@ -46,7 +46,7 @@
         <table class="table">
             <thead class="thead-light">
                 <tr>
-                <th colspan="3">Score</th>                
+                <th colspan="4">Score</th>                
                 </tr>
             </thead>
             <tbody>
@@ -54,15 +54,17 @@
                     <td>Utilisateur</td>
                     <td>Score</td>
                     <td>Nombres de paires</td>
+                    <td>Supprimer</td>
                 </tr>
                 <?php
                     for($i=0; $i<$nb_score; $i++)
                         {
                             ?>
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td><?= $recup_score[$i]['login'] ?></td>
+                                <td><?= $recup_score[$i]['score'] ?></td>
+                                <td><?= $recup_score[$i]['nb_paires'] ?></td>
+                                <td><button><a class="icon-trash" href="traitement/suppression.php?id_score=<?= $recup_score[$i]["id"] ?>" title="supprimer" onclick="return confirm('Supprimer : Ce score ?')"><img src="src/images/trash.png" alt="logo poubelle"></a></button></td>                                                                               
                             </tr>
                             <?php                    
                         }
