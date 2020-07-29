@@ -15,7 +15,7 @@
 </head>
 <body>
     <main id="main_admin">
-    <section>
+    <section class="table_admin">
         <table class="table">
             <thead class="thead-dark">        
                 <tr>
@@ -24,17 +24,17 @@
                                       
             </thead>
             <tbody>
-                <tr>
-                    <td>Utilisateur</td>
-                    <td>Supprimer</td>
+                <tr class="bg-info text-white">
+                    <td class="border">Utilisateur</td>
+                    <td class="border">Supprimer</td>
                 </tr>                
                 <?php
                     for($i=0; $i<$nb_users; $i++)
                         {
                             ?>
                             <tr>                    
-                                <td><?= $recup_users[$i]['login'] ?></td>
-                                <td><button><a class="icon-trash" href="traitement/suppression.php?id_user=<?= $recup_users[$i]["id"] ?>" title="supprimer" onclick="return confirm('Supprimer : <?= $recup_users[$i]['login'] ?> ?')"><img src="src/images/trash.png" alt="logo poubelle"></a></button></td>
+                                <td class="border"><?= $recup_users[$i]['login'] ?></td>
+                                <td class="border"><button><a class="icon-trash" href="traitement/suppression.php?id_user=<?= $recup_users[$i]["id"] ?>" title="supprimer" onclick="return confirm('Supprimer : <?= $recup_users[$i]['login'] ?> ?')"><img src="src/images/trash.png" alt="logo poubelle"></a></button></td>
                             </tr>   
                             <?php
                         }                
@@ -42,7 +42,7 @@
             </tbody>
         </table>
     </section>
-    <section>
+    <section class="table_admin">
         <table class="table">
             <thead class="thead-light">
                 <tr>
@@ -50,21 +50,21 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Utilisateur</td>
-                    <td>Score</td>
-                    <td>Nombres de paires</td>
-                    <td>Supprimer</td>
+                <tr class="bg-info text-white">
+                    <td class="border">Utilisateur</td>
+                    <td class="border">Score</td>
+                    <td class="border">Nombres de paires</td>
+                    <td class="border">Supprimer</td>
                 </tr>
                 <?php
                     for($i=0; $i<$nb_score; $i++)
                         {
                             ?>
                             <tr>
-                                <td><?= $recup_score[$i]['login'] ?></td>
-                                <td><?= $recup_score[$i]['score'] ?></td>
-                                <td><?= $recup_score[$i]['nb_paires'] ?></td>
-                                <td><button><a class="icon-trash" href="traitement/suppression.php?id_score=<?= $recup_score[$i]["id"] ?>" title="supprimer" onclick="return confirm('Supprimer : Ce score ?')"><img src="src/images/trash.png" alt="logo poubelle"></a></button></td>                                                                               
+                                <td class="border"><?= $recup_score[$i]['login'] ?></td>
+                                <td class="border"><?= $recup_score[$i]['score'] ?></td>
+                                <td class="border"><?= $recup_score[$i]['nb_paires'] ?></td>
+                                <td class="border"><button><a class="icon-trash" href="traitement/suppression.php?id_score=<?= $recup_score[$i]["id"] ?>" title="supprimer" onclick="return confirm('Supprimer : Ce score ?')"><img src="src/images/trash.png" alt="logo poubelle"></a></button></td>                                                                               
                             </tr>
                             <?php                    
                         }
@@ -72,39 +72,40 @@
             </tbody>
         </table>
     </section>
-    <section>
-        <?php
-            if(isset($e))
-                {
-                    echo $e->getMessage();
-                }  
-        ?>
-        <form enctype="multipart/form-data" action="" method="POST">
-            <section>
-                <label for="image">Choix de l'image</label>
-                <input type="hidden" name="MAX_FILE_SIZE" value="3000000" id="image">        
-                <input type="file" name="paires" accept=".jpg, .png, .jpeg"/>
-            </section>            
-            <input type="submit" name="valid_img" value="Envoyer">           
-        </form>       
-    </section>
-    <section>
+    <section id="ad_paires">
+        <section id="form_paires">
+            <h2>Ajouter une paire</h2>
+            <?php
+                if(isset($e))
+                    {
+                        echo $e->getMessage();
+                    }  
+            ?>
+            <form enctype="multipart/form-data" action="" method="POST">
+                <section>
+                    <label for="image">Choix de l'image</label>
+                    <input type="hidden" name="MAX_FILE_SIZE" value="3000000" id="image">        
+                    <input type="file" name="paires" accept=".jpg, .png, .jpeg"/>
+                </section>            
+                <input class="btn btn-primary" type="submit" name="valid_img" value="Envoyer">           
+            </form>       
+        </section>        
         <table class="table table-striped table_paires">
             <thead>                
-                    <th colspan="2">Vos paires : <?= $nb_paires_total?></th>                            
+                    <th class="bg-secondary text-white" colspan="2">Vos paires : <?= $nb_paires_total?></th>                            
             </thead>
             <tbody>          
-                <tr>                    
-                    <td>Image</td>
-                    <td>Supprimer</td>
+                <tr class="bg-info text-white">                    
+                    <td class="border">Image</td>
+                    <td class="border">Supprimer</td>
                 </tr>             
                     <?php                    
                         for($i=0; $i<$nb_paires_total; $i++) 
                             {                               
                                 ?>
                                 <tr>                                   
-                                    <td><img class="paires_admin" src="<?= $recup_paires[$i]["chemin"] ?>" alt="photo paires"></td>      
-                                    <td><button><a class="icon-trash" href="traitement/suppression.php?id_paires=<?= $recup_paires[$i]["id"] ?>" title="supprimer" onclick="return confirm('Supprimer : Cette paire ?')"><img src="src/images/trash.png" alt="logo poubelle"></a></button></td>                                                                               
+                                    <td class="border"><img class="paires_admin" src="<?= $recup_paires[$i]["chemin"] ?>" alt="photo paires"></td>      
+                                    <td class="border"><button><a class="icon-trash" href="traitement/suppression.php?id_paires=<?= $recup_paires[$i]["id"] ?>" title="supprimer" onclick="return confirm('Supprimer : Cette paire ?')"><img src="src/images/trash.png" alt="logo poubelle"></a></button></td>                                                                               
                                 </tr> 
                                 <?php
                             }

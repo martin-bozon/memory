@@ -13,14 +13,57 @@ main
         height: auto;;
     }
 /* PAGE ADMIN */
-th
+#main_admin
+    {
+        display: flex;
+        flex-direction: column;        
+        align-items: center;
+    }
+.table_admin
+    {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 10vh;
+    }
+#main_admin table
+    {
+        width: 50vw;
+        height: auto;
+        text-align: center;        
+    }
+#main_admin th
     {
         text-align: center;       
         width: 100%;
         padding: 0;
         margin: 0;
     }
-.table_paires
+#main_admin form
+    {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 40vw;
+    }
+#ad_paires
+    {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;        
+        text-align: center;
+        width: 100%;       
+    }
+#form_paires
+    {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        height: 40vh;
+    }
+/* .table_paires
     {
         width: 50vw;
         height: auto;
@@ -29,7 +72,7 @@ th
 .table_paires td
     {
         width: auto;
-    }
+    } */
 .paires_admin
     {
         width: 10vw;
