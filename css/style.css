@@ -10,7 +10,7 @@ body
 main
     {
         margin: 0;
-        height: 100%;
+        height: auto;;
     }
 /* PAGE ADMIN */
 th

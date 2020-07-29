@@ -16,13 +16,58 @@
 <body>
     <main>
     <section>
-        <table>
-
+        <table class="table">
+            <thead class="thead-dark">        
+                <tr>
+                    <th colspan="2">Utilisateurs</th>       
+                </tr>       
+                                      
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Utilisateur</td>
+                    <td>Supprimer</td>
+                </tr>                
+                <?php
+                    for($i=0; $i<$nb_users; $i++)
+                        {
+                            ?>
+                            <tr>                    
+                                <td><?= $recup_users[$i]['login'] ?></td>
+                                <td><button><a class="icon-trash" href="traitement/suppression.php?id_user=<?= $recup_users[$i]["id"] ?>" title="supprimer" onclick="return confirm('Supprimer : <?= $recup_users[$i]['login'] ?> ?')"><img src="src/images/trash.png" alt="logo poubelle"></a></button></td>
+                            </tr>   
+                            <?php
+                        }                
+                ?>            
+            </tbody>
         </table>
     </section>
     <section>
-        <table>
-
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                <th colspan="3">Score</th>                
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Utilisateur</td>
+                    <td>Score</td>
+                    <td>Nombres de paires</td>
+                </tr>
+                <?php
+                    for($i=0; $i<$nb_score; $i++)
+                        {
+                            ?>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <?php                    
+                        }
+                ?>
+            </tbody>
         </table>
     </section>
     <section>
