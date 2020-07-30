@@ -15,66 +15,64 @@
 </head>
 <body>
     <main id="main_admin">
-        <section id="user_score">
-            <!-- <section class="table_admin"> -->
-                <table class="table table_admin">
-                    <thead class="thead-dark">        
-                        <tr>
-                            <th colspan="2">Utilisateurs</th>       
-                        </tr>       
-                                            
-                    </thead>
-                    <tbody>
-                        <tr class="bg-info text-white">
-                            <td class="border">Utilisateur</td>
-                            <td class="border sup">Supprimer</td>
-                        </tr>                
-                        <?php
-                            for($i=0; $i<$info_users['compte']; $i++)
-                                {
-                                    ?>
-                                    <tr>                    
-                                        <td class="border"><?=  $info_users['recup'][$i]['login'] ?></td>
-                                        <td class="border sup"><button><a class="icon-trash" href="traitement/suppression.php?id_user=<?= $info_users['recup'][$i]["id"] ?>" title="supprimer" onclick="return confirm('Supprimer : <?=$info_users['recup'][$i]['login'] ?> ?')"><img src="src/images/trash.png" alt="logo poubelle"></a></button></td>
-                                    </tr>   
-                                    <?php
-                                }                
-                        ?>            
-                    </tbody>
-                </table>
-            <!-- </section>
-            <section class="table_admin"> -->
-                <table class="table table_admin">
-                    <thead class="thead-light">
-                        <tr>
-                        <th colspan="4">Score</th>                
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="bg-info text-white">
-                            <td class="border">Utilisateur</td>
-                            <td class="border">Score</td>
-                            <td class="border">Nombres de paires</td>
-                            <td class="border sup">Supprimer</td>
-                        </tr>
-                        <?php
-                            for($i=0; $i< $info_scores["compte"]; $i++)
-                                {
-                                    ?>
-                                    <tr>
-                                        <td class="border"><?=  $info_scores["recup"][$i]['login'] ?></td>
-                                        <td class="border"><?=  $info_scores["recup"][$i]['score'] ?></td>
-                                        <td class="border"><?=  $info_scores["recup"][$i]['nb_paires'] ?></td>
-                                        <td class="border sup"><button><a class="icon-trash" href="traitement/suppression.php?id_score=<?= $info_scores["recup"][$i]["id"] ?>" title="supprimer" onclick="return confirm('Supprimer : Ce score ?')"><img src="src/images/trash.png" alt="logo poubelle"></a></button></td>                                                                               
-                                    </tr>
-                                    <?php                    
-                                }
-                        ?>
-                    </tbody>
-                </table>
-            <!-- </section> -->
-        </section>    
-        <section id="ad_paires">
+        <h2>Gestion Jeu</h2>
+        <section id="user_score">           
+            <table class="table table_admin">
+                <thead class="thead-dark">        
+                    <tr>
+                        <th colspan="2">Utilisateurs</th>       
+                    </tr>       
+                                        
+                </thead>
+                <tbody>
+                    <tr class="bg-info text-white">
+                        <td class="border">Utilisateur</td>
+                        <td class="border sup">Supprimer</td>
+                    </tr>                
+                    <?php
+                        for($i=0; $i<$info_users['compte']; $i++)
+                            {
+                                ?>
+                                <tr>                    
+                                    <td class="border"><?=  $info_users['recup'][$i]['login'] ?></td>
+                                    <td class="border sup"><button><a class="icon-trash" href="traitement/suppression.php?id_user=<?= $info_users['recup'][$i]["id"] ?>" title="supprimer" onclick="return confirm('Supprimer : <?=$info_users['recup'][$i]['login'] ?> ?')"><img src="src/images/trash.png" alt="logo poubelle"></a></button></td>
+                                </tr>   
+                                <?php
+                            }                
+                    ?>            
+                </tbody>
+            </table>           
+            <table class="table table_admin">
+                <thead class="thead-light">
+                    <tr>
+                    <th colspan="4">Score</th>                
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="bg-info text-white">
+                        <td class="border">Utilisateur</td>
+                        <td class="border">Score</td>
+                        <td class="border">Nombres de paires</td>
+                        <td class="border sup">Supprimer</td>
+                    </tr>
+                    <?php
+                        for($i=0; $i< $info_scores["compte"]; $i++)
+                            {
+                                ?>
+                                <tr>
+                                    <td class="border"><?=  $info_scores["recup"][$i]['login'] ?></td>
+                                    <td class="border"><?=  $info_scores["recup"][$i]['score'] ?></td>
+                                    <td class="border"><?=  $info_scores["recup"][$i]['nb_paires'] ?></td>
+                                    <td class="border sup"><button><a class="icon-trash" href="traitement/suppression.php?id_score=<?= $info_scores["recup"][$i]["id"] ?>" title="supprimer" onclick="return confirm('Supprimer : Ce score ?')"><img src="src/images/trash.png" alt="logo poubelle"></a></button></td>                                                                               
+                                </tr>
+                                <?php                    
+                            }
+                    ?>
+                </tbody>
+            </table>            
+        </section>        
+        <h2>Gestion paires</h2>
+        <section id="ad_paires">            
             <section id="form_paires">
                 <h2>Ajouter une paire</h2>
                 <?php

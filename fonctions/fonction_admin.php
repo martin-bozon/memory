@@ -41,7 +41,7 @@
                         }
                 }
         }
-    function prepaPagination($p, $t, $g)
+    function prepaPagination($p, $t, $g, $o)
         {                       
             $bdd = new PDO('mysql:host=localhost;dbname=memory;charset=utf8', 'root', '');
             //Récupère les users avec une pagination
@@ -66,13 +66,13 @@
 
             if($t == 'score')
                 {
-                    $query_recup = $bdd->query("SELECT score.id, score, login, score.nb_paires FROM utilisateurs INNER JOIN score ON utilisateurs.id=score.id_user ORDER BY score DESC LIMIT $a_partir_du, $par_page");
+                    $query_recup = $bdd->query("SELECT score.id, score, login, score.nb_paires FROM utilisateurs INNER JOIN score ON utilisateurs.id=score.id_user ORDER BY $o DESC LIMIT $a_partir_du, $par_page");
                     $recup = $query_recup->fetchAll(PDO::FETCH_ASSOC); 
                     $nb_ = count($recup); 
                 }
             else    
                 {
-                    $query_recup = $bdd->query("SELECT * FROM $t ORDER BY login ASC LIMIT $a_partir_du, $par_page");
+                    $query_recup = $bdd->query("SELECT * FROM $t ORDER BY $o ASC LIMIT $a_partir_du, $par_page");
                     $recup = $query_recup->fetchAll(PDO::FETCH_ASSOC); 
                     $nb_ = count($recup);    
                 }           

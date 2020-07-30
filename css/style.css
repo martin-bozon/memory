@@ -19,6 +19,11 @@ main
         flex-direction: column;        
         align-items: center;
     }
+#main_admin h2
+    {
+        margin-bottom: 5vh;
+        margin-top: 5vh;
+    }
 #user_score
     {
         display: flex;
