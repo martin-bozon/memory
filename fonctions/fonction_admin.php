@@ -85,8 +85,26 @@
         }
     function pagination($pp, $nb, $p)
         {
-            echo ($pp);
-            echo ($nb);
-            echo($p);
+           if($nb>$pp)
+            {
+                ?>
+                <section>
+                    <?php
+                        if($p>1)
+                            {
+                                ?>
+                                <a href="admin.php?start=<?=$p-1 ?>"></a>
+                                <?php
+                            }
+                        else
+                            {
+                                ?>
+                                <p></p>
+                                <?php
+                            }
+                    ?>
+                </section>
+                <?php
+            }
         }
 ?>
