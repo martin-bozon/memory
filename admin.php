@@ -29,12 +29,12 @@
                     <td class="border">Supprimer</td>
                 </tr>                
                 <?php
-                    for($i=0; $i<$nb_users; $i++)
+                    for($i=0; $i<$info_users['compte']; $i++)
                         {
                             ?>
                             <tr>                    
-                                <td class="border"><?= $recup_users[$i]['login'] ?></td>
-                                <td class="border"><button><a class="icon-trash" href="traitement/suppression.php?id_user=<?= $recup_users[$i]["id"] ?>" title="supprimer" onclick="return confirm('Supprimer : <?= $recup_users[$i]['login'] ?> ?')"><img src="src/images/trash.png" alt="logo poubelle"></a></button></td>
+                                <td class="border"><?=  $info_users['recup'][$i]['login'] ?></td>
+                                <td class="border"><button><a class="icon-trash" href="traitement/suppression.php?id_user=<?= $info_users['recup'][$i]["id"] ?>" title="supprimer" onclick="return confirm('Supprimer : <?=$info_users['recup'][$i]['login'] ?> ?')"><img src="src/images/trash.png" alt="logo poubelle"></a></button></td>
                             </tr>   
                             <?php
                         }                
