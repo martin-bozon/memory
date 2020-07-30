@@ -14,16 +14,7 @@
     <title>Admin</title>
 </head>
 <body>
-    <main id="main_admin">
-        <?php
-            if(isset($e))
-                {                            
-                    echo '<p class="alert alert-danger w-75 p-3 m-auto text-center">' . $e->getMessage() . '</p>';
-                }  
-            else if(!isset($e) && isset($_POST["valid_img"]))
-            echo '<p class="alert alert-success w-75 p-3 m-auto text-center">Image uploader</p>';
-
-        ?>
+    <main id="main_admin">        
         <h2>Gestion Jeu</h2>
         <section id="user_score">    
             <section class="pagination">
@@ -92,9 +83,17 @@
             </section>
             
         </section>        
-        <h2>Gestion paires</h2>
+        <h2>Gestion paires</h2>        
         <section id="ad_paires">            
             <section id="form_paires">
+                <?php
+                    if(isset($e))
+                        {                            
+                            echo '<p class="alert alert-danger w-75 p-3 m-auto text-center">' . $e->getMessage() . '</p>';
+                        }  
+                    else if(!isset($e) && isset($_POST["valid_img"]))
+                    echo '<p class="alert alert-success w-75 p-3 m-auto text-center">Image uploader</p>';                    
+                ?>
                 <h2>Ajouter une paire</h2>               
                 <form enctype="multipart/form-data" action="" method="POST">
                     <section>
@@ -121,7 +120,7 @@
                                         ?>
                                         <tr>                                   
                                             <td class="border"><img class="paires_admin" src="<?= $info_paires["recup"][$i]["chemin"] ?>" alt="photo paires"></td>      
-                                            <td class="border sup"><button><a class="icon-trash" href="traitement/suppression.php?id_paires=<?= $info_paires["recup"][$i]["id"] ?>" title="supprimer" onclick="return confirm('Supprimer : Cette paire ?')"><img src="src/images/trash.png" alt="logo poubelle"></a></button></td>                                                                               
+                                            <td class="border sup"><button><a class="icon-trash" href="traitement/suppression.php?id_paires=<?= $info_paires["recup"][$i]["id"] ?>&page=<?= $retour_page ?>" title="supprimer" onclick="return confirm('Supprimer : Cette paire ?')"><img src="src/images/trash.png" alt="logo poubelle"></a></button></td>                                                                               
                                         </tr> 
                                         <?php
                                     }
