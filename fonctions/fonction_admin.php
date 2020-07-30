@@ -77,7 +77,16 @@
                     $nb_ = count($recup);    
                 }           
             $infos['recup'] = $recup;
-            $infos['compte'] = $nb_;            
+            $infos['compte'] = $nb_;
+            $infos['par_page'] = $p;
+            $infos['nb'] = $nb_;
+            $infos['page'] = $page;            
             return $infos;
+        }
+    function pagination($pp, $nb, $p)
+        {
+            echo ($pp);
+            echo ($nb);
+            echo($p);
         }
 ?>

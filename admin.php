@@ -42,6 +42,7 @@
                     ?>            
                 </tbody>
             </table>           
+            <?php pagination($pp_user, $nb_user, $p_user); ?>
             <table class="table table_admin">
                 <thead class="thead-light">
                     <tr>
@@ -69,7 +70,8 @@
                             }
                     ?>
                 </tbody>
-            </table>            
+            </table>         
+            <?php pagination($pp_score, $nb_score, $p_score); ?>   
         </section>        
         <h2>Gestion paires</h2>
         <section id="ad_paires">            
@@ -92,7 +94,7 @@
             </section>        
             <table class="table table-striped table_paires">
                 <thead>                
-                        <th class="bg-secondary text-white" colspan="2">Vos paires : <?= $nb_paires_total?></th>                            
+                        <th class="bg-secondary text-white" colspan="2">Vos paires : <?= $info_paires["compte"]?></th>                            
                 </thead>
                 <tbody>          
                     <tr class="bg-info text-white">                    
@@ -100,18 +102,19 @@
                         <td class="border sup">Supprimer</td>
                     </tr>             
                         <?php                    
-                            for($i=0; $i<$nb_paires_total; $i++) 
+                            for($i=0; $i<$info_paires["compte"]; $i++) 
                                 {                               
                                     ?>
                                     <tr>                                   
-                                        <td class="border"><img class="paires_admin" src="<?= $recup_paires[$i]["chemin"] ?>" alt="photo paires"></td>      
-                                        <td class="border sup"><button><a class="icon-trash" href="traitement/suppression.php?id_paires=<?= $recup_paires[$i]["id"] ?>" title="supprimer" onclick="return confirm('Supprimer : Cette paire ?')"><img src="src/images/trash.png" alt="logo poubelle"></a></button></td>                                                                               
+                                        <td class="border"><img class="paires_admin" src="<?= $info_paires["recup"][$i]["chemin"] ?>" alt="photo paires"></td>      
+                                        <td class="border sup"><button><a class="icon-trash" href="traitement/suppression.php?id_paires=<?= $info_paires["recup"][$i]["id"] ?>" title="supprimer" onclick="return confirm('Supprimer : Cette paire ?')"><img src="src/images/trash.png" alt="logo poubelle"></a></button></td>                                                                               
                                     </tr> 
                                     <?php
                                 }
                         ?>                                      
                 </tbody>
-            </table>
+            </table>        
+            <?php pagination($pp_paire, $nb_paire, $p_paire); ?>
         </section>
     </main>
 </body>
