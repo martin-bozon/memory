@@ -80,6 +80,18 @@ main
         padding-left: 0 !important;      
         padding-right: 0 !important;
     }
+.pagination
+    {
+        display: flex;
+        flex-direction: column;
+    }
+#affiche_pagi
+    {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
 .paires_admin
     {
         width: 10vw;
