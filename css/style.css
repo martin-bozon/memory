@@ -97,3 +97,13 @@ main
         width: 10vw;
         height: 20vh;
     }
+/* FOOTER */
+footer a    
+    {
+        color: white;
+    }
+footer a:hover
+    {
+        color: greenyellow;
+        text-decoration: none;
+    }
