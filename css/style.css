@@ -19,11 +19,17 @@ main
         flex-direction: column;        
         align-items: center;
     }
-.table_admin
+#user_score
     {
         display: flex;
-        justify-content: center;
+        flex-direction: row;
+        justify-content: space-around;
         width: 100%;
+        margin-bottom: 10vh;
+    }
+.table_admin 
+    {        
+        width: 40vw !important;
         margin-bottom: 10vh;
     }
 #main_admin table
@@ -64,16 +70,11 @@ main
         align-items: center;
         height: 40vh;
     }
-/* .table_paires
-    {
-        width: 50vw;
-        height: auto;
-        text-align: center;
+.sup
+    {       
+        padding-left: 0 !important;      
+        padding-right: 0 !important;
     }
-.table_paires td
-    {
-        width: auto;
-    } */
 .paires_admin
     {
         width: 10vw;
