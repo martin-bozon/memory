@@ -30,6 +30,5 @@
             $score_coup = 0;
         //Score final
         echo $score = $score_coup+$score_temps;
-        //Inserttion du score dans la bdd
-        
+        //Insertion du score dans la bdd        
 ?>
