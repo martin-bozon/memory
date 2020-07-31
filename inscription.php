@@ -11,7 +11,7 @@ if ($auth->user()) {
 
 if (!empty($_POST)) {
     $validator = new Validator($_POST);
-    $validator->isPseudo('username', "Votre pseudo n'est pas valide.");
+    $validator->isPseudo('username', "Votre pseudo n'est pas valide, celui-ci doit:<br> contenir entre 3 et 20 caractères.");
     if ($validator->isValid()) {
         $validator->isUniq('username', $db, 'utilisateurs', 'Ce pseudo est déjà pris.');
     }
@@ -33,20 +33,7 @@ if (!empty($_POST)) {
         $errors = $validator->getErrors();
     }
 }
-
-if (!empty($errors)): ?>
-    <div class="alert-box">
-        <p>Inscription impossible : </p>
-        <ul>
-            <?php
-            foreach ($errors as $error): ?>
-                <li><?= $error; ?></li>
-            <?php
-            endforeach; ?>
-        </ul>
-    </div>
-<?php
-endif; ?>
+?>
 
 <!doctype html>
 <html lang="fr" class="h-100">
@@ -74,8 +61,35 @@ endif; ?>
     <?php
     require 'inc/header.php'; ?>
 </header>
-<main id="main_inscription" class="text-center d-flex align-items-center">
-    <div class="form_auth">
+<main id="main_inscription" class="d-flex flex-column">
+    <?php
+    if (!empty($errors)): ?>
+        <div class="alert alert-danger m-auto">
+            <p>Inscription impossible : </p>
+            <ul>
+                <?php
+                foreach ($errors as $error): ?>
+                    <li><?= $error; ?></li>
+                <?php
+                endforeach; ?>
+            </ul>
+        </div>
+    <?php
+    endif; ?>
+    <div class="container">
+        <?php
+        if (Session::getInstance()->hasFlashes()): ?>
+            <?php
+            foreach (Session::getInstance()->getFlashes() as $type => $message): ?>
+                <div class="alert alert-<?= $type; ?>">
+                    <?= $message; ?>
+                </div>
+            <?php
+            endforeach; ?>
+        <?php
+        endif; ?>
+    </div>
+    <div class="form_auth text-center">
         <h1 class="h3 mb-3 font-weight-normal">S'incrire</h1>
         <form action="" method="post">
 

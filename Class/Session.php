@@ -39,6 +39,12 @@ class Session
         return isset($_SESSION[$key]) ? $_SESSION[$key] : null;
     }
 
+    public function updateSession($user_id, $db){
+        unset($_SESSION['auth']);
+        $user = $db->query("SELECT * FROM utilisateurs WHERE id = ?", [$user_id])->fetch();
+        $this->write('auth', $user);
+    }
+
     public function delete($key){
         unset($_SESSION[$key]);
     }

@@ -20,7 +20,7 @@ class Validator
     }
 
     public function isPseudo($field, $errorMsg){
-        if (!preg_match('/^[a-zA-Z0-9_]+$/', $this->getField($field))){
+        if (!preg_match('/^[a-zA-Z0-9_]{3,20}$/', $this->getField($field))){
             $this->errors[$field] = $errorMsg;
         }
     }

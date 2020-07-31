@@ -45,10 +45,23 @@ if (!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password'])) 
     <?php
     require 'inc/header.php'; ?>
 </header>
-<main id="main_connexion" class="text-center d-flex align-items-center">
-    <div class="form_auth">
-        <h1 class="h3 mb-3 font-weight-normal">Se connecter</h1>
+<main id="main_connexion" class="d-flex flex-column">
+    <div class="container">
+        <?php
+        if (Session::getInstance()->hasFlashes()): ?>
+            <?php
+            foreach (Session::getInstance()->getFlashes() as $type => $message): ?>
+                <div class="alert alert-<?= $type; ?>">
+                    <?= $message; ?>
+                </div>
+            <?php
+            endforeach; ?>
+        <?php
+        endif; ?>
+    </div>
+    <div class="form_auth text-center">
         <form action="" method="post">
+            <h1 class="h3 mb-3 font-weight-normal">Se connecter</h1>
 
             <div class="form-group">
                 <label class="sr-only" for="username">Pseudo</label>

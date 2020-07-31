@@ -75,15 +75,22 @@ class Auth
     public function login($db, $username, $password, $remember = false)
     {
         $user = $db->query("SELECT * FROM utilisateurs WHERE username = :username", ['username' => $username])->fetch();
-        if (password_verify($password, $user->password)) {
-            $this->connect($user);
-            if ($remember) {
-                $this->remember($db, $user->id);
+        if ($user) {
+            if (password_verify($password, $user->password)) {
+                $this->connect($user);
+                if ($remember) {
+                    $this->remember($db, $user->id);
+                }
+                return $user;
+            } else {
+                return false;
             }
-            return $user;
-        } else {
-            return false;
         }
+    }
+
+    public function updateProfil($db,$field, $content, $user_id){
+        $db->query("UPDATE utilisateurs SET $field = ? WHERE id = ?", [$content, auth::user()->id]);
+        $this->session->updateSession($user_id, $db);
     }
 
     public function remember($db, $user_id)
