@@ -107,7 +107,7 @@ $auth = App::getAuth();
         <?php
         endif; ?>
     </div>
-    <div class="container d-flex flex-row">
+    <div class="container d-flex flex-row justify-content-around m-auto">
         <form action="" method="post">
             <h1 class="h3 mb-3 font-weight-normal">Modifier pseudo</h1>
 

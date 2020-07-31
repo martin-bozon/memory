@@ -9,7 +9,10 @@
                     aria-haspopup="true" aria-expanded="false">
                 Mon compte
             </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <div class="dropdown-menu"
+                 aria-labelledby="dropdownMenu2">
+                <button class="dropdown-item <?= (App::getAuth()->user()->is_admin == 1) ? '' : 'd-none' ?>" type="button"><a class="text-decoration-none" href="admin.php">Espace
+                        administrateur</a></button>
                 <button class="dropdown-item" type="button"><a class="text-decoration-none" href="historique.php">Voir
                         historique</a></button>
                 <button class="dropdown-item" type="button"><a class="text-decoration-none" href="profil.php">Modifier
