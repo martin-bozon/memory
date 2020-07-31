@@ -17,6 +17,6 @@
         <h1>Bienvenue sur Memory</h1>
         <?php include 'traitement/php_index.php'; ?>
     </main>
-    <?php include 'footer.php'; ?>
+    <?php include 'inc/footer.php'; ?>
 </body>
 </html>
