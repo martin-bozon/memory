@@ -14,6 +14,7 @@
     <title>Admin</title>
 </head>
 <body>
+    <?php //include 'inc/header.php'; ?>
     <main id="main_admin">        
         <h2>Gestion Jeu</h2>
         <section id="user_score">    

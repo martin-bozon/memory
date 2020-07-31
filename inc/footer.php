@@ -6,7 +6,8 @@
                 <section class="container-fluid text-center text-md-left">
                     <section class="row">
                         <section class="col-md-6 mt-md-0 mt-3">     
-                            <h5 class="text-uppercase">Jeu du memory</h5>                                
+                            <h5 class="text-uppercase">Jeu du memory</h5>   
+                            <p>Venez tester votre mémoire et votre rapidité</p>                             
                         </section>
                             <hr class="clearfix w-100 d-md-none pb-3">
                         <section class="col-md-3 mb-md-0 mb-3">   
@@ -33,7 +34,7 @@
                         </section>    
                     </section>
                 </section>                  
-                <section class="footer-copyright text-center py-3">
+                <section class="footer-copyright text-center py-3 bg_footer">
                     <p>© 2020 Copyright: Céline Pawlak - Martin Bozon</p>
                 </section>
             </footer>
@@ -46,7 +47,8 @@
                 <section class="container-fluid text-center text-md-left">
                     <section class="row">
                         <section class="col-md-6 mt-md-0 mt-3">     
-                            <h5 class="text-uppercase">Jeu du memory</h5>                                
+                            <h5 class="text-uppercase">Jeu du memory</h5>   
+                            <p>Venez tester votre mémoire et votre rapidité</p>                             
                         </section>
                             <hr class="clearfix w-100 d-md-none pb-3">
                         <section class="col-md-3 mb-md-0 mb-3">   
@@ -76,7 +78,7 @@
                         </section>    
                     </section>
                 </section>                  
-                <section class="footer-copyright text-center py-3">
+                <section class="footer-copyright text-center py-3 bg_footer">
                     <p>© 2020 Copyright: Céline Pawlak - Martin Bozon</p>
                 </section>
             </footer>
@@ -89,7 +91,8 @@
                 <section class="container-fluid text-center text-md-left">
                     <section class="row">
                         <section class="col-md-6 mt-md-0 mt-3">     
-                            <h5 class="text-uppercase">Jeu du memory</h5>                                
+                            <h5 class="text-uppercase">Jeu du memory</h5>    
+                            <p>Venez tester votre mémoire et votre rapidité</p>                            
                         </section>
                             <hr class="clearfix w-100 d-md-none pb-3">
                         <section class="col-md-3 mb-md-0 mb-3">   
@@ -113,7 +116,7 @@
                         </section>    
                     </section>
                 </section>                  
-                <section class="footer-copyright text-center py-3">
+                <section class="footer-copyright text-center py-3 bg_footer">
                     <p>© 2020 Copyright: Céline Pawlak - Martin Bozon</p>
                 </section>
             </footer>
