@@ -9,7 +9,7 @@ class card
     private $visibility = 'hidden';
     private $state = 'inGame';
 
-    public function __construct($id, $id_pair,$image_path)
+    public function __construct($id, $id_pair, $image_path)
     {
         $this->id = $id;
         $this->id_pair = $id_pair;
@@ -22,6 +22,14 @@ class card
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdPair()
+    {
+        return $this->id_pair;
     }
 
     /**
@@ -48,12 +56,17 @@ class card
         return $this->state;
     }
 
-    public function switchVisibility(){
-        if ($this->visibility == 'hidden'){
+    public function switchVisibility($session, $id_card)
+    {
+        if ($this->visibility == 'hidden' && $_SESSION != $id_card) {
+            $session->write('lastCard', $id_card);
             return $this->visibility = 'visible';
-        }else{
-            return $this->visibility = 'hidden';
         }
+        return $this->visibility;
+    }
+
+    public function visibilityReset(){
+        return $this->visibility = 'hidden';
     }
 
     /**
@@ -62,5 +75,13 @@ class card
     public function setVisibility($visibility)
     {
         $this->visibility = $visibility;
+    }
+
+    /**
+     * @param string $state
+     */
+    public function setState($state)
+    {
+        $this->state = $state;
     }
 }
