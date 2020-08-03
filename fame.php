@@ -35,8 +35,8 @@
                         {
                             ?>
                             <tr>
-                                <td><?=$top_10[$i]['login']?></td>
-                                <td><?=$top_10[$i]['score_total']?></td>                                                    
+                                <td class="border"><?=$top_10[$i]['login']?></td>
+                                <td class="border"><?=$top_10[$i]['score_total']?></td>                                                    
                             <?php
                         }                                        
                 ?>
@@ -81,10 +81,10 @@
                                             {
                                                 ?>
                                                 <tr>
-                                                    <td><?=$top_paire[$i]['login']?></td>
-                                                    <td><?=$top_paire[$i]['score']?></td>
-                                                    <td><?=$top_paire[$i]['temps']?></td>
-                                                    <td><?=$top_paire[$i]['coups']?></td>
+                                                    <td class="border"><?=$top_paire[$i]['login']?></td>
+                                                    <td class="border"><?=$top_paire[$i]['score']?></td>
+                                                    <td class="border"><?=$top_paire[$i]['temps']?></td>
+                                                    <td class="border"><?=$top_paire[$i]['coups']?></td>
                                                 </tr>                            
                                                 <?php
                                             }
