@@ -1,7 +1,11 @@
  <?php
 require 'traitement/php_score.php';
 $bdd = new PDO('mysql:host=localhost;dbname=memory;charset=utf8', 'root', '');
- 
+ $t = new DateTime();
+//  $t->getTimestamp();
+
+    
+
     //Récupère les infos des 10 premiers scores au général
     $query_top10 = $bdd->query('SELECT login, score_total FROM `utilisateurs` WHERE score_total IS NOT NULL ORDER BY score_total DESC LIMIT 10');
     $top_10 = $query_top10->fetchAll(PDO::FETCH_ASSOC);       

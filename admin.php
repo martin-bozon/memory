@@ -96,7 +96,7 @@
                     echo '<p class="alert alert-success w-75 p-3 m-auto text-center">Image uploader</p>';                    
                 ?>
                 <h2>Ajouter une paire</h2>               
-                <form enctype="multipart/form-data" action="" method="POST">
+                <form enctype="multipart/form-data" action="admin.php#ad_paires" method="POST">
                     <section>
                         <label for="image">Choix de l'image</label>
                         <input type="hidden" name="MAX_FILE_SIZE" value="3000000" id="image">        

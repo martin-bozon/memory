@@ -50,7 +50,7 @@
                         for($i=3; $i<=$nb_paire["nb_paire"]; $i++)
                             {
                                 ?>                            
-                                <option value="<?= $i ?>"><?= $i ?> paires</option>                              
+                                    <option value="<?= $i ?>"><?= $i ?> paires</option>                                                             
                                 <?php
                             }
                     ?>
@@ -60,7 +60,7 @@
             </section>
             <section>
                 <?php
-                 if(isset($_POST["top_paire"], $_POST["choix_top"]))
+                 if(isset($_POST["top_paire"], $_POST["choix_top"]) && !empty($top_paire))
                         {
                             ?>
                              <table class="table table_top_paire">
@@ -91,6 +91,12 @@
                                     ?>
                                 </tbody>
                             </table>   
+                            <?php
+                        }
+                    else
+                        {
+                            ?>
+                                <p class="alert alert-warning">Il n'y a pas encore de score disponible, pourquoi ne serai tu pas le premier ?</p>
                             <?php
                         }
                 ?>

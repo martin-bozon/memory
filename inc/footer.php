@@ -87,8 +87,8 @@
     else
         {
             ?>           
-            <footer class="page-footer font-small bg-secondary pt-4">
-                <section class="container-fluid text-center text-md-left">
+            <footer class="page-footer font-small pt-4">
+                <section class="container-fluid text-center text-md-left bg-secondary">
                     <section class="row">
                         <section class="col-md-6 mt-md-0 mt-3">     
                             <h5 class="text-uppercase">Jeu du memory</h5>    
