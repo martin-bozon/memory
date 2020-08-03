@@ -13,11 +13,9 @@ main
         margin: 0;
         height: auto;;
     }
-<<<<<<< HEAD
 *{
     box-sizing: border-box;
 }
-=======
 /* PAGE INDEX */
 #main_index
     {
@@ -32,7 +30,6 @@ main
         margin-bottom: 10vh;
     }
 /* FIN INDEX */
->>>>>>> Martin
 /* PAGE ADMIN */
 #main_admin
     {
