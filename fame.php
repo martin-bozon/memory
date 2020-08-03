@@ -16,17 +16,18 @@
 </head>
 <body>
     <header>
-        <?php include 'inc/header.php'; ?>
+        <?php //include 'inc/header.php'; ?>
     </header>    
     <main id="main_fame">        
         <table class="table">
             <thead class="thead-dark">
                 <tr>
-                    <th colspan="2">TOP 10 C'est super</th>                
+                    <th colspan="3">TOP 10 C'est super</th>                
                 </tr>
             </thead>
             <tbody>
                 <tr class="titre_top">
+                    <td>Place</td>
                     <td>Nom</td>
                     <td>Score</td>                    
                 </tr>   
@@ -35,6 +36,7 @@
                         {
                             ?>
                             <tr>
+                            <td class="border"><?= ($i+1)?></td>
                                 <td class="border"><?=$top_10[$i]['login']?></td>
                                 <td class="border"><?=$top_10[$i]['score_total']?></td>                                                    
                             <?php
@@ -50,7 +52,15 @@
                         for($i=3; $i<=$nb_paire["nb_paire"]; $i++)
                             {
                                 ?>                            
-                                    <option value="<?= $i ?>"><?= $i ?> paires</option>                                                             
+                                    <option value="<?= $i ?>"
+                                    <?php if(isset($_POST["top_paire"]) && $i == $_POST["top_paire"])
+                                    {
+                                        ?>
+                                        selected
+                                        <?php
+                                    }
+                                    ?>
+                                    ><?= $i ?> paires</option>                                                             
                                 <?php
                             }
                     ?>
@@ -93,12 +103,12 @@
                             </table>   
                             <?php
                         }
-                    else
+                    else 
                         {
                             ?>
-                                <p class="alert alert-warning">Il n'y a pas encore de score disponible, pourquoi ne serai tu pas le premier ?</p>
+                                <p class="alert alert-warning">Il n'y a pas encore de score disponible</p>
                             <?php
-                        }
+                        }                    
                 ?>
             </section>                       
         </section>
