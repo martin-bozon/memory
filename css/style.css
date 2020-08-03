@@ -16,6 +16,20 @@ main
 *{
     box-sizing: border-box;
 }
+/* PAGE INDEX */
+#main_index
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+    }
+#main_index h1
+    {
+        margin-bottom: 10vh;
+    }
+/* FIN INDEX */
 /* PAGE ADMIN */
 #main_admin
     {
@@ -101,8 +115,7 @@ main
         width: 10vw;
         height: 20vh;
     }
-
-
+/* FIN ADMIN */
 /* PAGE CONNEXION */
 
 #main_connexion, #main_inscription, #flash{
@@ -140,4 +153,8 @@ footer a:hover
         color: greenyellow;
         text-decoration: none;
     }
-
+.bg_footer
+    {
+        background-color: #7D8294;
+    }
+/* FIN FOOTER */
