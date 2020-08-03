@@ -22,8 +22,7 @@
                                     if($move)
                                         {                               
                                             $uploaodFile = $bdd->prepare('INSERT INTO paires (chemin) VALUES (:chemin)');
-                                            $uploaodFile->execute(['chemin' => $chemin]);//Insère le chemin dans la bdd
-                                            //throw new Exception('Image uploader');
+                                            $uploaodFile->execute(['chemin' => $chemin]);//Insère le chemin dans la bdd                                            
                                         }
                                     else
                                         {

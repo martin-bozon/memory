@@ -16,6 +16,11 @@ main
 *{
     box-sizing: border-box;
 }
+/* HEADER */
+header
+    {
+        height: fit-content;
+    }
 /* PAGE INDEX */
 #main_index
     {
@@ -142,11 +147,17 @@ main
 .alert{
     margin-top: 1rem;
 }
-
+/* PAGE FAME */
+#main_fame
+    {
+        height: 100vh;
+    }
+/* FIN FAME */
 /* FOOTER */
 footer a    
     {
         color: white;
+        height: fit-content;
     }
 footer a:hover
     {

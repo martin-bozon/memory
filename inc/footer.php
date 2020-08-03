@@ -14,10 +14,10 @@
                             <h5 class="text-uppercase">Jeu</h5>
                                 <ul class="list-unstyled">
                                     <li>
-                                        <a href="../memory.php">Memory</a>
+                                        <a href="memory.php">Memory</a>
                                     </li>
                                     <li>
-                                        <a href="../fame.php">Wall of fame</a>
+                                        <a href="fame.php">Wall of fame</a>
                                     </li>                                   
                                 </ul>
                         </section>
@@ -25,10 +25,10 @@
                             <h5 class="text-uppercase">Joueur</h5>
                                 <ul class="list-unstyled">
                                     <li>
-                                        <a href="../profil.php">Mon profil</a>
+                                        <a href="profil.php">Mon profil</a>
                                     </li>
                                     <li>
-                                        <a href="../historique.php">Historique</a>
+                                        <a href="historique.php">Historique</a>
                                     </li>                                    
                                 </ul>
                         </section>    
@@ -55,10 +55,10 @@
                             <h5 class="text-uppercase">Jeu</h5>
                                 <ul class="list-unstyled">
                                     <li>
-                                        <a href="../memory.php">Memory</a>
+                                        <a href="memory.php">Memory</a>
                                     </li>
                                     <li>
-                                        <a href="../fame.php">Wall of fame</a>
+                                        <a href="fame.php">Wall of fame</a>
                                     </li>                                   
                                 </ul>
                         </section>
@@ -66,13 +66,13 @@
                             <h5 class="text-uppercase">Joueur</h5>
                                 <ul class="list-unstyled">
                                     <li>
-                                        <a href="../profil.php">Mon profil</a>
+                                        <a href="profil.php">Mon profil</a>
                                     </li>
                                     <li>
-                                        <a href="../historique.php">Historique</a>
+                                        <a href="historique.php">Historique</a>
                                     </li>    
                                     <li>
-                                        <a href="../admin.php">Administrateur</a>
+                                        <a href="admin.php">Administrateur</a>
                                     </li>                                  
                                 </ul>
                         </section>    
@@ -99,7 +99,7 @@
                             <h5 class="text-uppercase">Accueil</h5>
                                 <ul class="list-unstyled">
                                     <li>
-                                        <a href="../index.php">Accueil</a>
+                                        <a href="index.php">Accueil</a>
                                     </li>                                    
                                 </ul>
                         </section>
@@ -107,10 +107,10 @@
                             <h5 class="text-uppercase">Joueur</h5>
                                 <ul class="list-unstyled">
                                     <li>
-                                        <a href="../inscription.php">Inscription</a>
+                                        <a href="inscription.php">Inscription</a>
                                     </li>
                                     <li>
-                                        <a href="../connexion.php">Connexion</a>
+                                        <a href="connexion.php">Connexion</a>
                                     </li>                                    
                                 </ul>
                         </section>    
