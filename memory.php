@@ -7,8 +7,8 @@ $auth = App::getAuth();
 $db = App::getDatabase();
 $session = Session::getInstance();
 $board = new Board;
+$score = new Score();
 $maxPairs = $board->maxPairs($db);
-
 //Créer le board en fonction du nombre de pairs
 
 if (isset($_POST['pairs_in_game'])) {
@@ -24,12 +24,37 @@ if (isset($_POST['pairs_in_game'])) {
     if (isset($cards)) {
         $session->write('cards', $cards);
         shuffle($_SESSION['cards']);
+        $session->write('temps_debut', new DateTime);
     }
 }
 
 //Gestion du jeu
 
+if (isset($_POST['id_card_selected']) && $_SESSION['lastCard'] != $_POST['id_card_selected']) {
+    if (!isset($_SESSION['number_coups'])) {
+        $session->write('number_coups', 1);
+    } else {
+        $_SESSION['number_coups']++;
+    }
+}
+
+
 if (isset($_SESSION['cards'])) {
+    //Si c'est win
+    if ($board->isWin($_SESSION['cards'])) {
+        $session->write('temps_fin', new DateTime);
+        $chrono = $score->timescore($_SESSION['temps_debut'], $_SESSION['temps_fin'], $session); //time
+        $number_coups = $_SESSION['number_coups']; //nombre de coups
+
+        // envoyer à function de score --> $chrono, $nb_coups, $resultat du score
+
+        //clear sessions
+        $session->delete('cards');
+        $session->delete('number_coups');
+
+        die();
+    }
+
     //Si il y a 2 cartes visibles
     if ($board->visibleCards($_SESSION['cards']) >= 2) {
         //Si c'est une paire
@@ -39,21 +64,14 @@ if (isset($_SESSION['cards'])) {
                 $twin_card->setVisibility('hidden');
                 $twin_card->setState('found');
             }
-            header('location:memory.php');
         } else {
             foreach ($_SESSION['cards'] as $card) {
                 $card->setVisibility('hidden');
-                header('location:memory.php');
             }
-            header('location:memory.php');
         }
+        header('location:memory.php');
     }
 
-    //Si c'est win
-    if ($board->isWin($_SESSION['cards'])) {
-        $session->delete('cards');
-        //pop message de relance
-    }
 
     //Si une carte est sélectionnée
     if (isset($_POST['id_card_selected'])) {
@@ -115,7 +133,7 @@ else: ?>
             <?php
             foreach ($_SESSION['cards'] as $card): ?>
                 <label class="bg-dark"><img src="<?= $card->getVisibility() == 'visible' ? $card->getImagePath(
-                    ) : 'src/images/202976.jpg'; ?>" alt="" width="50" height="50" role="button" <?= $card->getState(
+                    ) : 'src/images/202976.jpg'; ?>" alt="" width="100" height="100" role="button" <?= $card->getState(
                     ) == 'inGame' ? '' : 'hidden'; ?> > <!-- hidden quand sort du jeu -->
                     <input class="sr-only" type="submit" value="<?= $card->getId(); ?>" name="id_card_selected">
                 </label>
@@ -123,10 +141,17 @@ else: ?>
             endforeach; ?>
         </div>
     </form>
+    <div>
+        <?php
+        if (isset($_SESSION['number_coups'])) {
+            echo "Nombre de coups :";
+            echo $_SESSION['number_coups'];
+        }
+        ?>
+    </div>
 <?php
 endif; ?>
 <?php
-var_dump($_SESSION);
 ob_end_flush();
 ?>
 

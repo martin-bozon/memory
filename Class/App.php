@@ -18,4 +18,5 @@ class App{
     static function redirect($page){
         header("location:$page");
     }
+
 }

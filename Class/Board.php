@@ -36,8 +36,6 @@ class Board
                 $twin_card[] = $card;
             }
         }
-        var_dump($_SESSION['cards']);
-        var_dump($twin_card);
         if ($twin_card[0]->getIdPair() == $twin_card[1]->getIdPair()) {
             return $twin_card;
         }
