@@ -39,7 +39,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=memory;charset=utf8', 'root', '');
             {
                 $id_user = $_SESSION["id"];
                 
-                $insert_score = $bdd->prepare('INSERT INTO score (id_user, score, nb_paires) VALUES (?,?,?)');
+                $insert_score = $bdd->prepare('INSERT INTO score (id_user, score, nb_paires, temps, coups) VALUES (?,?,?, ?,?)');
                 $insert_score->execute([$id_user, $score, $nb_paire]);
                 
                 $prepare_add_score = $bdd->prepare('SELECT SUM(score) as total_score FROM score WHERE id_user=?');

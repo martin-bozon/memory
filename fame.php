@@ -1,6 +1,7 @@
 <?php
     // session_start();
     include 'traitement/php_fame.php';
+    require_once 'inc/bootstrap.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,7 +16,7 @@
 </head>
 <body>
     <header>
-        <?php //include 'inc/header.php'; ?>
+        <?php include 'inc/header.php'; ?>
     </header>    
     <main id="main_fame">        
         <table class="table">
@@ -25,9 +26,9 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr class="titre_top">
                     <td>Nom</td>
-                    <td>Score</td>
+                    <td>Score</td>                    
                 </tr>   
                 <?php                
                     for($i=0; $i<$nb_score; $i++)
@@ -35,53 +36,65 @@
                             ?>
                             <tr>
                                 <td><?=$top_10[$i]['login']?></td>
-                                <td><?=$top_10[$i]['score_total']?></td>
-                            </tr>                            
+                                <td><?=$top_10[$i]['score_total']?></td>                                                    
                             <?php
-                        }
+                        }                                        
                 ?>
             </tbody>
         </table>    
-        <section>
-            <form action="" method="POST">
-                <select name="top_paire" id="">
+        <section id="top_paires">
+            <section>
+                 <form action="fame.php#top_paires" method="POST" id="form_top_paire">
+                    <select name="top_paire" id="select_top_paire">
+                    <?php
+                        for($i=3; $i<=$nb_paire["nb_paire"]; $i++)
+                            {
+                                ?>                            
+                                <option value="<?= $i ?>"><?= $i ?> paires</option>                              
+                                <?php
+                            }
+                    ?>
+                    </select>
+                    <input type="submit" name="choix_top" class="btn btn-primary" value="Choisir">
+                </form>     
+            </section>
+            <section>
                 <?php
-                    for($i=3; $i<=$nb_paire["nb_paire"]; $i++)
-                        {
-                            ?>                            
-                            <option value="<?= $i ?>"><?= $i ?> paires</option>                              
-                            <?php
-                        }
-                ?>
-                </select>
-                <input type="submit" name="choix_top" class="btn btn-primary" value="Choisir">
-            </form>
-            <table>
-            <table class="table">
-            <thead class="thead-light">
-                <tr>
-                    <th colspan="2">TOP 10 : X paires</th>                
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Nom</td>
-                    <td>Score</td>
-                </tr>   
-                <?php                
-                    for($i=0; $i<$nb_score; $i++)
+                 if(isset($_POST["top_paire"], $_POST["choix_top"]))
                         {
                             ?>
-                            <tr>
-                                <td><?=$top_10[$i]['login']?></td>
-                                <td><?=$top_10[$i]['score_total']?></td>
-                            </tr>                            
+                             <table class="table table_top_paire">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th colspan="4">TOP 10 : <?= $top_paire[0]["nb_paires"]?> paires</th>                
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="titre_top">
+                                        <td>Nom</td>
+                                        <td>Score</td>
+                                        <td>Temps</td>
+                                        <td>Nombre de coups</td>
+                                    </tr>   
+                                    <?php                
+                                        for($i=0; $i<($nb_top_paire); $i++)
+                                            {
+                                                ?>
+                                                <tr>
+                                                    <td><?=$top_paire[$i]['login']?></td>
+                                                    <td><?=$top_paire[$i]['score']?></td>
+                                                    <td><?=$top_paire[$i]['temps']?></td>
+                                                    <td><?=$top_paire[$i]['coups']?></td>
+                                                </tr>                            
+                                                <?php
+                                            }
+                                    ?>
+                                </tbody>
+                            </table>   
                             <?php
                         }
                 ?>
-            </tbody>
-        </table>    
-            </table>
+            </section>                       
         </section>
     </main>
     <?php include 'inc/footer.php'; ?>

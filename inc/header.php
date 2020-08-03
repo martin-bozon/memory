@@ -1,8 +1,3 @@
-<?php 
-    require 'Class/App.php';
-    require 'Class/Auth.php';
-    require 'Class/Session.php';    
-?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container">
         <div><a class="text-decoration-none" href="Index.php">Accueil</a></div>

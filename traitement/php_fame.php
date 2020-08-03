@@ -16,9 +16,10 @@ $bdd = new PDO('mysql:host=localhost;dbname=memory;charset=utf8', 'root', '');
         {
             $paire = $_POST["top_paire"];
 
-            $top_paire = $bdd->prepare('SELECT utilisateurs.login, score, nb_paires FROM score INNER JOIN utilisateurs ON score.id_user=utilisateurs.id WHERE nb_paires=? ORDER BY score DESC LIMIT 10');
-            $top_paire->execute([$paire]);
-            $u = $top_paire->fetchAll(PDO::FETCH_ASSOC);
-            var_dump($u);
+            $prepare_top_paire = $bdd->prepare('SELECT utilisateurs.login, score, nb_paires, temps, coups FROM score INNER JOIN utilisateurs ON score.id_user=utilisateurs.id WHERE nb_paires=? ORDER BY score DESC LIMIT 10');
+            $prepare_top_paire->execute([$paire]);
+            $top_paire = $prepare_top_paire->fetchAll(PDO::FETCH_ASSOC);    
+            
+            $nb_top_paire = count($top_paire);            
         }            
 ?>
