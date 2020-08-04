@@ -1,7 +1,6 @@
 <?php
     // session_start();
-    include 'traitement/php_fame.php';
-    require_once 'inc/bootstrap.php';
+    include 'traitement/php_fame.php';       
 ?>
 <!DOCTYPE html>
 <html>
@@ -16,7 +15,7 @@
 </head>
 <body>
     <header>
-        <?php //include 'inc/header.php'; ?>
+        <?php include 'inc/header.php'; ?>
     </header>    
     <main id="main_fame">        
         <table class="table">
@@ -103,7 +102,7 @@
                             </table>   
                             <?php
                         }
-                    else 
+                        else if(isset($_POST["top_paire"], $_POST["choix_top"]) && empty($top_paire))
                         {
                             ?>
                                 <p class="alert alert-warning">Il n'y a pas encore de score disponible</p>

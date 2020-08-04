@@ -1,6 +1,10 @@
 <?php
     session_start();
-    include 'traitement/php_admin.php';    
+    include 'traitement/php_admin.php';  
+    if(App::getAuth()->user()->is_admin == null)      
+        {            
+            App::redirect('index.php');
+        }
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,7 +18,7 @@
     <title>Admin</title>
 </head>
 <body>
-    <?php //include 'inc/header.php'; ?>
+    <?php include 'inc/header.php'; ?>
     <main id="main_admin">        
         <h2>Gestion Jeu</h2>
         <section id="user_score">    
@@ -37,7 +41,7 @@
                                     ?>
                                     <tr>                    
                                         <td class="border"><?=  $info_users['recup'][$i]['login'] ?></td>
-                                        <td class="border sup"><button><a class="icon-trash" href="traitement/suppression.php?id_user=<?= $info_users['recup'][$i]["id"] ?>" title="supprimer" onclick="return confirm('Supprimer : <?=$info_users['recup'][$i]['login'] ?> ?')"><img src="src/images/trash.png" alt="logo poubelle"></a></button></td>
+                                        <td class="border sup"><button><a class="icon-trash" href="suppression.php?id_user=<?= $info_users['recup'][$i]["id"] ?>" title="supprimer" onclick="return confirm('Supprimer : <?=$info_users['recup'][$i]['login'] ?> ?')"><img src="src/images/trash.png" alt="logo poubelle"></a></button></td>
                                     </tr>   
                                     <?php
                                 }                
@@ -71,7 +75,7 @@
                                         <td class="border"><?=  $info_scores["recup"][$i]['login'] ?></td>
                                         <td class="border"><?=  $info_scores["recup"][$i]['score'] ?></td>
                                         <td class="border"><?=  $info_scores["recup"][$i]['nb_paires'] ?></td>
-                                        <td class="border sup"><button><a class="icon-trash" href="traitement/suppression.php?id_score=<?= $info_scores["recup"][$i]["id"] ?>" title="supprimer" onclick="return confirm('Supprimer : Ce score ?')"><img src="src/images/trash.png" alt="logo poubelle"></a></button></td>                                                                               
+                                        <td class="border sup"><button><a class="icon-trash" href="suppression.php?id_score=<?= $info_scores["recup"][$i]["id"] ?>" title="supprimer" onclick="return confirm('Supprimer : Ce score ?')"><img src="src/images/trash.png" alt="logo poubelle"></a></button></td>                                                                               
                                     </tr>
                                     <?php                    
                                 }
@@ -120,8 +124,8 @@
                                     {                               
                                         ?>
                                         <tr>                                   
-                                            <td class="border"><img class="paires_admin" src="<?= $info_paires["recup"][$i]["chemin"] ?>" alt="photo paires"></td>      
-                                            <td class="border sup"><button><a class="icon-trash" href="traitement/suppression.php?id_paires=<?= $info_paires["recup"][$i]["id"] ?>&page=<?= $retour_page ?>" title="supprimer" onclick="return confirm('Supprimer : Cette paire ?')"><img src="src/images/trash.png" alt="logo poubelle"></a></button></td>                                                                               
+                                            <td class="border"><img class="paires_admin" src="<?= $info_paires["recup"][$i]["image_path"] ?>" alt="photo paires"></td>      
+                                            <td class="border sup"><button><a class="icon-trash" href="suppression.php?id_paires=<?= $info_paires["recup"][$i]["id"] ?>&page=<?= $retour_page ?>" title="supprimer" onclick="return confirm('Supprimer : Cette paire ?')"><img src="src/images/trash.png" alt="logo poubelle"></a></button></td>                                                                               
                                         </tr> 
                                         <?php
                                     }

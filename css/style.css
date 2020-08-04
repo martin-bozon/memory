@@ -1,29 +1,34 @@
-html {
-    margin: 0;
-    height: 100%;
-}
-
-body {
-    margin: 0;
-    height: 100vh;
-}
-
-main {
-    margin: 0;
-    height: auto;
-    padding-top: 55px;
-}
-
-* {
+html
+    {
+        margin: 0;
+        height:100%;
+    }
+body
+    {
+        margin: 0;
+        height: 100vh;
+    }
+main
+    {
+        margin: 0;
+        min-height: 80vh;
+        padding-top: 54px;
+    }
+*{
     box-sizing: border-box;
 }
-
+h2
+    {
+        margin-top: 5vh;
+        margin-bottom: 5vh;
+    }
 /* HEADER */
 header {
     height: fit-content;
 }
 
 /* PAGE INDEX */
+
 #main_index {
     display: flex;
     flex-direction: column;
@@ -43,6 +48,29 @@ header {
     color: #0BC4E2;
     text-decoration: none;
 }
+
+#main_index
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        height: 100%;
+    }
+#info_main
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+.jeu
+    {
+        width: 25vw;
+    }
+#main_index h1
+    {
+        margin-bottom: 10vh;
+    }
 
 /* FIN INDEX */
 /* PAGE ADMIN */
@@ -200,7 +228,6 @@ header {
 
 /* FIN FAME */
 
-
     /* FOOTER */
 footer a {
     color: white;
@@ -215,5 +242,56 @@ footer a:hover {
 .bg_footer {
     background-color: #7D8294;
 }
+
+/* PAGE HISTORIQUE */
+#main_histo
+    {
+        text-align: center;
+    }
+#class_gen
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+#class_gen table
+    {
+        width: 40vw;
+        text-align: center;
+    }
+#class_perso
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+#table_perso
+    {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+#table_perso table
+    {
+        margin-top: 3vh;
+        width: 60vw;
+        text-align: center;
+    }
+/* FIN HISTORIQUE */
+/* FOOTER */
+footer a    
+    {
+        color: white;
+        height: fit-content;
+    }
+footer a:hover
+    {
+        color: greenyellow;
+        text-decoration: none;
+    }
+.bg_footer
+    {
+        background-color: #7D8294;
+    }
 
 /* FIN FOOTER */

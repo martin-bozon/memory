@@ -1,11 +1,6 @@
 <?php
     function score($p, $c, $t, $si, $bdd)//Prends en paramètre, le nombre de paire, le  nombre de coups, le temps, l'id du joueur et la bdd
-        {
-            //Donnée récupérée au début du jeu
-            // $p = 3;
-            //Données récupérées à la fin du jeu
-            // $c = 7;
-            // $t = 8;
+        {           
             //Initialisations des variables de comparaison   
                 //Variable max points 
                 $coups_min = $p*2;
@@ -40,8 +35,8 @@
                         //Calcul le score total du joueur
                         $add_score = $bdd->query('SELECT SUM(score) as total_score FROM score WHERE id_user=?', $si)->fetch();
                         //Mets à jour le score total du joueur
-                        $bdd->query('UPDATE utilisateurs SET score_total=? WHERE id=?', [$add_score['total_score'], $si]);
-                    }
+                        $bdd->query('UPDATE utilisateurs SET score_total=? WHERE id=?', [$add_score['total_score'], $si]);                   
+                    }     
             return $score;                          
         }    
 ?>
