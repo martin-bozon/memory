@@ -23,8 +23,8 @@ class Auth
     {
         $password = $this->hashPassword($password);
         $db->query(
-            "INSERT INTO utilisateurs SET username = ?, password = ?, is_admin = ?",
-            [$username, $password, 0]
+            "INSERT INTO utilisateurs SET username = ?, password = ?",
+            [$username, $password]
         );
         /*$user_id = $db->lastInsertId();*/
     }

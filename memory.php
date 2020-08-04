@@ -9,9 +9,13 @@ $session = Session::getInstance();
 $board = new Board;
 $score = new Score();
 $maxPairs = $board->maxPairs($db);
+
+
 //Créer le board en fonction du nombre de pairs
 
 if (isset($_POST['pairs_in_game'])) {
+    $session->write('pairs_in_game', $_POST['pairs_in_game']);
+    $test = true;
     $cardsOnBoard = $board->downloadCards($db, $_POST['pairs_in_game']);
     $counter_card = 1;
 
@@ -30,7 +34,11 @@ if (isset($_POST['pairs_in_game'])) {
 
 //Gestion du jeu
 
-if (isset($_POST['pairsChoiceMenu'])) {
+if (isset($_POST['see_profile'])) {
+    header('location:profil.php');
+}
+
+if (isset($_POST['pairsChoiceMenu']) or isset($_POST['play_again'])) {
     $session->delete('cards');
     $session->delete('number_coups');
     $session->delete('temps_debut');
@@ -55,13 +63,14 @@ if (isset($_SESSION['cards'])) {
         $session->write('temps_fin', new DateTime);
         $chrono = $score->timescore($_SESSION['temps_debut'], $_SESSION['temps_fin'], $session); //time
         $number_coups = $_SESSION['number_coups']; //nombre de coups
-
-        // envoyer à function de score --> $chrono, $nb_coups, $resultat du score
-
+        //points
+        include 'traitement/php_score.php';
+        $points = score($_SESSION['pairs_in_game'], $number_coups, $chrono, $auth->user()->id, $db);
         //clear sessions
         $session->delete('cards');
         $session->delete('number_coups');
-
+        $session->delete('pairs_in_game');
+        $endofgame = true;
         die();
     }
 
@@ -108,22 +117,39 @@ if (isset($_SESSION['cards'])) {
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-            crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-            crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-            crossorigin="anonymous"></script>
 </head>
 <body>
 <header>
     <?php
-    isset($_SESSION['cards']) ?: include 'inc/header.php' ?>
+    isset($_SESSION['cards']) ?: include 'inc/header.php';
+    ?>
+
 </header>
 <main class="h-100 d-flex flex-column">
+    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"
+         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Victoire !</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h3>Score :</h3>
+                    <p>Nombre de coups : <?= $number_coups ?></p>
+                    <p>Temps : <?= $timer ?></p>
+                    <p>Points : <?= $points ?></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-secondary" data-dismiss="modal" name="play_again">Rejouer
+                    </button>
+                    <button type="submit" class="btn btn-primary" name="see_profile">Voir mon profil</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <?php
     //formulaire de sélection des paires
     if (!isset($_SESSION['cards'])): ?>
@@ -168,6 +194,7 @@ if (isset($_SESSION['cards'])) {
     <?php
     endif; ?>
     <?php
+    var_dump($_SESSION);
     ob_end_flush();
     ?>
 </main>
@@ -176,6 +203,23 @@ if (isset($_SESSION['cards'])) {
     isset($_SESSION['cards']) ?: include 'inc/footer.php'
     ?>
 </footer>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+<?php
+if (isset($endofgame)) : ?>
+    <script>
+        jQuery.noConflict();
+        jQuery('#staticBackdrop').modal('show');
+    </script>
+<?php
+endif; ?>
 </body>
 </html>
 

@@ -1,8 +1,4 @@
 <?php
-//A SUPPRIMER
-$bdd = new PDO('mysql:host=localhost;dbname=memory;charset=utf8', 'root', '');
-//***** */
-
     function score($p, $c, $t, $si, $bdd)//Prends en paramètre, le nombre de paire, le  nombre de coups, le temps, l'id du joueur et la bdd
         {
             //Donnée récupérée au début du jeu
@@ -40,16 +36,12 @@ $bdd = new PDO('mysql:host=localhost;dbname=memory;charset=utf8', 'root', '');
                 if(isset($score, $si) && $score>=0)
                     {                     
                         //Insère le score de la partie                          
-                        $insert_score = $bdd->prepare('INSERT INTO score (id_user, score, nb_paires, temps, coups) VALUES (?,?,?, ?,?)');
-                        $insert_score->execute([$si, $score, $p, $t, $c]);                        
+                        $bdd->query('INSERT INTO score (id_user, score, nb_paires, temps, coups) VALUES (?,?,?, ?,?)', [$si, $score, $p, $t, $c]);
                         //Calcul le score total du joueur
-                        $prepare_add_score = $bdd->prepare('SELECT SUM(score) as total_score FROM score WHERE id_user=?');
-                        $prepare_add_score->execute([$si]);
-                        $add_score = $prepare_add_score->fetch(PDO::FETCH_ASSOC);                        
+                        $add_score = $bdd->query('SELECT SUM(score) as total_score FROM score WHERE id_user=?', $si)->fetch();
                         //Mets à jour le score total du joueur
-                        $update_score = $bdd->prepare('UPDATE utilisateurs SET score_total=? WHERE id=?');
-                        $update_score->execute([$add_score['total_score'], $si]);
-                    }     
+                        $bdd->query('UPDATE utilisateurs SET score_total=? WHERE id=?', [$add_score['total_score'], $si]);
+                    }
             return $score;                          
         }    
 ?>
