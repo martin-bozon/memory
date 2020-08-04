@@ -1,6 +1,6 @@
 <?php
     // session_start();
-    include 'traitement/php_fame.php';    
+    include 'traitement/php_fame.php';       
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,7 +15,7 @@
 </head>
 <body>
     <header>
-        <?php //include 'inc/header.php'; ?>
+        <?php include 'inc/header.php'; ?>
     </header>    
     <main id="main_fame">        
         <table class="table">

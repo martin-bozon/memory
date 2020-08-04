@@ -1,5 +1,5 @@
-<?php
-    if(isset($_SESSION["user"]))
+<?php    
+    if(App::getAuth()->user())
         {
             ?>
                 <a class="btn btn-primary jeu" href="memory.php">Nouvelle partie</a>                

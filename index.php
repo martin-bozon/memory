@@ -1,3 +1,6 @@
+<?php 
+    require_once 'inc/bootstrap.php';    
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +13,9 @@
     <title>Accueil</title>
 </head>
 <body>    
+    <header>
+        <?php include 'inc/header.php'; ?>
+    </header>
     <main id="main_index">
         <section id="info_main">
             <h1>Bienvenue sur Memory</h1>

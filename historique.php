@@ -1,5 +1,7 @@
 <?php
     include 'traitement/php_historique.php';
+    $auth = App::getAuth();
+    $auth->restrict();
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,7 +16,7 @@
 </head>
 <body>
     <header>
-        <?php //include 'inc/header.php'; ?>
+        <?php include 'inc/header.php'; ?>
     </header>
     <main id="main_histo">
         <h2>Voici ton historique de partie <?= $score_j["username"]?></h2>

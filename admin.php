@@ -1,6 +1,10 @@
 <?php
     session_start();
-    include 'traitement/php_admin.php';        
+    include 'traitement/php_admin.php';  
+    if(App::getAuth()->user()->is_admin == null)      
+        {            
+            App::redirect('index.php');
+        }
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,7 +18,7 @@
     <title>Admin</title>
 </head>
 <body>
-    <?php //include 'inc/header.php'; ?>
+    <?php include 'inc/header.php'; ?>
     <main id="main_admin">        
         <h2>Gestion Jeu</h2>
         <section id="user_score">    
