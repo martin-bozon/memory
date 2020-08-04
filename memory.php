@@ -92,7 +92,7 @@ if (isset($_SESSION['cards'])) {
                         $card->setVisibility($card->switchVisibility($session, $card->getId()));
                     }
                 }
-                header('Refresh: 0.5; memory.php');
+                header('Refresh: 0.3; memory.php');
             }
         }
     }
