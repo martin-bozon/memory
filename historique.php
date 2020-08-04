@@ -82,14 +82,15 @@
                                             for($i=0; $i<$nb_score; $i++)
                                                 {
                                                     //Permet de créer le classement par paire
-                                                    $prepare_general_paire = $bdd->prepare('SELECT count(score) as place FROM score WHERE score>? AND nb_paires=?');
-                                                    $prepare_general_paire->execute([$top_paire_j[$i]["score"], $_POST["paire_joueur"]]);
-                                                    $general_paire = $prepare_general_paire->fetch(PDO::FETCH_ASSOC);                                                                                                                                                                      
+                                                    // $prepare_general_paire = $bdd->prepare('SELECT count(score) as place FROM score WHERE score>? AND nb_paires=?');
+                                                    // $prepare_general_paire->execute([$top_paire_j[$i]["score"], $_POST["paire_joueur"]]);
+                                                    // $general_paire = $prepare_general_paire->fetch(PDO::FETCH_ASSOC);     
+                                                    $general_paire = $bdd->query('SELECT count(score) as place FROM score WHERE score>? AND nb_paires=?', [$top_paire_j[$i]["score"], $_POST["paire_joueur"]])->fetch(PDO::FETCH_ASSOC);                                                                                                                                                              
                                                     ?>
                                                         <tr>
                                                             <td># <?= ($general_paire["place"]+1) ?></td>
                                                             <td><?= $top_paire_j[$i]["score"]?></td>                                                                
-                                                            <td><?= $top_paire_j[$i]["coups"]?></td>
+                                                            <td><?= $top_paire_j[$i]["nb_coups"]?></td>
                                                             <td><?= $top_paire_j[$i]["temps"]?></td>
                                                         </tr>                                                
                                                     <?php

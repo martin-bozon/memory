@@ -31,11 +31,11 @@
                 if(isset($score, $si) && $score>=0)
                     {                     
                         //Insère le score de la partie                          
-                        $bdd->query('INSERT INTO score (id_user, score, nb_paires, temps, coups) VALUES (?,?,?, ?,?)', [$si, $score, $p, $t, $c]);
+                        $bdd->query('INSERT INTO score (id_user, score, nb_paires, temps, nb_coups) VALUES (?,?,?, ?,?)', [$si, $score, $p, $t, $c]);
                         //Calcul le score total du joueur
-                        $add_score = $bdd->query('SELECT SUM(score) as total_score FROM score WHERE id_user=?', $si)->fetch();
+                        $add_score = $bdd->query('SELECT SUM(score) as total_score FROM score WHERE id_user=?', [$si])->fetch();
                         //Mets à jour le score total du joueur
-                        $bdd->query('UPDATE utilisateurs SET score_total=? WHERE id=?', [$add_score['total_score'], $si]);                   
+                        $bdd->query('UPDATE utilisateurs SET score_total=? WHERE id=?', [$add_score->total_score, $si]);                   
                     }     
             return $score;                          
         }    
