@@ -23,7 +23,7 @@
         </section>        
         <section id="reglement">
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#staticBackdrop">
                 Règlement
             </button>
 

@@ -1,5 +1,4 @@
-<?php
-    session_start();
+<?php    
     include 'traitement/php_admin.php';  
     if(App::getAuth()->user()->is_admin == null)      
         {            
@@ -40,8 +39,8 @@
                                 {
                                     ?>
                                     <tr>                    
-                                        <td class="border"><?=  $info_users['recup'][$i]['login'] ?></td>
-                                        <td class="border sup"><button><a class="icon-trash" href="suppression.php?id_user=<?= $info_users['recup'][$i]["id"] ?>" title="supprimer" onclick="return confirm('Supprimer : <?=$info_users['recup'][$i]['login'] ?> ?')"><img src="src/images/trash.png" alt="logo poubelle"></a></button></td>
+                                        <td class="border"><?=  $info_users['recup'][$i]['username'] ?></td>
+                                        <td class="border sup"><button><a class="icon-trash" href="suppression.php?id_user=<?= $info_users['recup'][$i]["id"] ?>" title="supprimer" onclick="return confirm('Supprimer : <?=$info_users['recup'][$i]['username'] ?> ?')"><img src="src/images/trash.png" alt="logo poubelle"></a></button></td>
                                     </tr>   
                                     <?php
                                 }                

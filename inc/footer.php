@@ -43,7 +43,7 @@
     else if(isset($_SESSION["user"]) && $_SESSION["user"]["admin"] == 1)
         {
             ?>
-            <footer class="page-footer font-small bg-blue pt-4">
+            <footer class="page-footer font-small bg-blue">
                 <section class="container-fluid text-center text-md-left">
                     <section class="row">
                         <section class="col-md-6 mt-md-0 mt-3">     
