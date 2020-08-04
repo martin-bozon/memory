@@ -30,10 +30,18 @@ header {
     align-items: center;
     justify-content: center;
     height: 100%;
+    background-image: url("../src/images/IndexWallpaper.jpg");
+    background-attachment: scroll;
+    background-size: cover;
+    padding-top: 20vh;
 }
 
-#main_index h1 {
-    margin-bottom: 10vh;
+.index_link{
+    color: #e3a534;
+}
+.index_link:hover{
+    color: #0BC4E2;
+    text-decoration: none;
 }
 
 /* FIN INDEX */
@@ -144,6 +152,7 @@ header {
     padding: 15px;
     margin: auto;
 }
+/* FIN PAGE CONNEXION */
 
 /* AUTRES BOOTSTRAP MODIFICATION*/
 
@@ -154,6 +163,7 @@ header {
 .navbar {
     height: 55px;
 }
+/* FIN BOOTSTRAP */
 
 /* PAGE FAME */
 #main_fame {
@@ -189,7 +199,8 @@ header {
 }
 
 /* FIN FAME */
->>> >>> > test
+
+
     /* FOOTER */
 footer a {
     color: white;

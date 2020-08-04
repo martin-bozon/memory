@@ -169,7 +169,7 @@ if (isset($_SESSION['cards'])) {
                 <?php
                 foreach ($_SESSION['cards'] as $card): ?>
                     <label class="bg-dark m-1"><img src="<?= $card->getVisibility() == 'visible' ? $card->getImagePath(
-                        ) : 'src/images/BackCard.jpg'; ?>" alt="" width="100" height="100"
+                        ) : 'src/images/BackCard.jpg'; ?>" alt="" width="250" height="282"
                                                     role="button" <?= $card->getState(
                         ) == 'inGame' ? '' : 'hidden'; ?> >
                         <input class="sr-only" type="submit" value="<?= $card->getId(); ?>" name="id_card_selected">

@@ -12,7 +12,7 @@ class App{
     }
 
     static function getAuth(){
-        return new Auth(Session::getInstance(),['restriction_msg' => 'lol tu es bloqué']);
+        return new Auth(Session::getInstance(),['restriction_msg' => 'Vous n\'êtes pas connecté']);
     }
 
     static function redirect($page){
