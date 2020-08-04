@@ -96,7 +96,7 @@
                             echo '<p class="alert alert-danger w-75 p-3 m-auto text-center">' . $e->getMessage() . '</p>';
                         }  
                     else if(!isset($e) && isset($_POST["valid_img"]))
-                    echo '<p class="alert alert-success w-75 p-3 m-auto text-center">Image uploader</p>';                    
+                    echo '<p class="alert alert-success w-75 p-3 m-auto text-center">Image importée</p>';                    
                 ?>
                 <h2>Ajouter une paire</h2>               
                 <form enctype="multipart/form-data" action="admin.php#ad_paires" method="POST">

@@ -193,8 +193,7 @@ if (isset($_SESSION['cards'])) {
         </div>
     <?php
     endif; ?>
-    <?php
-    var_dump($_SESSION);
+    <?php    
     ob_end_flush();
     ?>
 </main>

@@ -35,7 +35,7 @@
                             ?>
                             <tr>
                             <td class="border"><?= ($i+1)?></td>
-                                <td class="border"><?=$top_10[$i]['login']?></td>
+                                <td class="border"><?=$top_10[$i]['username']?></td>
                                 <td class="border"><?=$top_10[$i]['score_total']?></td>                                                    
                             <?php
                         }                                        
@@ -89,10 +89,10 @@
                                             {
                                                 ?>
                                                 <tr>
-                                                    <td class="border"><?=$top_paire[$i]['login']?></td>
+                                                    <td class="border"><?=$top_paire[$i]['username']?></td>
                                                     <td class="border"><?=$top_paire[$i]['score']?></td>
                                                     <td class="border"><?=$top_paire[$i]['temps']?></td>
-                                                    <td class="border"><?=$top_paire[$i]['coups']?></td>
+                                                    <td class="border"><?=$top_paire[$i]['nb_coups']?></td>
                                                 </tr>                            
                                                 <?php
                                             }

@@ -22,7 +22,7 @@ require_once 'inc/bootstrap.php';
             // $prepare_top_paire = $bdd->prepare('SELECT utilisateurs.login, score, nb_paires, temps, coups FROM score INNER JOIN utilisateurs ON score.id_user=utilisateurs.id WHERE nb_paires=? ORDER BY score DESC LIMIT 10');
             // $prepare_top_paire->execute([$paire]);
             // $top_paire = $prepare_top_paire->fetchAll(PDO::FETCH_ASSOC);  
-            $top_paire = $bdd->query('SELECT utilisateurs.login, score, nb_paires, temps, coups FROM score INNER JOIN utilisateurs ON score.id_user=utilisateurs.id WHERE nb_paires=? ORDER BY score DESC LIMIT 10')->fetchAll(PDO::FETCH_ASSOC);  
+            $top_paire = $bdd->query('SELECT utilisateurs.username, score, nb_paires, temps, nb_coups FROM score INNER JOIN utilisateurs ON score.id_user=utilisateurs.id WHERE nb_paires=? ORDER BY score DESC LIMIT 10',[$paire])->fetchAll(PDO::FETCH_ASSOC);  
             
             $nb_top_paire = count($top_paire);            
         }            
