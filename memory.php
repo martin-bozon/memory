@@ -68,34 +68,33 @@ if (isset($_SESSION['cards'])) {
         $session->delete('number_coups');
         $session->delete('pairs_in_game');
         $endofgame = true;
-    }
-
-    //Si il y a 2 cartes visibles
-    else if ($board->visibleCards($_SESSION['cards']) >= 2) {
-        //Si c'est une paire
-        if ($board->pairsCheck($_SESSION['cards'])) {
-            $twin_cards = $board->pairsCheck($_SESSION['cards']);
-            foreach ($twin_cards as $twin_card) {
-                $twin_card->setVisibility('hidden');
-                $twin_card->setState('found');
+    } //Si il y a 2 cartes visibles
+    else {
+        if ($board->visibleCards($_SESSION['cards']) >= 2) {
+            //Si c'est une paire
+            if ($board->pairsCheck($_SESSION['cards'])) {
+                $twin_cards = $board->pairsCheck($_SESSION['cards']);
+                foreach ($twin_cards as $twin_card) {
+                    $twin_card->setVisibility('hidden');
+                    $twin_card->setState('found');
+                }
+            } else {
+                foreach ($_SESSION['cards'] as $card) {
+                    $card->setVisibility('hidden');
+                }
             }
-        } else {
-            foreach ($_SESSION['cards'] as $card) {
-                $card->setVisibility('hidden');
+            header('location:memory.php');
+        } //Si une carte est sélectionnée
+        else {
+            if (isset($_POST['id_card_selected'])) {
+                foreach ($_SESSION['cards'] as $card) {
+                    if ($card->getId() == $_POST['id_card_selected']) {
+                        $card->setVisibility($card->switchVisibility($session, $card->getId()));
+                    }
+                }
+                header('Refresh: 0.5; memory.php');
             }
         }
-        header('location:memory.php');
-    }
-
-
-    //Si une carte est sélectionnée
-    else if (isset($_POST['id_card_selected'])) {
-        foreach ($_SESSION['cards'] as $card) {
-            if ($card->getId() == $_POST['id_card_selected']) {
-                $card->setVisibility($card->switchVisibility($session, $card->getId()));
-            }
-        }
-        header('Refresh: 0.5; memory.php');
     }
 }
 
@@ -117,7 +116,7 @@ if (isset($_SESSION['cards'])) {
 <body>
 <header>
     <?php
-    isset($_SESSION['cards']) ?: include 'inc/header.php';
+    //isset($_SESSION['cards']) ?: include 'inc/header.php';
     ?>
 
 </header>
@@ -141,7 +140,11 @@ if (isset($_SESSION['cards'])) {
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-secondary" data-dismiss="modal" name="play_again">Rejouer
                     </button>
+                    <<<<<<< HEAD
                     <button type="submit" class="btn btn-primary"><a href="historique.php">Voir mon profil</a></button>
+                    =======
+                    <button type="submit" class="btn btn-primary"><a href="historique.php">Voir mes scores</a></button>
+                    >>>>>>> test
                 </div>
             </div>
         </div>

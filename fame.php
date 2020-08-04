@@ -1,5 +1,4 @@
-<?php
-    // session_start();
+<?php    
     include 'traitement/php_fame.php';       
 ?>
 <!DOCTYPE html>

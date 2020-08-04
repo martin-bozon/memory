@@ -36,7 +36,7 @@ function score(
     if (isset($score, $si) && $score >= 0) {
         //Insère le score de la partie
         $bdd->query(
-            'INSERT INTO score (id_user, score, nb_paires, temps, coups) VALUES (?,?,?, ?,?)',
+            'INSERT INTO score (id_user, score, nb_paires, temps, nb_coups) VALUES (?,?,?, ?,?)',
             [$si, $score, $p, $t, $c]
         );
         //Calcul le score total du joueur
@@ -46,3 +46,4 @@ function score(
     }
     return $score;
 }
+

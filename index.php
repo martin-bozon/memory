@@ -37,7 +37,6 @@ require_once 'inc/bootstrap.php';
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
             Règlement
         </button>
-
         <!-- Modal -->
         <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
              role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
