@@ -16,32 +16,96 @@
     <header>
         <?php //include 'inc/header.php'; ?>
     </header>
-    <main>
-        <section>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Votre score</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Place</td>
-                    <td>Score</td>
-                </tr>
-                <tr>
-                    <td><?= ($general["sup"] + 1) ?></td>
-                    <td><?=$score_j["score_total"]?></td>
-                </tr>
-            </tbody>
-            </table>
+    <main id="main_histo">
+        <h2>Voici ton historique de partie <?= $score_j["username"]?></h2>
+        <section id="class_gen">
+            <h2>Classement général - Cumul des points</h2>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>                        
+                            <th class="border">Place</th>
+                            <th class="border">Score</th>                      
+                        </tr>
+                    </thead>
+                    <tbody>                       
+                        <tr>
+                            <td class="border"># <?= ($general["sup"] + 1) ?></td>
+                            <td class="border"><?=$score_j["score_total"]?></td>
+                        </tr>
+                    </tbody>
+                </table>
         </section>
-        <section>
-            <section>
-                <!-- select nb paire -->
-            </section>
-            <section>
-                <!-- table score perso par paire -->
+        <section id="class_perso">
+            <h2>Top 10 perso + classement en fonction des paires</h2>
+            <section id="table_perso">
+                <section>
+                    <form action="" method="POST">
+                        <select name="paire_joueur" id="">
+                            <?php
+                                for($i=3; $i<=$nb_paire["nb_paire"]; $i++)
+                                    {
+                                        ?>                            
+                                            <option value="<?= $i ?>"
+                                            <?php if(isset($_POST["paire_joueur"]) && $i == $_POST["paire_joueur"])
+                                            {
+                                                ?>
+                                                selected
+                                                <?php
+                                            }
+                                            ?>
+                                            ><?= $i ?> paires</option>                                                             
+                                        <?php
+                                    }
+                            ?>
+                        </select>
+                        <input type="submit" name="valid_top_paire" class="btn btn-primary">
+                    </form>            
+                </section>
+                <section>
+                    <?php
+                        if(isset($_POST["valid_top_paire"], $_POST["paire_joueur"]) && !empty($top_paire_j))
+                            {                                     
+                                ?>
+                                <table class="table table-dark">
+                                    <thead>
+                                        <tr>
+                                        <th scope="col">Place</th>
+                                        <th scope="col">Score</th>                                            
+                                        <th scope="col">Nombre de coups</th>
+                                        <th scope="col">Temps</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                            for($i=0; $i<$nb_score; $i++)
+                                                {
+                                                    //Permet de créer le classement par paire
+                                                    $prepare_general_paire = $bdd->prepare('SELECT count(score) as place FROM score WHERE score>? AND nb_paires=?');
+                                                    $prepare_general_paire->execute([$top_paire_j[$i]["score"], $_POST["paire_joueur"]]);
+                                                    $general_paire = $prepare_general_paire->fetch(PDO::FETCH_ASSOC);                                                                                                                                                                      
+                                                    ?>
+                                                        <tr>
+                                                            <td># <?= ($general_paire["place"]+1) ?></td>
+                                                            <td><?= $top_paire_j[$i]["score"]?></td>                                                                
+                                                            <td><?= $top_paire_j[$i]["coups"]?></td>
+                                                            <td><?= $top_paire_j[$i]["temps"]?></td>
+                                                        </tr>                                                
+                                                    <?php
+                                                }
+                                        ?>
+                                    </tbody>
+                                </table>
+                                <?php
+                            }
+                        else if(isset($_POST["valid_top_paire"], $_POST["paire_joueur"]) && empty($top_paire_j))
+                            {
+                                ?>
+                                    <p class="alert alert-warning">Il n'y a pas encore de score disponible</p>
+                                <?php
+                            }
+                    ?>
+                </section>
+                
             </section>
         </section>
     </main>
