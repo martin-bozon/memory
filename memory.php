@@ -11,6 +11,7 @@ $score = new Score();
 $maxPairs = $board->maxPairs($db);
 
 
+
 //Créer le board en fonction du nombre de pairs
 
 if (isset($_POST['pairs_in_game'])) {
@@ -70,12 +71,11 @@ if (isset($_SESSION['cards'])) {
         $session->delete('cards');
         $session->delete('number_coups');
         $session->delete('pairs_in_game');
-        $endofgame = true;
-        die();
+        $endofgame = true;        
     }
 
     //Si il y a 2 cartes visibles
-    if ($board->visibleCards($_SESSION['cards']) >= 2) {
+    else if ($board->visibleCards($_SESSION['cards']) >= 2) {
         //Si c'est une paire
         if ($board->pairsCheck($_SESSION['cards'])) {
             $twin_cards = $board->pairsCheck($_SESSION['cards']);
@@ -93,7 +93,7 @@ if (isset($_SESSION['cards'])) {
 
 
     //Si une carte est sélectionnée
-    if (isset($_POST['id_card_selected'])) {
+    else if (isset($_POST['id_card_selected'])) {
         foreach ($_SESSION['cards'] as $card) {
             if ($card->getId() == $_POST['id_card_selected']) {
                 $card->setVisibility($card->switchVisibility($session, $card->getId()));
@@ -121,7 +121,7 @@ if (isset($_SESSION['cards'])) {
 <body>
 <header>
     <?php
-    isset($_SESSION['cards']) ?: include 'inc/header.php';
+    //isset($_SESSION['cards']) ?: include 'inc/header.php';
     ?>
 
 </header>
@@ -139,13 +139,13 @@ if (isset($_SESSION['cards'])) {
                 <div class="modal-body">
                     <h3>Score :</h3>
                     <p>Nombre de coups : <?= $number_coups ?></p>
-                    <p>Temps : <?= $timer ?></p>
+                    <p>Temps : <?= $chrono ?></p>
                     <p>Points : <?= $points ?></p>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-secondary" data-dismiss="modal" name="play_again">Rejouer
                     </button>
-                    <button type="submit" class="btn btn-primary" name="see_profile">Voir mon profil</button>
+                    <button type="submit" class="btn btn-primary"><a href="historique.php">Voir mes scores</a></button>
                 </div>
             </div>
         </div>

@@ -15,32 +15,20 @@ require_once 'inc/bootstrap.php';
     <link rel="stylesheet" href="css/style.css">
     <title>Accueil</title>
 </head>
-<body>
-<header>
-    <?php
-    include 'inc/header.php'; ?>
-</header>
-<main id="main_index" class="d-flex flex-column justify-content-between pb-5">
-    <h1 class="text-white">Bienvenue sur Memory</h1>
-    <?php
-    include 'traitement/php_index.php'; ?>
-</main>
-<body>
-<header>
-    <?php
-    include 'inc/header.php'; ?>
-</header>
-<main id="main_index">
-    <section id="info_main">
-        <h1>Bienvenue sur Memory</h1>
-        <?php
-        include 'traitement/php_index.php'; ?>
-    </section>
-    <section id="reglement">
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
-            Règlement
-        </button>
+<body>    
+    <header>
+        <?php include 'inc/header.php'; ?>
+    </header>
+    <main id="main_index">
+        <section id="info_main">
+            <h1>Bienvenue sur Memory</h1>
+            <?php include 'traitement/php_index.php'; ?>
+        </section>        
+        <section id="reglement">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#staticBackdrop">
+                Règlement
+            </button>
 
         <!-- Modal -->
         <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
