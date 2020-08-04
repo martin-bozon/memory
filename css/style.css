@@ -11,7 +11,8 @@ body
 main
     {
         margin: 0;
-        height: auto;;
+        height: auto;
+        padding-top: 55px;
     }
 *{
     box-sizing: border-box;
@@ -141,6 +142,9 @@ main
 
 .alert{
     margin-top: 1rem;
+}
+.navbar{
+    height: 55px;
 }
 
 /* FOOTER */
