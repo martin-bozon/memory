@@ -198,6 +198,10 @@ header
     }
 /* FIN FAME */
 /* PAGE HISTORIQUE */
+#main_histo
+    {
+        text-align: center;
+    }
 #class_gen
     {
         display: flex;

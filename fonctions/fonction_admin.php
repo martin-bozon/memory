@@ -21,8 +21,9 @@
 
                                     if($move)
                                         {                               
-                                            $uploaodFile = $bdd->prepare('INSERT INTO paires (chemin) VALUES (:chemin)');
-                                            $uploaodFile->execute(['chemin' => $chemin]);//Insère le chemin dans la bdd                                            
+                                            // $uploaodFile = $bdd->prepare('INSERT INTO cards (image_path) VALUES (?)');
+                                            // $uploaodFile->execute([$chemin]);//Insère le chemin dans la bdd                                            
+                                            $uploaodFile = $bdd->query('INSERT INTO card (image_path) VALUES (?)', [$chemin]);
                                         }
                                     else
                                         {
@@ -42,13 +43,11 @@
         }
 
     // class pagination
-    function prepaPagination($p, $t, $g, $o)//nombre par page, table choisie, numero de la page, colonne pour le tri
-        {                                  
-            $bdd = new PDO('mysql:host=localhost;dbname=memory;charset=utf8', 'root', '');
-            //Récupère les users avec une pagination
-                                      
-            $query_count = $bdd->query("SELECT COUNT(id) as count_ FROM $t");
-            $count = $query_count->fetch();
+    function prepaPagination($p, $t, $g, $o, $bdd)//nombre par page, table choisie, numero de la page, colonne pour le tri
+        {                                                                                    
+            // $query_count = $bdd->query("SELECT COUNT(id) as count_ FROM $t");
+            // $count = $query_count->fetch();
+            $count = $bdd->query("SELECT COUNT(id) as count_ FROM $t")->fetch(PDO::FETCH_ASSOC);
             
            $nb_total = $count["count_"];                     
            $nb_page = ceil($nb_total/$p);
@@ -66,14 +65,16 @@
 
             if($t == 'score')
                 {
-                    $query_recup = $bdd->query("SELECT score.id, score, login, score.nb_paires FROM utilisateurs INNER JOIN score ON utilisateurs.id=score.id_user ORDER BY $o DESC LIMIT $a_partir_du, $p");
-                    $recup = $query_recup->fetchAll(PDO::FETCH_ASSOC); 
+                    // $query_recup = $bdd->query("SELECT score.id, score, login, score.nb_paires FROM utilisateurs INNER JOIN score ON utilisateurs.id=score.id_user ORDER BY $o DESC LIMIT $a_partir_du, $p");
+                    // $recup = $query_recup->fetchAll(PDO::FETCH_ASSOC); 
+                    $recup = $bdd->query("SELECT score.id, score, username, score.nb_paires FROM utilisateurs INNER JOIN score ON utilisateurs.id=score.id_user ORDER BY $o DESC LIMIT $a_partir_du, $p")->fetchAll(PDO::FETCH_ASSOC);
                     $nb_ = count($recup);                   
                 }
             else    
                 {
-                    $query_recup = $bdd->query("SELECT * FROM $t ORDER BY $o ASC LIMIT $a_partir_du, $p");
-                    $recup = $query_recup->fetchAll(PDO::FETCH_ASSOC); 
+                    // $query_recup = $bdd->query("SELECT * FROM $t ORDER BY $o ASC LIMIT $a_partir_du, $p");
+                    // $recup = $query_recup->fetchAll(PDO::FETCH_ASSOC); 
+                    $recup = $bdd->query("SELECT * FROM $t ORDER BY $o ASC LIMIT $a_partir_du, $p")->fetchAll(PDO::FETCH_ASSOC);
                     $nb_ = count($recup);                      
                 }           
             $infos['recup'] = $recup;

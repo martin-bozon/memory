@@ -16,7 +16,8 @@
     <header>
         <?php //include 'inc/header.php'; ?>
     </header>
-    <main>
+    <main id="main_histo">
+        <h2>Voici ton historique de partie <?= $score_j["username"]?></h2>
         <section id="class_gen">
             <h2>Classement général - Cumul des points</h2>
                 <table class="table table-striped">
@@ -94,6 +95,12 @@
                                         ?>
                                     </tbody>
                                 </table>
+                                <?php
+                            }
+                        else if(isset($_POST["valid_top_paire"], $_POST["paire_joueur"]) && empty($top_paire_j))
+                            {
+                                ?>
+                                    <p class="alert alert-warning">Il n'y a pas encore de score disponible</p>
                                 <?php
                             }
                     ?>
