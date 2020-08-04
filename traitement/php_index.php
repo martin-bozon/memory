@@ -2,7 +2,7 @@
     if(isset($_SESSION["user"]))
         {
             ?>
-                <a class="btn btn-primary w-25" href="memory.php">Nouvelle partie</a>                
+                <a class="btn btn-primary jeu" href="memory.php">Nouvelle partie</a>                
             <?php
         }
     else

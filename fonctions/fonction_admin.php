@@ -42,7 +42,7 @@
         }
 
     // class pagination
-    function prepaPagination($p, $t, $g, $o)
+    function prepaPagination($p, $t, $g, $o)//nombre par page, table choisie, numero de la page, colonne pour le tri
         {                                  
             $bdd = new PDO('mysql:host=localhost;dbname=memory;charset=utf8', 'root', '');
             //Récupère les users avec une pagination
