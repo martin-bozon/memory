@@ -116,7 +116,7 @@ if (isset($_SESSION['cards'])) {
 <body>
 <header>
     <?php
-    //isset($_SESSION['cards']) ?: include 'inc/header.php';
+    isset($_SESSION['cards']) ?: include 'inc/header.php';
     ?>
 
 </header>
@@ -193,7 +193,6 @@ if (isset($_SESSION['cards'])) {
     <?php
     endif; ?>
     <?php
-    var_dump($_SESSION);
     ob_end_flush();
     ?>
 </main>
