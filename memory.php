@@ -123,37 +123,37 @@ if (isset($_SESSION['cards'])) {
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Memory THE GAME</title>
-    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <header>
     <?php
     isset($_SESSION['cards']) ?: include 'inc/header.php';
     ?>
-
 </header>
-<main class="h-100 d-flex flex-column">
+
+<main id="main_memory" class="d-flex flex-column justify-content-center align-items-center h-100">
     <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"
          aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
+        <div class="modal-dialog position-relative">
+            <video height="343" autoplay loop poster="/src/images/animated-season-2014-finals.webm" id="bgvid">
+                <source src="src/images/animated-season-2014-finals.webm" type="video/webm">
+            </video>
+            <div id="victory" class="modal-content position-absolute">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Victoire !</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <h5 class="modal-title font-weight-bold" id="staticBackdropLabel">VICTOIRE</h5>
                 </div>
                 <div class="modal-body">
-                    <h3>Score :</h3>
-                    <p>Nombre de coups : <?= $number_coups ?></p>
-                    <p>Temps : <?= $chrono ?></p>
-                    <p>Points : <?= $points ?></p>
+                    <h3>Voici votre score :</h3>
+                    <p class="">Nombre de coups : <?= $number_coups ?></p>
+                    <p class="">Temps : <?= $chrono ?></p>
+                    <p class="font-weight-bold">Points : <?= $points ?></p>
                 </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-secondary" data-dismiss="modal" name="play_again">Rejouer
-                        <button type="submit" class="btn btn-primary"><a href="historique.php">Voir mes scores</a>
+                <div class="modal-footer d-flex flex-row justify-content-around align-items-center">
+                    <button type="submit" class="button" data-dismiss="modal" name="play_again">Rejouer
+                        <button type="submit" class="button"><a href="historique.php">Voir mes scores</a>
                         </button>
                 </div>
             </div>
@@ -162,44 +162,46 @@ if (isset($_SESSION['cards'])) {
     <?php
     //formulaire de sélection des paires
     if (!isset($_SESSION['cards'])): ?>
-        <form class="flex-fill" method="post" action="">
-            <p>Choisissez le nombre de paires :</p>
+        <form class="" method="post" action="">
+            <h3 class="choose_difficulty text-center">Choisissez la difficulté (nombre de paires) :</h3>
             <?php
             for ($i = 3; $i <= $maxPairs and $i <= 15; $i++) : ?>
-                <input type="submit" name="pairs_in_game" value="<?= $i ?>">
+                <input class="button" type="submit" name="pairs_in_game" value="<?= $i ?>">
             <?php
             endfor; ?>
         </form>
     <?php
 //Board
     else: ?>
-        <form method="post" class="flex-fill">
-            <div id="board" class="container d-flex flex-row justify-content-around flex-wrap">
+        <form method="post" class="px-4 d-flex flex-column justify-content-between align-items-center w-100 h-100">
+            <div id="board" class="row">
                 <?php
                 foreach ($_SESSION['cards'] as $card): ?>
-                    <label class="bg-dark m-1"><img
+                    <label class=""><img
                                 src="<?= $card->getVisibility() == 'visible' ? $card->getImagePath() : 'src/images/BackCard.jpg'; ?>"
-                                alt="" width="250" height="282"
-                                role="button" <?= $card->getState() == 'inGame' ? '' : 'hidden'; ?> >
-                        <input class="sr-only" type="submit" value="<?= $card->getId(); ?>" name="id_card_selected">
+                                alt=""
+                                role="button"
+                                class="cards <?= $card->getState() == 'inGame' ? '' : 'hidden'; ?>">
+                        <input class="sr-only" type="submit" value="<?= $card->getId(); ?>" name="id_card_selected" <?= $card->getState() == 'inGame' ? '' : 'disabled'; ?>>
                     </label>
                 <?php
                 endforeach; ?>
             </div>
+            <div class="">
+                <?php
+                if (isset($_SESSION['number_coups'])) {
+                    echo "<p class='text-white m-0'>Nombre de coups :";
+                    echo $_SESSION['number_coups'];
+                    echo "</p>";
+                }
+                ?>
+            </div>
             <div>
-                <label class="flex-fill"><p role="button">Retourner au choix du nombre de paires</p>
+                <label class=""><p class="button" role="button">Retourner au choix du nombre de paires</p>
                     <input class="sr-only" type="submit" name="pairsChoiceMenu">
                 </label>
             </div>
         </form>
-        <div class="flex-fill">
-            <?php
-            if (isset($_SESSION['number_coups'])) {
-                echo "Nombre de coups :";
-                echo $_SESSION['number_coups'];
-            }
-            ?>
-        </div>
     <?php
     endif; ?>
     <?php

@@ -109,7 +109,7 @@ if (!empty($_POST)) {
                        placeholder="Confirmation mot de passe">
             </div>
 
-            <button type="submit" class="btn btn-lg btn-primary btn-block">M'inscrire</button>
+            <button type="submit" class="button w-100">M'inscrire</button>
 
         </form>
         <p>Vous avez déjà un compte ? <a href="connexion.php">Connexion</a></p>
