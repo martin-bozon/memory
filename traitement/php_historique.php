@@ -11,6 +11,10 @@
     //Compte le nombre de paire   
     $nb_paire = $bdd->query('SELECT COUNT(id) as nb_paire FROM card')->fetch(PDO::FETCH_ASSOC);
 
+    //Récupère les 3 dernieres parties
+    $last_partie = $bdd->query('SELECT * FROM score WHERE id_user=? ORDER BY id DESC LIMIT 3', [$auth->user()->id])->fetchAll(PDO::FETCH_ASSOC);   
+    $nb_last_partie = count($last_partie);
+
     //Récupère le top 10 du joueur en fonction du nb paires
     if(isset($_POST["valid_top_paire"], $_POST["paire_joueur"]))
         {

@@ -176,6 +176,17 @@ header {
     height: 100%;
     background-color: rgba(206, 205, 205, 0.616);
 }
+#main_profil h2
+    {
+        text-align: center;
+        width: 100%;
+        padding-top: 3vh;       
+        padding-bottom: 3vh;
+        font-size: 40px;
+        background-color: #454d55;
+        border: 1px solid #95999c;
+        color: #d0a85c;
+    }
 #main_profil .btn
     {
         background-color: #0BC4E2;
@@ -293,6 +304,12 @@ header {
         /* background: linear-gradient(0deg, #111111 27%, rgb(208, 168, 92) 100%); */
         background-color: rgba(206, 205, 205, 0.616);      
     }
+#section_class
+    {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
 #class_gen
     {
         display: flex;
@@ -301,7 +318,12 @@ header {
     }
 #class_gen table
     {
-        width: 40vw;
+        width: 35vw;
+        text-align: center;
+    }
+#class_last table
+    {
+        width: 45vw;
         text-align: center;
     }
 #class_perso

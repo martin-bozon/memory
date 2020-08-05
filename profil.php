@@ -80,6 +80,7 @@ $auth = App::getAuth();
     require 'inc/header.php'; ?>
 </header>
 <main id="main_profil" class="d-flex flex-column">
+    <h2>Votre profil</h2>
     <?php
     if (!empty($errors)): ?>
         <div class="alert alert-danger mx-auto">
