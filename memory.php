@@ -92,7 +92,7 @@ if (isset($_SESSION['cards'])) {
                         $card->setVisibility($card->switchVisibility($session, $card->getId()));
                     }
                 }
-                header('Refresh: 0.5; memory.php');
+                header('Refresh: 0.3; memory.php');
             }
         }
     }
@@ -116,7 +116,7 @@ if (isset($_SESSION['cards'])) {
 <body>
 <header>
     <?php
-    //isset($_SESSION['cards']) ?: include 'inc/header.php';
+    isset($_SESSION['cards']) ?: include 'inc/header.php';
     ?>
 
 </header>
@@ -138,13 +138,8 @@ if (isset($_SESSION['cards'])) {
                     <p>Points : <?= $points ?></p>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-secondary" data-dismiss="modal" name="play_again">Rejouer
-                    </button>
-                    <<<<<<< HEAD
-                    <button type="submit" class="btn btn-primary"><a href="historique.php">Voir mon profil</a></button>
-                    =======
-                    <button type="submit" class="btn btn-primary"><a href="historique.php">Voir mes scores</a></button>
-                    >>>>>>> test
+                    <button type="submit" class="btn btn-secondary" data-dismiss="modal" name="play_again">Rejouer                   
+                    <button type="submit" class="btn btn-primary"><a href="historique.php">Voir mes scores</a></button>                   
                 </div>
             </div>
         </div>
@@ -192,8 +187,7 @@ if (isset($_SESSION['cards'])) {
         </div>
     <?php
     endif; ?>
-    <?php
-    var_dump($_SESSION);
+    <?php    
     ob_end_flush();
     ?>
 </main>

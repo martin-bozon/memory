@@ -71,7 +71,7 @@
                                 {
                                     ?>
                                     <tr>
-                                        <td class="border"><?=  $info_scores["recup"][$i]['login'] ?></td>
+                                        <td class="border"><?=  $info_scores["recup"][$i]['username'] ?></td>
                                         <td class="border"><?=  $info_scores["recup"][$i]['score'] ?></td>
                                         <td class="border"><?=  $info_scores["recup"][$i]['nb_paires'] ?></td>
                                         <td class="border sup"><button><a class="icon-trash" href="suppression.php?id_score=<?= $info_scores["recup"][$i]["id"] ?>" title="supprimer" onclick="return confirm('Supprimer : Ce score ?')"><img src="src/images/trash.png" alt="logo poubelle"></a></button></td>                                                                               
@@ -96,7 +96,7 @@
                             echo '<p class="alert alert-danger w-75 p-3 m-auto text-center">' . $e->getMessage() . '</p>';
                         }  
                     else if(!isset($e) && isset($_POST["valid_img"]))
-                    echo '<p class="alert alert-success w-75 p-3 m-auto text-center">Image uploader</p>';                    
+                    echo '<p class="alert alert-success w-75 p-3 m-auto text-center">Image importée</p>';                    
                 ?>
                 <h2>Ajouter une paire</h2>               
                 <form enctype="multipart/form-data" action="admin.php#ad_paires" method="POST">

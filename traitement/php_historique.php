@@ -2,9 +2,10 @@
     require_once 'fonctions/fonction_admin.php';
     require_once 'inc/bootstrap.php';
     $bdd = App::getDatabase();
+    $auth = App::getAuth();
 
     //Récupère le score total du joueur
-    $score_j = $bdd->query('SELECT username, score_total FROM utilisateurs WHERE id=?', [1])->fetch(PDO::FETCH_ASSOC);    
+    $score_j = $bdd->query('SELECT username, score_total FROM utilisateurs WHERE id=?', [$auth->user()->id])->fetch(PDO::FETCH_ASSOC);    
     //Permet de générer sa place 
     // $prepare_general = $bdd->prepare('SELECT COUNT(score_total) as sup FROM utilisateurs WHERE score_total>?');
     // $prepare_general->execute([$score_j["score_total"]]);
@@ -22,7 +23,7 @@
             // $prepare_top_paire_j = $bdd->prepare('SELECT * FROM score WHERE id_user=? AND nb_paires=? ORDER BY score DESC LIMIT 10');
             // $prepare_top_paire_j->execute([1, $select_paire]);//Id du joueur connecté & nombre de paire
             // $top_paire_j = $prepare_top_paire_j->fetchAll(PDO::FETCH_ASSOC);
-            $top_paire_j = $bdd->query('SELECT * FROM score WHERE id_user=? AND nb_paires=? ORDER BY score DESC LIMIT 10', [1, $select_paire])->fetchAll(PDO::FETCH_ASSOC);
+            $top_paire_j = $bdd->query('SELECT * FROM score WHERE id_user=? AND nb_paires=? ORDER BY score DESC LIMIT 10', [$auth->user()->id, $select_paire])->fetchAll(PDO::FETCH_ASSOC);
             
             $nb_score = count($top_paire_j);           
         }

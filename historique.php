@@ -60,7 +60,7 @@
                                     }
                             ?>
                         </select>
-                        <input type="submit" name="valid_top_paire" class="btn btn-primary">
+                        <input type="submit" name="valid_top_paire" class="btn">
                     </form>            
                 </section>
                 <section>
@@ -71,27 +71,24 @@
                                 <table class="table table-dark">
                                     <thead>
                                         <tr>
-                                        <th scope="col">Place</th>
-                                        <th scope="col">Score</th>                                            
-                                        <th scope="col">Nombre de coups</th>
-                                        <th scope="col">Temps</th>
+                                            <th scope="col">Place</th>
+                                            <th scope="col">Score</th>                                            
+                                            <th scope="col">Nombre de coups</th>
+                                            <th scope="col">Temps</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
                                             for($i=0; $i<$nb_score; $i++)
                                                 {
-                                                    //Permet de créer le classement par paire
-                                                    // $prepare_general_paire = $bdd->prepare('SELECT count(score) as place FROM score WHERE score>? AND nb_paires=?');
-                                                    // $prepare_general_paire->execute([$top_paire_j[$i]["score"], $_POST["paire_joueur"]]);
-                                                    // $general_paire = $prepare_general_paire->fetch(PDO::FETCH_ASSOC);     
+                                                    //Permet de créer le classement par paire                                                   
                                                     $general_paire = $bdd->query('SELECT count(score) as place FROM score WHERE score>? AND nb_paires=?', [$top_paire_j[$i]["score"], $_POST["paire_joueur"]])->fetch(PDO::FETCH_ASSOC);                                                                                                                                                              
                                                     ?>
                                                         <tr>
                                                             <td># <?= ($general_paire["place"]+1) ?></td>
                                                             <td><?= $top_paire_j[$i]["score"]?></td>                                                                
                                                             <td><?= $top_paire_j[$i]["nb_coups"]?></td>
-                                                            <td><?= $top_paire_j[$i]["temps"]?></td>
+                                                            <td><?= number_format($top_paire_j[$i]["temps"], 3)?></td>
                                                         </tr>                                                
                                                     <?php
                                                 }

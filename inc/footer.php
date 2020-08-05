@@ -1,8 +1,8 @@
 <?php
-    if(isset($_SESSION["user"]))
+    if(App::getAuth()->user() && App::getAuth()->user()->is_admin == null)
         {
             ?>
-            <footer class="page-footer font-small blue pt-4">
+            <footer class="page-footer font-small">
                 <section class="container-fluid text-center text-md-left">
                     <section class="row">
                         <section class="col-md-6 mt-md-0 mt-3">     
@@ -22,7 +22,7 @@
                                 </ul>
                         </section>
                         <section class="col-md-3 mb-md-0 mb-3">
-                            <h5 class="text-uppercase">Joueur</h5>
+                            <h5 class="text-uppercase">Mon compte</h5>
                                 <ul class="list-unstyled">
                                     <li>
                                         <a href="profil.php">Mon profil</a>
@@ -34,16 +34,16 @@
                         </section>    
                     </section>
                 </section>                  
-                <section class="footer-copyright text-center py-3 bg_footer">
+                <section class="footer-copyright text-center py-3">
                     <p>© 2020 Copyright: Céline Pawlak - Martin Bozon</p>
                 </section>
             </footer>
             <?php
         }    
-    else if(isset($_SESSION["user"]) && $_SESSION["user"]["admin"] == 1)
+    else if(App::getAuth()->user()->is_admin == 1)
         {
             ?>
-            <footer class="page-footer font-small bg-blue">
+            <footer class="page-footer font-small">
                 <section class="container-fluid text-center text-md-left">
                     <section class="row">
                         <section class="col-md-6 mt-md-0 mt-3">     
@@ -63,7 +63,7 @@
                                 </ul>
                         </section>
                         <section class="col-md-3 mb-md-0 mb-3">
-                            <h5 class="text-uppercase">Joueur</h5>
+                            <h5 class="text-uppercase">Mon compte</h5>
                                 <ul class="list-unstyled">
                                     <li>
                                         <a href="profil.php">Mon profil</a>
@@ -78,7 +78,7 @@
                         </section>    
                     </section>
                 </section>                  
-                <section class="footer-copyright text-center py-3 bg_footer">
+                <section class="footer-copyright text-center py-3">
                     <p>© 2020 Copyright: Céline Pawlak - Martin Bozon</p>
                 </section>
             </footer>
@@ -87,8 +87,8 @@
     else
         {
             ?>           
-            <footer class="page-footer font-small pt-4">
-                <section class="container-fluid text-center text-md-left bg-secondary">
+            <footer class="page-footer font-small">
+                <section class="container-fluid text-center text-md-left">
                     <section class="row">
                         <section class="col-md-6 mt-md-0 mt-3">     
                             <h5 class="text-uppercase">Jeu du memory</h5>    
@@ -116,7 +116,7 @@
                         </section>    
                     </section>
                 </section>                  
-                <section class="footer-copyright text-center py-3 bg_footer">
+                <section class="footer-copyright text-center py-3">
                     <p>© 2020 Copyright: Céline Pawlak - Martin Bozon</p>
                 </section>
             </footer>
