@@ -1,13 +1,18 @@
+@font-face
+    {
+        font-family: "Frizquadrata";
+        src: url("../src/police/FrizQuadrataTT.ttf");
+    }
 html
     {
         margin: 0;
-        height:100%;
-        font-family: "BeaufortforLOL-Bold";
+        height:100%;        
     }
 body
     {
         margin: 0;
         height: 100vh;
+        font-family: "Frizquadrata";
     }
 main
     {
