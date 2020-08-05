@@ -16,8 +16,9 @@
 <body>
     <header>
         <?php include 'inc/header.php'; ?>
-    </header>
-    <main id="main_fame">
+    </header>    
+    <main id="main_fame">  
+        <h2>Wall of Fame</h2>    
         <section id="top_gen">
             <table class="table table-dark top">
                 <thead class="thead-dark">
@@ -36,9 +37,9 @@
                             {
                                 ?>
                                 <tr>
-                                    <td class="border"># <?= ($i+1)?></td>
-                                    <td class="border"><?=$top_gen[$i]['username']?></td>
-                                    <td class="border"><?=$top_gen[$i]['score_total']?></td>
+                                    <td class="place"># <?= ($i+1)?></td>
+                                    <td><?=$top_gen[$i]['username']?></td>
+                                    <td class="score"><?=$top_gen[$i]['score_total']?></td>                                                    
                                 <?php
                             }
                     ?>
@@ -64,12 +65,12 @@
                             {
                                 ?>
                                 <tr>
-                                    <td class="border"># <?= ($i+1)?></td>
-                                    <td class="border"><?= $top_10[$i]["username"] ?></td>
-                                    <td class="border"><?= $top_10[$i]["score"] ?></td>
-                                    <td class="border"><?= $top_10[$i]["nb_paires"] ?></td>
-                                    <td class="border"><?= number_format($top_10[$i]["temps"], 3) ?></td>
-                                    <td class="border"><?= $top_10[$i]["nb_coups"] ?></td>
+                                    <td class="place"># <?= ($i+1)?></td>                     
+                                    <td><?= $top_10[$i]["username"] ?></td>
+                                    <td class="score"><?= $top_10[$i]["score"] ?></td>   
+                                    <td><?= $top_10[$i]["nb_paires"] ?></td>                                                 
+                                    <td><?= number_format($top_10[$i]["temps"], 3) ?></td>
+                                    <td><?= $top_10[$i]["nb_coups"] ?></td>
                                 <?php
                             }
                     ?>
@@ -124,12 +125,12 @@
                                             {
                                                 ?>
                                                 <tr>
-                                                    <td class="border"># <?= ($i+1)?></td>
-                                                    <td class="border"><?=$top_paire[$i]['username']?></td>
-                                                    <td class="border"><?=$top_paire[$i]['score']?></td>
-                                                    <td class="border"><?= number_format($top_paire[$i]['temps'], 3)?></td>
-                                                    <td class="border"><?=$top_paire[$i]['nb_coups']?></td>
-                                                </tr>
+                                                    <td class="place"># <?= ($i+1)?></td>
+                                                    <td><?=$top_paire[$i]['username']?></td>
+                                                    <td class="score"><?=$top_paire[$i]['score']?></td>
+                                                    <td><?= number_format($top_paire[$i]['temps'], 3)?></td>
+                                                    <td><?=$top_paire[$i]['nb_coups']?></td>
+                                                </tr>                            
                                                 <?php
                                             }
                                     ?>
