@@ -26,6 +26,15 @@ h2
 header {
     height: fit-content;
 }
+.navbar{
+    border-bottom: 0.01em solid #51535c;
+}
+.navbar a{
+    color: #cdbe91;
+}
+.navbar a:hover{
+    color: #f0e6d2;
+}
 
 /* PAGE INDEX */
 

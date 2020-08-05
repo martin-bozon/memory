@@ -1,13 +1,13 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
     <div class="container">
-        <div><a class="text-decoration-none" href="Index.php">Accueil</a></div>
-        <div class="<?= (App::getAuth()->user()) ? '' : 'd-none' ?>"><a class="text-decoration-none" href="memory.php">Memory</a>
+        <div><a class="text-decoration-none" href="Index.php">ACCUEIL</a></div>
+        <div class="<?= (App::getAuth()->user()) ? '' : 'd-none' ?>"><a class="text-decoration-none" href="memory.php">MEMORY</a>
         </div>
-        <div><a class="text-decoration-none" href="fame.php">Wall of fame</a></div>
+        <div><a class="text-decoration-none" href="fame.php">WALL OF FAME</a></div>
         <div class="dropdown <?= (App::getAuth()->user()) ? '' : 'd-none' ?>">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
-                Mon compte
+                MON COMPTE
             </button>
             <div class="dropdown-menu"
                  aria-labelledby="dropdownMenu2">
@@ -24,9 +24,9 @@
             </div>
         </div>
         <div class="<?= (App::getAuth()->user()) ? 'd-none' : '' ?>"><a class="text-decoration-none"
-                                                                        href="connexion.php">Connexion</a></div>
+                                                                        href="connexion.php">CONNEXION</a></div>
         <div class="<?= (App::getAuth()->user()) ? 'd-none' : '' ?>"><a class="text-decoration-none"
-                                                                        href="inscription.php">Inscription</a></div>
+                                                                        href="inscription.php">INSCRIPTION</a></div>
     </div>
 
 </nav>
