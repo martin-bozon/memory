@@ -31,6 +31,30 @@ h2
 /* HEADER */
 header {
     height: fit-content;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+.navbar{
+    border-bottom: 0.01em solid #51535c;
+    padding : 0 1rem;
+    max-width: 1300px;
+    width: 100%;
+}
+.navbar a{
+    color: #cdbe91;
+    width: 100%;
+}
+.navbar > div, .navbar a{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar a:hover, .navbar_selected{
+    color: #f0e6d2;
+    background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(94,90,82,1));
 }
 
 /* PAGE INDEX */
@@ -44,7 +68,8 @@ header {
     background-image: url("../src/images/IndexWallpaper.jpg");
     background-attachment: scroll;
     background-size: cover;
-    padding-top: 20vh;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .index_link{

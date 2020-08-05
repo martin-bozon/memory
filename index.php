@@ -1,5 +1,5 @@
 <?php
-
+$page_selected = 'index';
 require_once 'inc/bootstrap.php';
 
 ?>

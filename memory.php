@@ -1,5 +1,5 @@
 <?php
-
+$page_selected = 'memory';
 ob_start();
 require_once 'inc/bootstrap.php';
 

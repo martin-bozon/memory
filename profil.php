@@ -1,5 +1,5 @@
 <?php
-
+$page_selected = 'profil';
 require 'inc/bootstrap.php';
 $auth = App::getAuth();
 $auth->restrict();
