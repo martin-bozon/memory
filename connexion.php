@@ -1,5 +1,5 @@
 <?php
-
+$page_selected = 'connexion';
 require 'inc/bootstrap.php';
 $auth = App::getAuth();
 $db = App::getDatabase();
@@ -20,7 +20,7 @@ if (!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password'])) 
 ?>
 
 <!doctype html>
-<html lang="fr" class="h-100">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -40,7 +40,7 @@ if (!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password'])) 
             integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
             crossorigin="anonymous"></script>
 </head>
-<body class="h-100">
+<body>
 <header>
     <?php
     require 'inc/header.php'; ?>
@@ -85,7 +85,7 @@ if (!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password'])) 
         <p>Vous n'avez pas de compte ? <a href="inscription.php">Inscription</a></p>
     </div>
 </main>
-    <?php
-    require 'inc/footer.php'; ?>
+<?php
+require 'inc/footer.php'; ?>
 </body>
 </html>

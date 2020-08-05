@@ -1,5 +1,5 @@
 <?php
-
+$page_selected = 'inscription';
 require_once 'inc/bootstrap.php';
 
 $auth = App::getAuth();
@@ -36,7 +36,7 @@ if (!empty($_POST)) {
 ?>
 
 <!doctype html>
-<html lang="fr" class="h-100">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -56,7 +56,7 @@ if (!empty($_POST)) {
             integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
             crossorigin="anonymous"></script>
 </head>
-<body class="h-100">
+<body>
 <header>
     <?php
     require 'inc/header.php'; ?>

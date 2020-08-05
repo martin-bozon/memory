@@ -1,4 +1,5 @@
 <?php
+$page_selected = 'historique';
     include 'traitement/php_historique.php';
     $auth = App::getAuth();
     $auth->restrict();

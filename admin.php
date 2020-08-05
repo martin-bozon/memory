@@ -1,4 +1,5 @@
-<?php    
+<?php
+    $page_selected = 'admin';
     include 'traitement/php_admin.php';  
     if(App::getAuth()->user()->is_admin == null)      
         {            
