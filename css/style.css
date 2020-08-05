@@ -2,6 +2,7 @@ html
     {
         margin: 0;
         height:100%;
+        font-family: "BeaufortforLOL-Bold";
     }
 body
     {
@@ -78,6 +79,7 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: rgba(206, 205, 205, 0.616);
 }
 
 #main_admin h2 {
@@ -172,8 +174,16 @@ header {
     padding-top: 54px;
     padding-bottom: 40px;
     height: 100%;
+    background-color: rgba(206, 205, 205, 0.616);
 }
-
+#main_profil .btn
+    {
+        background-color: #0BC4E2;
+    }
+#main_profil .btn:hover 
+    {
+        background-color: #00b2cf;
+    }
 .form_auth {
     width: 100%;
     max-width: 330px;
@@ -198,14 +208,23 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background :  linear-gradient(#0bc4e2 0%, #111111 52%, #d0a85c 100%)
+    background-color: rgba(206, 205, 205, 0.616);
 }
+#main_fame h2
+    {
+        font-size: 45px;
+        color: #111111;
+    }
 #main_fame table {
     width: 50vw;
     margin-top: 5vh;
     margin-bottom: 5vh;
     text-align: center;    
 }
+#main_fame th
+    {
+        color: #d0a85c;
+    }
 #main_fame .border
     {
         border: 1px solid rgb(208, 168, 92) !important;
@@ -214,6 +233,15 @@ header {
 #main_fame .btn
     {        
         background-color: #0bc4e2;
+    }
+#main_fame .btn:hover
+    {
+        background-color: #00b2cf;
+    }
+#main_fame tr:first-child
+    {
+        background-color: #7E7E7E;
+        color: white;
     }
 #top_paires {
     display: flex;
@@ -239,6 +267,14 @@ header {
     {
         width: 45vw !important;
     }
+.place
+    {
+        color: #0BC4E2;
+    }
+.score
+    {
+        color: #d0a85c;
+    }
 #top_paire section {
     width: 100%;
 }
@@ -254,6 +290,8 @@ header {
 #main_histo
     {
         text-align: center;
+        /* background: linear-gradient(0deg, #111111 27%, rgb(208, 168, 92) 100%); */
+        background-color: rgba(206, 205, 205, 0.616);      
     }
 #class_gen
     {
@@ -271,7 +309,7 @@ header {
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-bottom: 5vh;
+        padding-bottom: 5vh;
     }
 #table_perso
     {
@@ -292,6 +330,19 @@ header {
 #table_perso .btn
     {
         background-color: #0BC4E2;
+    }
+#table_perso .btn:hover
+    {
+        background-color: #00b2cf;
+    }
+#titre_histo
+    {
+        border: 1px solid #95999c;
+        background-color: #454d55;
+        color: #d0a85c;
+        padding-top: 2vh;
+        padding-bottom: 2vh;
+        margin-top: 0;        
     }
 /* FIN HISTORIQUE */
 /* FOOTER */

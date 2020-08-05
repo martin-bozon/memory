@@ -116,7 +116,7 @@ $auth = App::getAuth();
                 <input type="text" name="username" class="form-control" placeholder="<?= $auth->user()->username ?>">
             </div>
 
-            <button type="submit" name="submitPseudo" class="btn btn-lg btn-primary btn-block">Modifier</button>
+            <button type="submit" name="submitPseudo" class="btn btn-lg btn-block">Modifier</button>
 
         </form>
 
@@ -139,7 +139,7 @@ $auth = App::getAuth();
                        placeholder="Confirmer mot de passe">
             </div>
 
-            <button type="submit" name="submitPassword" class="btn btn-lg btn-primary btn-block">Modifier</button>
+            <button type="submit" name="submitPassword" class="btn btn-lg btn-block">Modifier</button>
 
         </form action="" method="post">
     </div>
