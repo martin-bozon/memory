@@ -198,14 +198,23 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background :  linear-gradient(#0bc4e2 0%, #111111 52%, #d0a85c 100%)
 }
-
 #main_fame table {
     width: 50vw;
     margin-top: 5vh;
     margin-bottom: 5vh;
-    text-align: center;
+    text-align: center;    
 }
+#main_fame .border
+    {
+        border: 1px solid rgb(208, 168, 92) !important;
+        color: white;
+    }
+#main_fame .btn
+    {        
+        background-color: #0bc4e2;
+    }
 #top_paires {
     display: flex;
     flex-direction: row;
@@ -214,12 +223,22 @@ header {
     width: 100%;
     margin-bottom: 5vh;
 }
-/* #top_gen
+#form_top_paire
+    {
+        display: flex;
+        justify-content: center;
+    }
+#top_gen
     {
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
-    } */
+        justify-content: space-evenly;
+        width: 100%;
+    }
+.top
+    {
+        width: 45vw !important;
+    }
 #top_paire section {
     width: 100%;
 }
@@ -231,22 +250,6 @@ header {
 }
 
 /* FIN FAME */
-
-    /* FOOTER */
-footer a {
-    color: white;
-    height: fit-content;
-}
-
-footer a:hover {
-    color: greenyellow;
-    text-decoration: none;
-}
-
-.bg_footer {
-    background-color: #7D8294;
-}
-
 /* PAGE HISTORIQUE */
 #main_histo
     {
@@ -268,6 +271,7 @@ footer a:hover {
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin-bottom: 5vh;
     }
 #table_perso
     {
@@ -281,21 +285,36 @@ footer a:hover {
         width: 60vw;
         text-align: center;
     }
+#table_perso th
+    {
+        color: rgb(208, 168, 92);
+    }
+#table_perso .btn
+    {
+        background-color: #0BC4E2;
+    }
 /* FIN HISTORIQUE */
 /* FOOTER */
+footer
+    {
+        background-color: #111111 !important;
+    }
 footer a    
     {
-        color: white;
+        color: #7E7E7E;
         height: fit-content;
     }
 footer a:hover
-    {
-        color: greenyellow;
+    {        
+        color: white;
         text-decoration: none;
     }
-.bg_footer
+footer h5
     {
-        background-color: #7D8294;
+        color: rgb(208, 168, 92);
     }
-
+footer p
+    {
+        color: white;
+    }
 /* FIN FOOTER */

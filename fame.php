@@ -18,10 +18,10 @@
     </header>    
     <main id="main_fame">      
         <section id="top_gen">
-            <table class="table">
+            <table class="table table-dark top">
                 <thead class="thead-dark">
                     <tr>
-                        <th colspan="3">TOP 10 Général</th>                
+                        <th colspan="3">TOP 10 : Joueur</th>                
                     </tr>
                 </thead>
                 <tbody>
@@ -35,7 +35,7 @@
                             {
                                 ?>
                                 <tr>
-                                <td class="border"><?= ($i+1)?></td>
+                                    <td class="border"># <?= ($i+1)?></td>
                                     <td class="border"><?=$top_gen[$i]['username']?></td>
                                     <td class="border"><?=$top_gen[$i]['score_total']?></td>                                                    
                                 <?php
@@ -43,14 +43,15 @@
                     ?>
                 </tbody>
             </table>    
-            <table class="table">
+            <table class="table table-dark top">
                 <thead class="thead-dark">
                     <tr>
-                        <th colspan="5">TOP 10 C'est super</th>                
+                        <th colspan="6">TOP 10 : C'est super</th>                
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="titre_top">                    
+                    <tr class="titre_top"> 
+                        <td>Place</td>                   
                         <td>Nom</td>
                         <td>Score</td>       
                         <td>Nombre de paires</td>     
@@ -61,7 +62,8 @@
                         for($i=0; $i<$nb_top_10; $i++)
                             {
                                 ?>
-                                <tr>                            
+                                <tr>       
+                                    <td class="border"># <?= ($i+1)?></td>                     
                                     <td class="border"><?= $top_10[$i]["username"] ?></td>
                                     <td class="border"><?= $top_10[$i]["score"] ?></td>   
                                     <td class="border"><?= $top_10[$i]["nb_paires"] ?></td>                                                 
@@ -94,7 +96,7 @@
                             }
                     ?>
                     </select>
-                    <input type="submit" name="choix_top" class="btn btn-primary" value="Choisir">
+                    <input type="submit" name="choix_top" class="btn" value="Choisir">
                 </form>     
             </section>
             <section>
@@ -102,14 +104,15 @@
                  if(isset($_POST["top_paire"], $_POST["choix_top"]) && !empty($top_paire))
                         {
                             ?>
-                             <table class="table table_top_paire">
+                             <table class="table table-dark">
                                 <thead class="thead-dark">
                                     <tr>
-                                        <th colspan="4">TOP 10 : <?= $top_paire[0]["nb_paires"]?> paires</th>                
+                                        <th colspan="5">TOP 10 : <?= $top_paire[0]["nb_paires"]?> paires</th>                
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr class="titre_top">
+                                        <td>Place</td>
                                         <td>Nom</td>
                                         <td>Score</td>
                                         <td>Temps</td>
@@ -120,6 +123,7 @@
                                             {
                                                 ?>
                                                 <tr>
+                                                    <td class="border"># <?= ($i+1)?></td>
                                                     <td class="border"><?=$top_paire[$i]['username']?></td>
                                                     <td class="border"><?=$top_paire[$i]['score']?></td>
                                                     <td class="border"><?= number_format($top_paire[$i]['temps'], 3)?></td>
@@ -132,12 +136,12 @@
                             </table>   
                             <?php
                         }
-                        else if(isset($_POST["top_paire"], $_POST["choix_top"]) && empty($top_paire))
+                    else if(isset($_POST["top_paire"], $_POST["choix_top"]) && empty($top_paire))
                         {
                             ?>
-                                <p class="alert alert-warning">Il n'y a pas encore de score disponible</p>
+                                <p class="alert alert-info">Il n'y a pas encore de score disponible</p>
                             <?php
-                        }                    
+                        }                       
                 ?>
             </section>                       
         </section>

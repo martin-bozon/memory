@@ -85,9 +85,7 @@ if (!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password'])) 
         <p>Vous n'avez pas de compte ? <a href="inscription.php">Inscription</a></p>
     </div>
 </main>
-<footer>
     <?php
     require 'inc/footer.php'; ?>
-</footer>
 </body>
 </html>

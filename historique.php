@@ -60,7 +60,7 @@
                                     }
                             ?>
                         </select>
-                        <input type="submit" name="valid_top_paire" class="btn btn-primary">
+                        <input type="submit" name="valid_top_paire" class="btn">
                     </form>            
                 </section>
                 <section>
@@ -71,10 +71,10 @@
                                 <table class="table table-dark">
                                     <thead>
                                         <tr>
-                                        <th scope="col">Place</th>
-                                        <th scope="col">Score</th>                                            
-                                        <th scope="col">Nombre de coups</th>
-                                        <th scope="col">Temps</th>
+                                            <th scope="col">Place</th>
+                                            <th scope="col">Score</th>                                            
+                                            <th scope="col">Nombre de coups</th>
+                                            <th scope="col">Temps</th>
                                         </tr>
                                     </thead>
                                     <tbody>

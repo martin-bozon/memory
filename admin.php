@@ -71,7 +71,7 @@
                                 {
                                     ?>
                                     <tr>
-                                        <td class="border"><?=  $info_scores["recup"][$i]['login'] ?></td>
+                                        <td class="border"><?=  $info_scores["recup"][$i]['username'] ?></td>
                                         <td class="border"><?=  $info_scores["recup"][$i]['score'] ?></td>
                                         <td class="border"><?=  $info_scores["recup"][$i]['nb_paires'] ?></td>
                                         <td class="border sup"><button><a class="icon-trash" href="suppression.php?id_score=<?= $info_scores["recup"][$i]["id"] ?>" title="supprimer" onclick="return confirm('Supprimer : Ce score ?')"><img src="src/images/trash.png" alt="logo poubelle"></a></button></td>                                                                               
