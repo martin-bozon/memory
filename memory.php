@@ -35,25 +35,37 @@ if (isset($_POST['pairs_in_game'])) {
 
 //Gestion du jeu
 
+//counter nombre de coups
+
+if (isset($_POST['id_card_selected'])) {
+    if ( !isset($_SESSION['lastCard']) OR $_POST['id_card_selected'] != $_SESSION['lastCard']) {
+        if (!isset($_SESSION['number_coups'])) {
+            $session->write('number_coups', 1);
+        } else {
+            $_SESSION['number_coups']++;
+        }
+    } else {
+        foreach ($_SESSION['cards'] as $card) {
+            if ($_SESSION['lastCard'] == $card->getId() and $card->getVisibility() == 'hidden') {
+                if (!isset($_SESSION['number_coups'])) {
+                    $session->write('number_coups', 1);
+                } else {
+                    $_SESSION['number_coups']++;
+                }
+            }
+        }
+    }
+}
+
 
 if (isset($_POST['pairsChoiceMenu']) or isset($_POST['play_again'])) {
     $session->delete('cards');
     $session->delete('number_coups');
     $session->delete('temps_debut');
     $session->delete('temps_fin');
+    $session->delete('lastCard');
     header('location:memory.php');
 }
-
-
-//counter nombre de coups
-if (isset($_POST['id_card_selected']) && $_SESSION['lastCard'] != $_POST['id_card_selected']) {
-    if (!isset($_SESSION['number_coups'])) {
-        $session->write('number_coups', 1);
-    } else {
-        $_SESSION['number_coups']++;
-    }
-}
-
 
 if (isset($_SESSION['cards'])) {
     //Si c'est win
@@ -68,6 +80,7 @@ if (isset($_SESSION['cards'])) {
         $session->delete('cards');
         $session->delete('number_coups');
         $session->delete('pairs_in_game');
+        $session->delete('lastCard');
         $endofgame = true;
     } //Si il y a 2 cartes visibles
     else {
@@ -152,7 +165,7 @@ if (isset($_SESSION['cards'])) {
         <form class="flex-fill" method="post" action="">
             <p>Choisissez le nombre de paires :</p>
             <?php
-            for ($i = 3; $i <= $maxPairs; $i++) : ?>
+            for ($i = 3; $i <= $maxPairs and $i <= 15; $i++) : ?>
                 <input type="submit" name="pairs_in_game" value="<?= $i ?>">
             <?php
             endfor; ?>
@@ -164,10 +177,10 @@ if (isset($_SESSION['cards'])) {
             <div id="board" class="container d-flex flex-row justify-content-around flex-wrap">
                 <?php
                 foreach ($_SESSION['cards'] as $card): ?>
-                    <label class="bg-dark m-1"><img src="<?= $card->getVisibility() == 'visible' ? $card->getImagePath(
-                        ) : 'src/images/BackCard.jpg'; ?>" alt="" width="250" height="282"
-                                                    role="button" <?= $card->getState(
-                        ) == 'inGame' ? '' : 'hidden'; ?> >
+                    <label class="bg-dark m-1"><img
+                                src="<?= $card->getVisibility() == 'visible' ? $card->getImagePath() : 'src/images/BackCard.jpg'; ?>"
+                                alt="" width="250" height="282"
+                                role="button" <?= $card->getState() == 'inGame' ? '' : 'hidden'; ?> >
                         <input class="sr-only" type="submit" value="<?= $card->getId(); ?>" name="id_card_selected">
                     </label>
                 <?php
