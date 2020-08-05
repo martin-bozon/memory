@@ -16,32 +16,63 @@
     <header>
         <?php include 'inc/header.php'; ?>
     </header>    
-    <main id="main_fame">        
-        <table class="table">
-            <thead class="thead-dark">
-                <tr>
-                    <th colspan="3">TOP 10 C'est super</th>                
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="titre_top">
-                    <td>Place</td>
-                    <td>Nom</td>
-                    <td>Score</td>                    
-                </tr>   
-                <?php                
-                    for($i=0; $i<$nb_score; $i++)
-                        {
-                            ?>
-                            <tr>
-                            <td class="border"><?= ($i+1)?></td>
-                                <td class="border"><?=$top_10[$i]['username']?></td>
-                                <td class="border"><?=$top_10[$i]['score_total']?></td>                                                    
-                            <?php
-                        }                                        
-                ?>
-            </tbody>
-        </table>    
+    <main id="main_fame">      
+        <section id="top_gen">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th colspan="3">TOP 10 Général</th>                
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="titre_top">
+                        <td>Place</td>
+                        <td>Nom</td>
+                        <td>Score</td>                    
+                    </tr>   
+                    <?php                
+                        for($i=0; $i<$nb_score; $i++)
+                            {
+                                ?>
+                                <tr>
+                                <td class="border"><?= ($i+1)?></td>
+                                    <td class="border"><?=$top_gen[$i]['username']?></td>
+                                    <td class="border"><?=$top_gen[$i]['score_total']?></td>                                                    
+                                <?php
+                            }                                        
+                    ?>
+                </tbody>
+            </table>    
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th colspan="5">TOP 10 C'est super</th>                
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="titre_top">                    
+                        <td>Nom</td>
+                        <td>Score</td>       
+                        <td>Nombre de paires</td>     
+                        <td>Temps</td>        
+                        <td>Nombre de coups</td>
+                    </tr>   
+                    <?php                
+                        for($i=0; $i<$nb_top_10; $i++)
+                            {
+                                ?>
+                                <tr>                            
+                                    <td class="border"><?= $top_10[$i]["username"] ?></td>
+                                    <td class="border"><?= $top_10[$i]["score"] ?></td>   
+                                    <td class="border"><?= $top_10[$i]["nb_paires"] ?></td>                                                 
+                                    <td class="border"><?= number_format($top_10[$i]["temps"], 3) ?></td>
+                                    <td class="border"><?= $top_10[$i]["nb_coups"] ?></td>
+                                <?php
+                            }                                        
+                    ?>
+                </tbody>
+            </table>    
+        </section>         
         <section id="top_paires">
             <section>
                  <form action="fame.php#top_paires" method="POST" id="form_top_paire">
@@ -91,7 +122,7 @@
                                                 <tr>
                                                     <td class="border"><?=$top_paire[$i]['username']?></td>
                                                     <td class="border"><?=$top_paire[$i]['score']?></td>
-                                                    <td class="border"><?=$top_paire[$i]['temps']?></td>
+                                                    <td class="border"><?= number_format($top_paire[$i]['temps'], 3)?></td>
                                                     <td class="border"><?=$top_paire[$i]['nb_coups']?></td>
                                                 </tr>                            
                                                 <?php

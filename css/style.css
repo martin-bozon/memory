@@ -206,7 +206,6 @@ header {
     margin-bottom: 5vh;
     text-align: center;
 }
-
 #top_paires {
     display: flex;
     flex-direction: row;
@@ -215,7 +214,12 @@ header {
     width: 100%;
     margin-bottom: 5vh;
 }
-
+/* #top_gen
+    {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    } */
 #top_paire section {
     width: 100%;
 }
