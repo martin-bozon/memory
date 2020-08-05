@@ -22,25 +22,25 @@
         <h2>Gestion Jeu</h2>
         <section id="user_score">    
             <section class="pagination">
-                <table class="table table_admin">
+                <table class="table table-dark table_admin table-striped">
                     <thead class="thead-dark">        
                         <tr>
-                            <th colspan="2">Utilisateurs</th>       
+                            <th class="score" colspan="2">Utilisateurs</th>       
                         </tr>       
                                             
                     </thead>
                     <tbody>
-                        <tr class="bg-info text-white">
-                            <td class="border">Utilisateur</td>
-                            <td class="border sup">Supprimer</td>
+                        <tr class="bg-admin">
+                            <td>Utilisateur</td>
+                            <td class=" sup">Supprimer</td>
                         </tr>                
                         <?php
                             for($i=0; $i<$info_users['compte']; $i++)
                                 {
                                     ?>
                                     <tr>                    
-                                        <td class="border"><?=  $info_users['recup'][$i]['username'] ?></td>
-                                        <td class="border sup"><button><a class="icon-trash" href="suppression.php?id_user=<?= $info_users['recup'][$i]["id"] ?>" title="supprimer" onclick="return confirm('Supprimer : <?=$info_users['recup'][$i]['username'] ?> ?')"><img src="src/images/trash.png" alt="logo poubelle"></a></button></td>
+                                        <td><?=  $info_users['recup'][$i]['username'] ?></td>
+                                        <td class=" sup"><button><a class="icon-trash" href="suppression.php?id_user=<?= $info_users['recup'][$i]["id"] ?>" title="supprimer" onclick="return confirm('Supprimer : <?=$info_users['recup'][$i]['username'] ?> ?')"><img src="src/images/trash.png" alt="logo poubelle"></a></button></td>
                                     </tr>   
                                     <?php
                                 }                
@@ -53,28 +53,33 @@
             </section>       
             
             <section class="pagination">
-                    <table class="table table_admin">
-                    <thead class="thead-light">
+                    <table class="table table_admin table-dark table-striped">
+                    <thead class="thead-dark">
                         <tr>
-                        <th colspan="4">Score</th>                
+                        <th class="score" colspan="4">Scores</th>                
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="bg-info text-white">
-                            <td class="border">Utilisateur</td>
-                            <td class="border">Score</td>
-                            <td class="border">Nombres de paires</td>
-                            <td class="border sup">Supprimer</td>
+                        <tr class="bg-admin">
+                            <td>Utilisateur</td>
+                            <td>Score</td>
+                            <td>Place</td>
+                            <td>Nombres de paires</td>
+                            <td class=" sup">Supprimer</td>
                         </tr>
                         <?php
                             for($i=0; $i< $info_scores["compte"]; $i++)
                                 {
+                                    $score_gen = $info_scores["recup"][$i]['score'];
+                                    $nb_paire_gen = $info_scores["recup"][$i]['nb_paires'];
+                                    $general_score = $bdd->query('SELECT count(score) as place FROM score WHERE score>? AND nb_paires=?', [$score_gen, $nb_paire_gen])->fetch(PDO::FETCH_ASSOC);                                     
                                     ?>
                                     <tr>
-                                        <td class="border"><?=  $info_scores["recup"][$i]['username'] ?></td>
-                                        <td class="border"><?=  $info_scores["recup"][$i]['score'] ?></td>
-                                        <td class="border"><?=  $info_scores["recup"][$i]['nb_paires'] ?></td>
-                                        <td class="border sup"><button><a class="icon-trash" href="suppression.php?id_score=<?= $info_scores["recup"][$i]["id"] ?>" title="supprimer" onclick="return confirm('Supprimer : Ce score ?')"><img src="src/images/trash.png" alt="logo poubelle"></a></button></td>                                                                               
+                                        <td><?=  $info_scores["recup"][$i]['username'] ?></td>
+                                        <td class=" score"><?=  $info_scores["recup"][$i]['score'] ?></td>
+                                        <td class="place"># <?= $general_score["place"]+1 ?></td>
+                                        <td><?=  $info_scores["recup"][$i]['nb_paires'] ?></td>
+                                        <td class=" sup"><button><a class="icon-trash" href="suppression.php?id_score=<?= $info_scores["recup"][$i]["id"] ?>" title="supprimer" onclick="return confirm('Supprimer : Ce score ?')"><img src="src/images/trash.png" alt="logo poubelle"></a></button></td>                                                                               
                                     </tr>
                                     <?php                    
                                 }
@@ -98,33 +103,33 @@
                     else if(!isset($e) && isset($_POST["valid_img"]))
                     echo '<p class="alert alert-success w-75 p-3 m-auto text-center">Image importée</p>';                    
                 ?>
-                <h2>Ajouter une paire</h2>               
+                <h3>Ajouter une paire</h3>               
                 <form enctype="multipart/form-data" action="admin.php#ad_paires" method="POST">
                     <section>
                         <label for="image">Choix de l'image</label>
                         <input type="hidden" name="MAX_FILE_SIZE" value="3000000" id="image">        
                         <input type="file" name="paires" accept=".jpg, .png, .jpeg"/>
                     </section>            
-                    <input class="btn btn-primary" type="submit" name="valid_img" value="Envoyer">           
+                    <input class="btn" type="submit" name="valid_img" value="Envoyer">           
                 </form>       
             </section>       
             <section class="pagination">
-                <table class="table table-striped table_paires">
+                <table class="table table-dark table-striped table_paires">
                     <thead>                
-                            <th class="bg-secondary text-white" colspan="2">Vos paires : <?= $info_paires["compte"]?></th>                            
+                            <th class="score" colspan="2">Nombre de paires total : <?= $info_paires["nb_total"]?></th>                            
                     </thead>
                     <tbody>          
-                        <tr class="bg-info text-white">                    
-                            <td class="border">Image</td>
-                            <td class="border sup">Supprimer</td>
+                        <tr class="bg-admin">                    
+                            <td>Image</td>
+                            <td class=" sup">Supprimer</td>
                         </tr>             
                             <?php                    
                                 for($i=0; $i<$info_paires["compte"]; $i++) 
                                     {                               
                                         ?>
                                         <tr>                                   
-                                            <td class="border"><img class="paires_admin" src="<?= $info_paires["recup"][$i]["image_path"] ?>" alt="photo paires"></td>      
-                                            <td class="border sup"><button><a class="icon-trash" href="suppression.php?id_paires=<?= $info_paires["recup"][$i]["id"] ?>&page=<?= $retour_page ?>" title="supprimer" onclick="return confirm('Supprimer : Cette paire ?')"><img src="src/images/trash.png" alt="logo poubelle"></a></button></td>                                                                               
+                                            <td><img class="paires_admin" src="<?= $info_paires["recup"][$i]["image_path"] ?>" alt="photo paires"></td>      
+                                            <td class=" sup"><button><a class="icon-trash" href="suppression.php?id_paires=<?= $info_paires["recup"][$i]["id"] ?>&page=<?= $retour_page ?>" title="supprimer" onclick="return confirm('Supprimer : Cette paire ?')"><img src="src/images/trash.png" alt="logo poubelle"></a></button></td>                                                                               
                                         </tr> 
                                         <?php
                                     }

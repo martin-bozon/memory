@@ -34,7 +34,7 @@
     $pp_paire = $info_paires['par_page'];
     $nb_total_paire = $info_paires['nb_total'];
     $nb_paire_page = $info_paires['nb_page'];
-    $p_paire = $info_paires['page'];    
+    $p_paire = $info_paires['page'];        
 
     //Traite le retour sur la bonne page 
     $retour_page = (isset($_GET["page"])?$_GET["page"] : 1);

@@ -83,8 +83,15 @@ header {
 }
 
 #main_admin h2 {
-    margin-bottom: 5vh;
-    margin-top: 5vh;
+    text-align: center;
+    width: 100%;
+    padding-top: 3vh;       
+    padding-bottom: 3vh;
+    font-size: 40px;
+    background-color: #454d55;
+    border: 1px solid #95999c;
+    color: #d0a85c;
+    margin-top: 0;
 }
 
 #user_score {
@@ -119,7 +126,19 @@ header {
     justify-content: center;
     width: 40vw;
 }
-
+#main_admin .btn
+    {
+        background-color: #0BC4E2;
+    }
+#main_admin .btn:hover 
+    {
+        background-color: #00b2cf;
+    }
+.bg-admin
+    {
+        background-color: #0BC4E2 !important;
+        color: #111111;
+    }
 #ad_paires {
     display: flex;
     flex-direction: row;
@@ -223,8 +242,15 @@ header {
 }
 #main_fame h2
     {
-        font-size: 45px;
-        color: #111111;
+        text-align: center;
+        width: 100%;
+        padding-top: 3vh;       
+        padding-bottom: 3vh;
+        font-size: 40px;
+        background-color: #454d55;
+        border: 1px solid #95999c;
+        color: #d0a85c;
+        margin: 0;
     }
 #main_fame table {
     width: 50vw;
@@ -284,7 +310,7 @@ header {
     }
 .score
     {
-        color: #d0a85c;
+        color: #d0a85c !important;
     }
 #top_paire section {
     width: 100%;
@@ -359,12 +385,15 @@ header {
     }
 #titre_histo
     {
-        border: 1px solid #95999c;
+        text-align: center;
+        width: 100%;
+        padding-top: 3vh;       
+        padding-bottom: 3vh;
+        font-size: 40px;
         background-color: #454d55;
+        border: 1px solid #95999c;
         color: #d0a85c;
-        padding-top: 2vh;
-        padding-bottom: 2vh;
-        margin-top: 0;        
+        margin: 0;      
     }
 /* FIN HISTORIQUE */
 /* FOOTER */

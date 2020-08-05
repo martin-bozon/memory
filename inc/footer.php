@@ -40,7 +40,7 @@
             </footer>
             <?php
         }    
-    else if(App::getAuth()->user()->is_admin == 1)
+    else if(App::getAuth()->user() && App::getAuth()->user()->is_admin == 1)
         {
             ?>
             <footer class="page-footer font-small">
