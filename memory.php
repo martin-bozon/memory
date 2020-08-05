@@ -1,5 +1,6 @@
 <?php
 
+$page_selected = 'memory';
 ob_start();
 require_once 'inc/bootstrap.php';
 
@@ -92,7 +93,7 @@ if (isset($_SESSION['cards'])) {
                         $card->setVisibility($card->switchVisibility($session, $card->getId()));
                     }
                 }
-                header('Refresh: 0.5; memory.php');
+                header('Refresh: 0.3; memory.php');
             }
         }
     }
@@ -139,12 +140,8 @@ if (isset($_SESSION['cards'])) {
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-secondary" data-dismiss="modal" name="play_again">Rejouer
-                    </button>
-                    <<<<<<< HEAD
-                    <button type="submit" class="btn btn-primary"><a href="historique.php">Voir mon profil</a></button>
-                    =======
-                    <button type="submit" class="btn btn-primary"><a href="historique.php">Voir mes scores</a></button>
-                    >>>>>>> test
+                        <button type="submit" class="btn btn-primary"><a href="historique.php">Voir mes scores</a>
+                        </button>
                 </div>
             </div>
         </div>

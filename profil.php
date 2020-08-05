@@ -1,5 +1,5 @@
 <?php
-
+$page_selected = 'profil';
 require 'inc/bootstrap.php';
 $auth = App::getAuth();
 $auth->restrict();
@@ -80,6 +80,7 @@ $auth = App::getAuth();
     require 'inc/header.php'; ?>
 </header>
 <main id="main_profil" class="d-flex flex-column">
+    <h2>Votre profil</h2>
     <?php
     if (!empty($errors)): ?>
         <div class="alert alert-danger mx-auto">
@@ -116,7 +117,7 @@ $auth = App::getAuth();
                 <input type="text" name="username" class="form-control" placeholder="<?= $auth->user()->username ?>">
             </div>
 
-            <button type="submit" name="submitPseudo" class="btn btn-lg btn-primary btn-block">Modifier</button>
+            <button type="submit" name="submitPseudo" class="btn btn-lg btn-block">Modifier</button>
 
         </form>
 
@@ -139,7 +140,7 @@ $auth = App::getAuth();
                        placeholder="Confirmer mot de passe">
             </div>
 
-            <button type="submit" name="submitPassword" class="btn btn-lg btn-primary btn-block">Modifier</button>
+            <button type="submit" name="submitPassword" class="btn btn-lg btn-block">Modifier</button>
 
         </form action="" method="post">
     </div>
