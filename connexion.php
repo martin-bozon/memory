@@ -12,7 +12,7 @@ if (!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password'])) 
     $session = Session::getInstance();
     if ($user) {
         $session->setFlash('succes', "Vous êtes maintenant connecté.");
-        App::redirect('profil.php');
+        App::redirect('index.php');
     } else {
         $session->setFlash('danger', "Identifiant ou mot de passe incorrect.");
     }

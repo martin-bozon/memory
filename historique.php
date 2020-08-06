@@ -24,51 +24,79 @@ $page_selected = 'historique';
         <section id="section_class">
             <section id="class_gen">            
                 <h2 class="text-white">Classement général</h2>
-                    <table class="table table-dark table-striped">
-                        <thead>
-                            <tr>                        
-                                <th class="score">Place</th>
-                                <th class="score">Score</th>                      
-                            </tr>
-                        </thead>
-                        <tbody>                       
-                            <tr>
-                                <td class="place"># <?= ($general["sup"] + 1) ?></td>
-                                <td class="score"><?=$score_j["score_total"]?></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <?php
+                        if($score_j["score_total"] != null)
+                            {
+                                ?>
+                                    <table class="table table-dark table-striped">
+                                        <thead>
+                                            <tr>                        
+                                                <th class="score">Place</th>
+                                                <th class="score">Score</th>                      
+                                            </tr>
+                                        </thead>
+                                        <tbody>                       
+                                            <tr>
+                                                <td class="place"># <?= ($general["sup"] + 1) ?></td>
+                                                <td class="score"><?=$score_j["score_total"]?></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                <?php
+                            }
+                        else
+                            {
+                                ?>
+                                    <p class="alert alert-warning">Vous n'avez pas encore joué</p>
+                                <?php
+                            }
+                    ?>  
+                   
             </section>
             <section id="class_last">
-                <h2 class="text-white">Dernières parties</h2>
-                    <table class="table table-dark table-striped">
-                        <thead>
-                            <tr class="score">                        
-                                <th>Place</th>
-                                <th>Score</th>       
-                                <th>Temps</th>               
-                                <th>Nombre de coups</th>
-                                <th>Nombre de paires</th>
-                            </tr>
-                        </thead>
-                        <tbody>   
-                            <?php
-                                for($i=0; $i<$nb_last_partie; $i++)                    
-                                    {
-                                        $class_last = $bdd->query('SELECT count(score) as place FROM score WHERE score>? AND nb_paires=?', [$last_partie[$i]["score"], $last_partie[$i]["nb_paires"]])->fetch(PDO::FETCH_ASSOC); 
-                                        ?>
-                                             <tr>
-                                                <td class="place"># <?= $class_last["place"]+1 ?></td>
-                                                <td class="score"><?= $last_partie[$i]["score"] ?></td>
-                                                <td><?= $last_partie[$i]["temps"] ?></td>
-                                                <td><?= $last_partie[$i]["nb_coups"] ?></td>
-                                                <td><?= $last_partie[$i]["nb_paires"] ?></td>
-                                            </tr>
+                <h2 class="text-white">Dernières parties</h2>         
+                <?php
+                    if(!empty($nb_last_partie))
+                        {
+                            ?>
+                                <table class="table table-dark table-striped">
+                                    <thead>
+                                        <tr class="score">                        
+                                            <th>Place</th>
+                                            <th>Score</th>       
+                                            <th>Temps</th>               
+                                            <th>Nombre de coups</th>
+                                            <th>Nombre de paires</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>   
                                         <?php
-                                    }
-                            ?>                           
-                        </tbody>
-                    </table>
+                                            for($i=0; $i<$nb_last_partie; $i++)                    
+                                                {
+                                                    $class_last = $bdd->query('SELECT count(score) as place FROM score WHERE score>? AND nb_paires=?', [$last_partie[$i]["score"], $last_partie[$i]["nb_paires"]])->fetch(PDO::FETCH_ASSOC); 
+                                                    ?>
+                                                        <tr>
+                                                            <td class="place"># <?= $class_last["place"]+1 ?></td>
+                                                            <td class="score"><?= $last_partie[$i]["score"] ?></td>
+                                                            <td><?= number_format($last_partie[$i]["temps"], 3) ?></td>
+                                                            <td><?= $last_partie[$i]["nb_coups"] ?></td>
+                                                            <td><?= $last_partie[$i]["nb_paires"] ?></td>
+                                                        </tr>
+                                                    <?php
+                                                }
+                                        ?>                           
+                                    </tbody>
+                                </table>
+                            <?php                            
+                        }
+                    else
+                        {
+                            ?>
+                            <p class="alert alert-warning">Vous n'avez pas encore joué</p>
+                            <?php
+                        }
+                ?>
+                   
             </section>
         </section>
         
@@ -76,7 +104,7 @@ $page_selected = 'historique';
             <h2 class="text-white">Top 10 perso : en fonction du nombre paires</h2>
             <section id="table_perso">
                 <section>
-                    <form action="" method="POST">
+                    <form action="historique.php#class_perso" method="POST">
                         <select name="paire_joueur" id="">
                             <?php                        
                                 for($i=3; $i<=$nb_paire["nb_paire"] AND $i<=15; $i++)
