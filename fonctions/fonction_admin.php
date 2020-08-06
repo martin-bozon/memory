@@ -17,17 +17,24 @@
                             if(in_array($extensionUpload, $extensionValides))
                                 {                                   
                                     $chemin = 'src/images/paires/' . $_FILES["paires"]["name"];//Définie le chemin jusqu'à l'image
-                                    $move = move_uploaded_file($_FILES["paires"]["tmp_name"], $chemin);//upload l'image dans le dossier du site à l'endroit voulu
+                                    //Vérifie que l'image n'est pas déjà dans la bdd
+                                    $verif_chemin = $bdd->query('SELECT * FROM card WHERE image_path=?', [$chemin])->fetch(PDO::FETCH_ASSOC);
+                                    if(empty($verif_chemin))
+                                        {
+                                             $move = move_uploaded_file($_FILES["paires"]["tmp_name"], $chemin);//upload l'image dans le dossier du site à l'endroit voulu
 
-                                    if($move)
-                                        {                               
-                                            // $uploaodFile = $bdd->prepare('INSERT INTO cards (image_path) VALUES (?)');
-                                            // $uploaodFile->execute([$chemin]);//Insère le chemin dans la bdd                                            
-                                            $uploaodFile = $bdd->query('INSERT INTO card (image_path) VALUES (?)', [$chemin]);
+                                            if($move)
+                                                {                                                                                              
+                                                    $uploaodFile = $bdd->query('INSERT INTO card (image_path) VALUES (?)', [$chemin]);
+                                                }
+                                            else
+                                                {
+                                                    throw new Exception ('message erreur importation');
+                                                }
                                         }
                                     else
                                         {
-                                            throw new Exception ('message erreur importation');
+                                            throw new Exception ('Le fichier existe déjà');
                                         }
                                 }
                             else
