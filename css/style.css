@@ -476,8 +476,12 @@ header {
 #form_top_paire {
     display: flex;
     justify-content: center;
+    align-items: center;
 }
-
+#select_top_paire
+    {
+        height: 5vh;
+    }
 #top_gen {
     display: flex;
     flex-direction: row;
