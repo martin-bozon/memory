@@ -78,7 +78,7 @@ $page_selected = 'historique';
                                                         <tr>
                                                             <td class="place"># <?= $class_last["place"]+1 ?></td>
                                                             <td class="score"><?= $last_partie[$i]["score"] ?></td>
-                                                            <td><?= $last_partie[$i]["temps"] ?></td>
+                                                            <td><?= number_format($last_partie[$i]["temps"], 3) ?></td>
                                                             <td><?= $last_partie[$i]["nb_coups"] ?></td>
                                                             <td><?= $last_partie[$i]["nb_paires"] ?></td>
                                                         </tr>
