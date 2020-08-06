@@ -148,7 +148,7 @@ if (isset($_SESSION['cards'])) {
                 <div class="modal-body">
                     <h3>Voici votre score :</h3>
                     <p class="">Nombre de coups : <?= $number_coups ?></p>
-                    <p class="">Temps : <?= $chrono ?></p>
+                    <p class="">Temps : <?= number_format($chrono, 3) ?></p>
                     <p class="font-weight-bold">Points : <?= $points ?></p>
                 </div>
                 <div class="modal-footer d-flex flex-row justify-content-around align-items-center">
