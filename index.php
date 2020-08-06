@@ -57,18 +57,18 @@ require_once 'inc/bootstrap.php';
                             <li>Le but du jeu va être de rassembler toutes les paires</li>
                             <li>Cliquer sur une carte face cachée pour la retourner</li>
                             <li>Cliquer sur une deuxième carte pour la retourner</li>
-                            <li>Si se sont les mêmes cartes, bravo vous avez trouvé une paire</li>
+                            <li>Si ce sont les mêmes cartes, bravo vous avez trouvé une paire</li>
                             <li>Si elles sont différentes, j'espère que vous avez mémorisé leur place et l'image, car
                                 elles vont se retourner
                             </li>
                             <li>Retour à l'étape 5 jusqu'à ce que vous ayez rassemblé toutes les paires</li>
-                            <li>Vous avez rassemblé toutes les paires, BRAVO. Vous pouvez rejouer ou consolter le Wall
+                            <li>Vous avez rassemblé toutes les paires, BRAVO. Vous pouvez rejouer ou consulter le Wall
                                 of Fame
                             </li>
                         </ol>
                         <h3>Gestion score</h3>
                         <ul>
-                            <li>Le score est générer en fonction du temps et du nombre de coups</li>
+                            <li>Le score est généré en fonction du temps et du nombre de coups</li>
                             <li>500 points sont accordés si le nombre de coups pour gagner est égal au nombre de cartes
                                 présentes sur la plateau au début du jeu
                             </li>
