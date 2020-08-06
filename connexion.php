@@ -27,9 +27,6 @@ if (!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password'])) 
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Connexion - Memory</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
             integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
             crossorigin="anonymous"></script>
@@ -39,6 +36,10 @@ if (!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password'])) 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
             integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
             crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+
 </head>
 <body>
 <header>
@@ -79,7 +80,7 @@ if (!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password'])) 
                 </label>
             </div>
 
-            <button type="submit" class="btn btn-lg btn-primary btn-block">Se connecter</button>
+            <button type="submit" class="button w-100">Se connecter</button>
 
         </form>
         <p>Vous n'avez pas de compte ? <a href="inscription.php">Inscription</a></p>

@@ -61,9 +61,6 @@ $auth = App::getAuth();
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Connexion - Memory</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
             integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
             crossorigin="anonymous"></script>
@@ -73,6 +70,9 @@ $auth = App::getAuth();
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
             integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
             crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <header>
@@ -80,7 +80,7 @@ $auth = App::getAuth();
     require 'inc/header.php'; ?>
 </header>
 <main id="main_profil" class="d-flex flex-column">
-    <h2>Votre profil</h2>
+    <h2 class="mt-3">Votre profil</h2>
     <?php
     if (!empty($errors)): ?>
         <div class="alert alert-danger mx-auto">
@@ -109,7 +109,7 @@ $auth = App::getAuth();
         endif; ?>
     </div>
     <div class="container d-flex flex-row justify-content-around m-auto">
-        <form action="" method="post">
+        <form action="" method="post" class="d-flex flex-column">
             <h1 class="h3 mb-3 font-weight-normal">Modifier pseudo</h1>
 
             <div class="form-group">
@@ -117,11 +117,11 @@ $auth = App::getAuth();
                 <input type="text" name="username" class="form-control" placeholder="<?= $auth->user()->username ?>">
             </div>
 
-            <button type="submit" name="submitPseudo" class="btn btn-lg btn-block">Modifier</button>
+            <button type="submit" name="submitPseudo" class="button">Modifier</button>
 
         </form>
 
-        <form action="" method="post">
+        <form action="" method="post" class="d-flex flex-column">
             <h1 class="h3 mb-3 font-weight-normal">Modifier mot de passe</h1>
 
             <div class="form-group">
@@ -140,7 +140,7 @@ $auth = App::getAuth();
                        placeholder="Confirmer mot de passe">
             </div>
 
-            <button type="submit" name="submitPassword" class="btn btn-lg btn-block">Modifier</button>
+            <button type="submit" name="submitPassword" class="button">Modifier</button>
 
         </form action="" method="post">
     </div>

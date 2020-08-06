@@ -1,33 +1,61 @@
-@font-face
-    {
-        font-family: "Frizquadrata";
-        src: url("../src/police/FrizQuadrataTT.ttf");
-    }
-html
-    {
-        margin: 0;
-        height:100%;        
-    }
-body
-    {
-        margin: 0;
-        height: 100vh;
-        font-family: "Frizquadrata";
-    }
-main
-    {
-        margin: 0;
-        min-height: 80vh;
-        padding-top: 54px;
-    }
-*{
+@font-face {
+    font-family: "Frizquadrata";
+    src: url("../src/police/FrizQuadrataTT.ttf");
+}
+
+html {
+    margin: 0;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    font-family: "Frizquadrata";
+}
+
+main {
+    margin: 0;
+    min-height: 100vh;
+    padding-top: 54px;
+}
+
+* {
     box-sizing: border-box;
 }
-h2
-    {
-        margin-top: 5vh;
-        margin-bottom: 5vh;
-    }
+
+h2 {
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+a{
+    color: unset;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #f0e6d2;
+    text-shadow: 0 0 3px black;
+}
+
+.button {
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: #1e2328;
+    border: 2px solid #077c78;
+    padding: 0.5rem;
+    color: #f0e6d2;
+    box-shadow: 1px 1px 5px black;
+    transition: 0.05s ease-in-out;
+    margin: 0.5rem;
+}
+
+.button:hover {
+    border: 2px solid #0cc6c0;
+    transform: scale(0.95);
+    box-shadow: 1px 1px 10px black;
+}
+
 /* HEADER */
 header {
     height: fit-content;
@@ -35,26 +63,54 @@ header {
     justify-content: center;
     position: relative;
 }
-.navbar{
+
+.navbar {
     border-bottom: 0.01em solid #51535c;
-    padding : 0 1rem;
+    padding: 0 1rem;
     max-width: 1300px;
     width: 100%;
 }
-.navbar a{
+
+.navbar a, .account {
     color: #cdbe91;
     width: 100%;
+    font-weight: bold;
+    letter-spacing: .1em;
+    text-shadow: 0 0 3px black;
 }
-.navbar > div, .navbar a{
+
+.navbar > div, .navbar a, .account {
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.navbar a:hover, .navbar_selected{
+.navbar a:hover, .navbar_selected, .account:hover {
     color: #f0e6d2;
-    background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(94,90,82,1));
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(94, 90, 82, 1));
+}
+
+.dropdown-menu {
+    border: 3px solid #60491f;
+    background-color: #010a13;
+    border-radius: inherit;
+    left: inherit;
+    padding: 0.5rem;
+}
+
+.dropdown-menu a {
+    color: #999487;
+}
+
+.dropdown-item {
+    color: #16181b;
+    background-color: #010a13;
+}
+
+.dropdown-item:hover, .dropdown-item > a:hover {
+    background-color: inherit;
+    background: inherit;
 }
 
 /* PAGE INDEX */
@@ -63,7 +119,7 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     height: 100%;
     background-image: url("../src/images/IndexWallpaper.jpg");
     background-attachment: scroll;
@@ -72,38 +128,108 @@ header {
     background-repeat: no-repeat;
 }
 
-.index_link{
-    color: #e3a534;
-}
-.index_link:hover{
-    color: #0BC4E2;
-    text-decoration: none;
+.index_link {
+    color: #cdbe91;
 }
 
-#main_index
-    {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-around;
-        height: 100%;
-    }
-#info_main
-    {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-.jeu
-    {
-        width: 25vw;
-    }
-#main_index h1
-    {
-        margin-bottom: 10vh;
-    }
+.index_link:hover {
+    color: #0BC4E2;
+}
+
+#info_main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.jeu {
+    width: 25vw;
+}
+
+.title_index, .choose_difficulty {
+    margin-bottom: 10vh;
+    text-shadow: 2px 2px 3px #111111;
+    color: #f0e6d2;
+}
 
 /* FIN INDEX */
+
+/* MEMORY */
+
+#main_memory {
+    background-image: url('../src/images/MemoryWallpaper.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hidden {
+    opacity:0;
+}
+.hidden:hover{
+    cursor: inherit;
+}
+#board{
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    column-gap: 10px;
+    row-gap: 10px;
+    width: 100%;
+    max-width: 1400px;
+}
+
+@media screen and (max-width: 900px) {
+    #board{
+        grid-template-columns: repeat(7, 1fr);
+    }
+}
+@media screen and (max-width: 700px) {
+    #board{
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+@media screen and (max-width: 500px) {
+    #board{
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+@media screen and (max-width: 300px) {
+    #board{
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.cards{
+    height: auto;
+    width: 100%;
+    box-shadow: 1px 1px 5px black;
+}
+
+#victory{
+    background-color: inherit;
+    top:0;
+    width: 100%;
+    border: 3px solid #60491f;
+    border-radius: inherit;
+}
+.modal-title{
+    color: #cdbe91;
+}
+
+.modal-body p, .modal-body h3{
+    color: white;
+}
+@media (min-width: 576px) {
+    .modal-dialog {
+        max-width: 610px;
+        margin: 1.75rem auto;
+    }
+}
+
+
+/* FIN MEMORY */
+
+
 /* PAGE ADMIN */
 #main_admin {
     display: flex;
@@ -115,7 +241,7 @@ header {
 #main_admin h2 {
     text-align: center;
     width: 100%;
-    padding-top: 3vh;       
+    padding-top: 3vh;
     padding-bottom: 3vh;
     font-size: 40px;
     background-color: #454d55;
@@ -156,19 +282,20 @@ header {
     justify-content: center;
     width: 40vw;
 }
-#main_admin .btn
-    {
-        background-color: #0BC4E2;
-    }
-#main_admin .btn:hover 
-    {
-        background-color: #00b2cf;
-    }
-.bg-admin
-    {
-        background-color: #0BC4E2 !important;
-        color: #111111;
-    }
+
+#main_admin .btn {
+    background-color: #0BC4E2;
+}
+
+#main_admin .btn:hover {
+    background-color: #00b2cf;
+}
+
+.bg-admin {
+    background-color: #0BC4E2 !important;
+    color: #111111;
+}
+
 #ad_paires {
     display: flex;
     flex-direction: row;
@@ -219,37 +346,58 @@ header {
     height: 100%;
 }
 
+#main_connexion{
+    background-image: url('../src/images/runeterra-demacia-architecture-02.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+#main_inscription{
+    background-image: url('../src/images/runeterra-demacia-02.jpg');
+    background-size: cover;
+    background-position: center;
+
+}
+
 #main_profil {
     padding-top: 54px;
     padding-bottom: 40px;
     height: 100%;
-    background-color: rgba(206, 205, 205, 0.616);
+    background-image: url('../src/images/faction-demacia-frame-02.jpg');
+    background-size: cover;
 }
-#main_profil h2
-    {
-        text-align: center;
-        width: 100%;
-        padding-top: 3vh;       
-        padding-bottom: 3vh;
-        font-size: 40px;
-        background-color: #454d55;
-        border: 1px solid #95999c;
-        color: #d0a85c;
-    }
-#main_profil .btn
-    {
-        background-color: #0BC4E2;
-    }
-#main_profil .btn:hover 
-    {
-        background-color: #00b2cf;
-    }
+
+#main_profil h2 {
+    text-align: center;
+    width: 100%;
+    padding-top: 3vh;
+    padding-bottom: 3vh;   
+    font-size: 40px;
+    background-color: #454d55;
+    border: 1px solid #95999c;
+    color: #d0a85c;
+}
+
+#main_profil h1{
+    color: white;
+    text-shadow: 0 0 3px black;
+}
+
+#main_profil .btn {
+    background-color: #0BC4E2;
+}
+
+#main_profil .btn:hover {
+    background-color: #00b2cf;
+}
+
 .form_auth {
     width: 100%;
     max-width: 330px;
     padding: 15px;
     margin: auto;
 }
+
 /* FIN PAGE CONNEXION */
 
 /* AUTRES BOOTSTRAP MODIFICATION*/
@@ -261,6 +409,7 @@ header {
 .navbar {
     height: 55px;
 }
+
 /* FIN BOOTSTRAP */
 
 /* PAGE FAME */
@@ -268,48 +417,52 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgba(206, 205, 205, 0.616);
+    /* background-color: rgba(206, 205, 205, 0.616); */
+    background-image: url('../src/images/c-o-esports-worlds2017-art-7.jpg');
+    background-size: cover;
 }
-#main_fame h2
-    {
-        text-align: center;
-        width: 100%;
-        padding-top: 3vh;       
-        padding-bottom: 3vh;
-        font-size: 40px;
-        background-color: #454d55;
-        border: 1px solid #95999c;
-        color: #d0a85c;
-        margin: 0;
-    }
+
+#main_fame h2 {
+    text-align: center;
+    width: 100%;
+    padding-top: 3vh;
+    padding-bottom: 3vh;    
+    font-size: 40px;
+    background-color: #454d55;
+    border: 1px solid #95999c;
+    color: #d0a85c;
+    margin: 0;
+}
+
 #main_fame table {
     width: 50vw;
     margin-top: 5vh;
     margin-bottom: 5vh;
-    text-align: center;    
+    text-align: center;
 }
-#main_fame th
-    {
-        color: #d0a85c;
-    }
-#main_fame .border
-    {
-        border: 1px solid rgb(208, 168, 92) !important;
-        color: white;
-    }
-#main_fame .btn
-    {        
-        background-color: #0bc4e2;
-    }
-#main_fame .btn:hover
-    {
-        background-color: #00b2cf;
-    }
-#main_fame tr:first-child
-    {
-        background-color: #7E7E7E;
-        color: white;
-    }
+
+#main_fame th {
+    color: #d0a85c;
+}
+
+#main_fame .border {
+    border: 1px solid rgb(208, 168, 92) !important;
+    color: white;
+}
+
+#main_fame .btn {
+    background-color: #0bc4e2;
+}
+
+#main_fame .btn:hover {
+    background-color: #00b2cf;
+}
+
+#main_fame tr:first-child {
+    background-color: #7E7E7E;
+    color: white;
+}
+
 #top_paires {
     display: flex;
     flex-direction: row;
@@ -318,30 +471,31 @@ header {
     width: 100%;
     margin-bottom: 5vh;
 }
-#form_top_paire
-    {
-        display: flex;
-        justify-content: center;
-    }
-#top_gen
-    {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        width: 100%;
-    }
-.top
-    {
-        width: 45vw !important;
-    }
-.place
-    {
-        color: #0BC4E2;
-    }
-.score
-    {
-        color: #d0a85c !important;
-    }
+
+#form_top_paire {
+    display: flex;
+    justify-content: center;
+}
+
+#top_gen {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.top {
+    width: 45vw !important;
+}
+
+.place {
+    color: #0BC4E2;
+}
+
+.score {
+    color: #d0a85c !important;
+}
+
 #top_paire section {
     width: 100%;
 }
@@ -354,99 +508,101 @@ header {
 
 /* FIN FAME */
 /* PAGE HISTORIQUE */
-#main_histo
-    {
-        text-align: center;
-        /* background: linear-gradient(0deg, #111111 27%, rgb(208, 168, 92) 100%); */
-        background-color: rgba(206, 205, 205, 0.616);      
-    }
-#section_class
-    {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-    }
-#class_gen
-    {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-#class_gen table
-    {
-        width: 35vw;
-        text-align: center;
-    }
-#class_last table
-    {
-        width: 45vw;
-        text-align: center;
-    }
-#class_perso
-    {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding-bottom: 5vh;
-    }
-#table_perso
-    {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-    }
-#table_perso table
-    {
-        margin-top: 3vh;
-        width: 60vw;
-        text-align: center;
-    }
-#table_perso th
-    {
-        color: rgb(208, 168, 92);
-    }
-#table_perso .btn
-    {
-        background-color: #0BC4E2;
-    }
-#table_perso .btn:hover
-    {
-        background-color: #00b2cf;
-    }
-#titre_histo
-    {
-        text-align: center;
-        width: 100%;
-        padding-top: 3vh;       
-        padding-bottom: 3vh;
-        font-size: 40px;
-        background-color: #454d55;
-        border: 1px solid #95999c;
-        color: #d0a85c;
-        margin: 0;      
-    }
+#main_histo {
+    text-align: center;
+    /* background: linear-gradient(0deg, #111111 27%, rgb(208, 168, 92) 100%); */
+    /* background-color: rgba(206, 205, 205, 0.616); */
+    background-image: url('../src/images/runeterra-bilgewater-02.jpg');
+    background-size: cover;
+}
+
+#section_class {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#class_gen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#class_gen table {
+    width: 35vw;
+    text-align: center;
+}
+
+#class_last table {
+    width: 45vw;
+    text-align: center;
+}
+
+#class_perso {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 5vh;
+}
+
+#table_perso {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#table_perso table {
+    margin-top: 3vh;
+    width: 60vw;
+    text-align: center;
+}
+
+#table_perso th {
+    color: rgb(208, 168, 92);
+}
+
+#table_perso .btn {
+    background-color: #0BC4E2;
+}
+
+#table_perso .btn:hover {
+    background-color: #00b2cf;
+}
+
+#titre_histo {
+    text-align: center;
+    width: 100%;
+    padding-top: 3vh;
+    padding-bottom: 3vh;
+    font-size: 40px;
+    background-color: #454d55;
+    border: 1px solid #95999c;
+    color: #d0a85c;
+    margin: 0;
+}
+
 /* FIN HISTORIQUE */
 /* FOOTER */
-footer
-    {
-        background-color: #111111 !important;
-    }
-footer a    
-    {
-        color: #7E7E7E;
-        height: fit-content;
-    }
-footer a:hover
-    {        
-        color: white;
-        text-decoration: none;
-    }
-footer h5
-    {
-        color: rgb(208, 168, 92);
-    }
-footer p
-    {
-        color: white;
-    }
+footer {
+    background-color: #111111 !important;
+}
+
+footer a {
+    color: #7E7E7E;
+    height: fit-content;
+}
+
+footer a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+footer h5 {
+    color: rgb(208, 168, 92);
+}
+
+footer p {
+    color: white;
+}
+
 /* FIN FOOTER */

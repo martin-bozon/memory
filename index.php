@@ -28,13 +28,13 @@ require_once 'inc/bootstrap.php';
 </header>
 <main id="main_index">
     <section id="info_main">
-        <h1 class="text-white">Bienvenue sur Memory</h1>
+        <h1 class="title_index">Bienvenue sur le Memory</h1>
+    </section>
+    <section id="reglement" class="d-flex flex-column align-items-center">
         <?php
         include 'traitement/php_index.php'; ?>
-    </section>
-    <section id="reglement">
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+        <button class="button" type="button" data-toggle="modal" data-target="#staticBackdrop">
             Règlement
         </button>
         <!-- Modal -->

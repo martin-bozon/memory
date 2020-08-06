@@ -4,10 +4,10 @@
     </div>
     <div class="flex-grow-1"><a class="text-decoration-none <?= $page_selected == 'fame' ? 'navbar_selected' : '' ?>" href="fame.php">WALL OF FAME</a></div>
     <div class="dropdown <?= (App::getAuth()->user()) ? '' : 'd-none'?> <?= $page_selected == 'admin' || $page_selected == 'historique' || $page_selected == 'profil' ? 'navbar_selected' : '' ?> flex-grow-1">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
+        <div class="dropdown-toggle account" type="button" id="dropdownMenu2" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
             MON COMPTE
-        </button>
+        </div>
         <div class="dropdown-menu"
              aria-labelledby="dropdownMenu2">
             <button class="dropdown-item <?= (App::getAuth()->user()->is_admin == 1) ? '' : 'd-none' ?>"

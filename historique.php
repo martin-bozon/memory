@@ -20,10 +20,10 @@ $page_selected = 'historique';
         <?php include 'inc/header.php'; ?>
     </header>
     <main id="main_histo">
-        <h2 id="titre_histo">Voici ton palmarès de partie <?= $score_j["username"]?></h2>
+        <h2 class="mt-3" id="titre_histo">Voici ton palmarès de partie <?= $score_j["username"]?></h2>
         <section id="section_class">
             <section id="class_gen">            
-                <h2>Classement général</h2>
+                <h2 class="text-white">Classement général</h2>
                     <table class="table table-dark table-striped">
                         <thead>
                             <tr>                        
@@ -40,7 +40,7 @@ $page_selected = 'historique';
                     </table>
             </section>
             <section id="class_last">
-                <h2>Dernières parties</h2>
+                <h2 class="text-white">Dernières parties</h2>                
                     <table class="table table-dark table-striped">
                         <thead>
                             <tr class="score">                        
@@ -73,13 +73,13 @@ $page_selected = 'historique';
         </section>
         
         <section id="class_perso">
-            <h2>Top 10 perso : en fonction du nombre paires</h2>
+            <h2 class="text-white">Top 10 perso : en fonction du nombre paires</h2>
             <section id="table_perso">
                 <section>
-                    <form action="" method="POST">
+                    <form action="historique.php#class_perso" method="POST">
                         <select name="paire_joueur" id="">
                             <?php                        
-                                for($i=3; $i<=$nb_paire["nb_paire"]; $i++)
+                                for($i=3; $i<=$nb_paire["nb_paire"] AND $i<=15; $i++)
                                     {
                                         ?>                            
                                             <option value="<?= $i ?>"
@@ -95,7 +95,7 @@ $page_selected = 'historique';
                                     }
                             ?>
                         </select>
-                        <input type="submit" name="valid_top_paire" class="btn">
+                        <input type="submit" name="valid_top_paire" class="button">
                     </form>            
                 </section>
                 <section>

@@ -18,7 +18,7 @@
         <?php include 'inc/header.php'; ?>
     </header>    
     <main id="main_fame">  
-        <h2>Wall of Fame</h2>    
+        <h2 class="mt-3">Wall of Fame</h2>
         <section id="top_gen">
             <table class="table table-dark top">
                 <thead class="thead-dark">
@@ -82,7 +82,7 @@
                  <form action="fame.php#top_paires" method="POST" id="form_top_paire">
                     <select name="top_paire" id="select_top_paire">
                     <?php
-                        for($i=3; $i<=$nb_paire["nb_paire"]; $i++)
+                        for($i=3; $i<=$nb_paire["nb_paire"] AND $i<=15 ; $i++)
                             {
                                 ?>
                                     <option value="<?= $i ?>"
@@ -98,7 +98,7 @@
                             }
                     ?>
                     </select>
-                    <input type="submit" name="choix_top" class="btn" value="Choisir">
+                    <input type="submit" name="choix_top" class="button" value="Choisir">
                 </form>
             </section>
             <section>
