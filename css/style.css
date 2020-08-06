@@ -562,6 +562,7 @@ header {
     align-items: center;
     width: 100%;
     margin-bottom: 5vh;
+    padding-left: 10vh;
 }
 
 #form_top_paire {
@@ -581,6 +582,9 @@ header {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+    }
+    #top_paires{
+        padding-left: 0;
     }
 
     #main_fame table {
