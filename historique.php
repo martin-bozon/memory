@@ -40,7 +40,7 @@ $page_selected = 'historique';
                     </table>
             </section>
             <section id="class_last">
-                <h2 class="text-white">Dernières parties</h2>
+                <h2 class="text-white">Dernières parties</h2>                
                     <table class="table table-dark table-striped">
                         <thead>
                             <tr class="score">                        
@@ -76,7 +76,7 @@ $page_selected = 'historique';
             <h2 class="text-white">Top 10 perso : en fonction du nombre paires</h2>
             <section id="table_perso">
                 <section>
-                    <form action="" method="POST">
+                    <form action="historique.php#class_perso" method="POST">
                         <select name="paire_joueur" id="">
                             <?php                        
                                 for($i=3; $i<=$nb_paire["nb_paire"] AND $i<=15; $i++)
