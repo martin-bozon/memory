@@ -10,7 +10,7 @@ html {
 
 body {
     margin: 0;
-    height: 100vh;
+    min-height: 100vh;
     font-family: "Frizquadrata";
 }
 
@@ -28,7 +28,8 @@ h2 {
     margin-top: 5vh;
     margin-bottom: 5vh;
 }
-a{
+
+a {
     color: unset;
 }
 
@@ -57,6 +58,11 @@ a:hover {
     box-shadow: 1px 1px 10px black;
 }
 
+select {
+    background-color: #1e2328;
+    color: #f0e6d2;
+}
+
 /* HEADER */
 header {
     height: fit-content;
@@ -65,14 +71,39 @@ header {
     position: relative;
 }
 
-.navbar {
+.navbar_media {
+    display: flex;
+}
+
+.navbar_media, .navbar_screen {
     border-bottom: 0.01em solid #51535c;
     padding: 0 1rem;
     max-width: 1300px;
     width: 100%;
 }
 
-.navbar a, .account {
+.logoL {
+    background-image: url('../src/images/LfromLoL.png');
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: left;
+}
+
+.dropdown-toggle2::after {
+    margin-left: 1.5em;
+    margin-top: 1.5rem;
+}
+
+.dropdown-menu2 {
+    border: 3px solid #60491f;
+    border-radius: inherit;
+    left: inherit;
+    padding: 0.5rem;
+    width: 100%;
+}
+
+
+.navbar_header a, .account {
     color: #cdbe91;
     width: 100%;
     font-weight: bold;
@@ -80,19 +111,27 @@ header {
     text-shadow: 0 0 3px black;
 }
 
-.navbar > div, .navbar a, .account {
+.navbar_header > div, .navbar_header a, .account {
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.navbar a:hover, .navbar_selected, .account:hover {
+.navbar_header a:hover, .navbar_selected, .account:hover {
     color: #f0e6d2;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(94, 90, 82, 1));
 }
 
-.dropdown-menu {
+.dropdown-menu1 {
+    border: 3px solid #60491f;
+    background-color: #010a13;
+    border-radius: inherit;
+    left: inherit;
+    padding: 0.5rem;
+}
+
+.dropdown-menu2 {
     border: 3px solid #60491f;
     background-color: #010a13;
     border-radius: inherit;
@@ -112,6 +151,22 @@ header {
 .dropdown-item:hover, .dropdown-item > a:hover {
     background-color: inherit;
     background: inherit;
+}
+
+.navbar_screen {
+    display: none;
+}
+
+@media screen and (max-width: 550px) {
+    .navbar_screen {
+        display: flex;
+    !important;
+    }
+
+    .navbar_media {
+        display: none;
+    !important;
+    }
 }
 
 /* PAGE INDEX */
@@ -165,12 +220,14 @@ header {
 }
 
 .hidden {
-    opacity:0;
+    opacity: 0;
 }
-.hidden:hover{
+
+.hidden:hover {
     cursor: inherit;
 }
-#board{
+
+#board {
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     column-gap: 10px;
@@ -180,46 +237,51 @@ header {
 }
 
 @media screen and (max-width: 900px) {
-    #board{
+    #board {
         grid-template-columns: repeat(7, 1fr);
     }
 }
+
 @media screen and (max-width: 700px) {
-    #board{
+    #board {
         grid-template-columns: repeat(6, 1fr);
     }
 }
+
 @media screen and (max-width: 500px) {
-    #board{
+    #board {
         grid-template-columns: repeat(5, 1fr);
     }
 }
+
 @media screen and (max-width: 300px) {
-    #board{
+    #board {
         grid-template-columns: repeat(4, 1fr);
     }
 }
 
-.cards{
+.cards {
     height: auto;
     width: 100%;
     box-shadow: 1px 1px 5px black;
 }
 
-#victory{
+#victory {
     background-color: inherit;
-    top:0;
+    top: 0;
     width: 100%;
     border: 3px solid #60491f;
     border-radius: inherit;
 }
-.modal-title{
+
+.modal-title {
     color: #cdbe91;
 }
 
-.modal-body p, .modal-body h3{
+.modal-body p, .modal-body h3 {
     color: white;
 }
+
 @media (min-width: 576px) {
     .modal-dialog {
         max-width: 610px;
@@ -236,7 +298,9 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgba(206, 205, 205, 0.616);
+    background-image: url('../src/images/ionia-frame-35.jpg');
+    background-size: cover;
+    background-position: center;
 }
 
 #main_admin h2 {
@@ -257,6 +321,23 @@ header {
     justify-content: space-around;
     width: 100%;
     margin-bottom: 10vh;
+}
+
+@media screen and (max-width: 850px) {
+    #user_score, #ad_paires {
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    .pagination {
+        width: 100%;
+    }
+
+    .pagination table {
+        width: 90% !important;
+        margin: 1rem auto;
+    }
 }
 
 .table_admin {
@@ -334,7 +415,7 @@ header {
 
 .paires_admin {
     width: 10vw;
-    height: 20vh;
+    height: auto;
 }
 
 /* FIN ADMIN */
@@ -347,13 +428,13 @@ header {
     height: 100%;
 }
 
-#main_connexion{
+#main_connexion {
     background-image: url('../src/images/runeterra-demacia-architecture-02.jpg');
     background-size: cover;
     background-position: center;
 }
 
-#main_inscription{
+#main_inscription {
     background-image: url('../src/images/runeterra-demacia-02.jpg');
     background-size: cover;
     background-position: center;
@@ -372,14 +453,14 @@ header {
     text-align: center;
     width: 100%;
     padding-top: 3vh;
-    padding-bottom: 3vh;   
+    padding-bottom: 3vh;
     font-size: 40px;
     background-color: #454d55;
     border: 1px solid #95999c;
     color: #d0a85c;
 }
 
-#main_profil h1{
+#main_profil h1 {
     color: white;
     text-shadow: 0 0 3px black;
 }
@@ -399,6 +480,16 @@ header {
     margin: auto;
 }
 
+.dual-form {
+    flex-direction: row;
+}
+
+@media screen and (max-width: 850px) {
+    .dual-form {
+        flex-direction: column;
+    }
+}
+
 /* FIN PAGE CONNEXION */
 
 /* AUTRES BOOTSTRAP MODIFICATION*/
@@ -407,7 +498,7 @@ header {
     margin-top: 1rem;
 }
 
-.navbar {
+.navbar_header {
     height: 55px;
 }
 
@@ -427,7 +518,7 @@ header {
     text-align: center;
     width: 100%;
     padding-top: 3vh;
-    padding-bottom: 3vh;    
+    padding-bottom: 3vh;
     font-size: 40px;
     background-color: #454d55;
     border: 1px solid #95999c;
@@ -471,6 +562,7 @@ header {
     align-items: center;
     width: 100%;
     margin-bottom: 5vh;
+    padding-left: 10vh;
 }
 
 #form_top_paire {
@@ -487,6 +579,21 @@ header {
     flex-direction: row;
     justify-content: space-evenly;
     width: 100%;
+}
+
+@media screen and (max-width: 900px) {
+    #top_gen, #top_paires {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    #top_paires{
+        padding-left: 0;
+    }
+
+    #main_fame table {
+        width: 90% !important;
+    }
 }
 
 .top {
@@ -508,7 +615,7 @@ header {
 .titre_top {
     color: #495057;
     background-color: #e9ecef;
-    border-color: #dee2e6;   
+    border-color: #dee2e6;
 }
 /* FIN FAME */
 /* PAGE HISTORIQUE */
@@ -524,6 +631,23 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+}
+
+@media screen and (max-width: 850px) {
+    #section_class {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #class_gen, #class_last, #class_perso, #table_perso, #table_perso section {
+        width: 100% !important;
+    }
+
+    #class_gen table, #class_last table, #class_perso table {
+        width: 90% !important;
+        margin: 1rem auto;
+    }
 }
 
 #class_gen {
