@@ -49,6 +49,7 @@ a:hover {
     box-shadow: 1px 1px 5px black;
     transition: 0.05s ease-in-out;
     margin: 0.5rem;
+    outline: none !important;
 }
 
 .button:hover {
@@ -608,7 +609,6 @@ header {
     background-color: #e9ecef;
     border-color: #dee2e6;
 }
-
 /* FIN FAME */
 /* PAGE HISTORIQUE */
 #main_histo {

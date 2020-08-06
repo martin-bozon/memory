@@ -23,7 +23,7 @@ function score(
     }
 
     //Calcul le nombre de points en fonction du nombre de coups
-    $seconde_coup = 250 / $coups_min;
+    $seconde_coup = 200 / $coups_min;
     $score_coup = $max - (($c - $coups_min) * $seconde_coup);
     if ($score_coup > 0) {
         $score_coup = round($score_coup);
