@@ -96,7 +96,7 @@
                             if($p>1)
                                 {                                                               
                                     ?>
-                                    <a class="btn" href="admin.php?<?= $s ?>=<?=$p-1 ?><?= $a ?>">Précédent</a>
+                                    <a class="button" href="admin.php?<?= $s ?>=<?=$p-1 ?><?= $a ?>">Précédent</a>
                                     <?php
                                 }
                             else
@@ -112,7 +112,7 @@
                             if($p < $n)
                                 {                               
                                     ?>
-                                    <a class="btn" href="admin.php?<?= $s ?>=<?= $p+1 ?><?= $a ?>">Suivant</a>
+                                    <a class="button" href="admin.php?<?= $s ?>=<?= $p+1 ?><?= $a ?>">Suivant</a>
                                     <?php
                                 }                       
                         ?>

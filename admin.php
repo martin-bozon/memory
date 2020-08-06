@@ -104,14 +104,14 @@
                     else if(!isset($e) && isset($_POST["valid_img"]))
                     echo '<p class="alert alert-success w-75 p-3 m-auto text-center">Image importée</p>';                    
                 ?>
-                <h3>Ajouter une paire</h3>               
+                <h3 class="text-white">Ajouter une paire</h3>
                 <form enctype="multipart/form-data" action="admin.php#ad_paires" method="POST">
                     <section>
-                        <label for="image">Choix de l'image</label>
-                        <input type="hidden" name="MAX_FILE_SIZE" value="3000000" id="image">        
-                        <input type="file" name="paires" accept=".jpg, .png, .jpeg"/>
+                        <label for="image" class="text-white">Choix de l'image</label>
+                        <input type="hidden" name="MAX_FILE_SIZE" value="3000000" id="image">
+                        <input class="text-white" type="file" name="paires" accept=".jpg, .png, .jpeg"/>
                     </section>            
-                    <input class="btn" type="submit" name="valid_img" value="Envoyer">           
+                    <input class="button" type="submit" name="valid_img" value="Envoyer">
                 </form>       
             </section>       
             <section class="pagination">
