@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 05 août 2020 à 19:38
+-- Généré le :  jeu. 06 août 2020 à 14:05
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.3.12
 
@@ -21,7 +21,7 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `memory`
 --
-CREATE DATABASE IF NOT EXISTS `memory` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+CREATE DATABASE IF NOT EXISTS `memory` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `memory`;
 
 -- --------------------------------------------------------
@@ -204,14 +204,62 @@ CREATE TABLE IF NOT EXISTS `score` (
   `id_user` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_user` (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `score`
 --
 
 INSERT INTO `score` (`id`, `temps`, `nb_coups`, `nb_paires`, `score`, `id_user`) VALUES
-(1, '55.255701', 22, 5, 247, 1);
+(1, '55.255701', 22, 5, 247, 1),
+(2, '31.640133', 24, 7, 695, 2),
+(3, '15.181869', 12, 3, 597, 2),
+(4, '14.125821', 10, 3, 698, 2),
+(5, '16.21847', 12, 4, 772, 2),
+(6, '10.245521', 8, 3, 846, 2),
+(7, '15.321958', 12, 4, 783, 2),
+(8, '55.490723', 40, 10, 573, 2),
+(9, '14.753316', 12, 4, 791, 2),
+(10, '13.549291', 12, 4, 806, 2),
+(11, '12.703688', 10, 4, 879, 2),
+(12, '12.096883', 10, 4, 899, 2),
+(13, '17.515104', 14, 5, 845, 2),
+(14, '8.659349', 6, 3, 956, 2),
+(15, '15.654304', 12, 3, 639, 2),
+(16, '11.296685', 8, 3, 845, 2),
+(17, '12.172934', 10, 3, 764, 2),
+(18, '13.714977', 10, 3, 738, 2),
+(19, '11.875879', 10, 3, 769, 2),
+(20, '13.098166', 10, 3, 749, 2),
+(21, '12.826743', 10, 4, 890, 2),
+(22, '12.126736', 10, 3, 765, 2),
+(23, '13.330169', 10, 3, 745, 2),
+(24, '10.023654', 8, 3, 866, 2),
+(25, '13.560068', 10, 3, 741, 3),
+(26, '16.076129', 12, 3, 632, 3),
+(27, '9.428269', 8, 3, 876, 3),
+(28, '10.30227', 8, 3, 861, 3),
+(29, '7.83432', 6, 3, 969, 3),
+(30, '13.174746', 10, 4, 885, 3),
+(31, '31.989023', 22, 7, 758, 3),
+(32, '34.843694', 24, 7, 708, 3),
+(33, '30.035508', 22, 7, 771, 3),
+(34, '26.239462', 20, 7, 827, 3),
+(35, '26.92349', 20, 7, 822, 3),
+(36, '31.087088', 24, 7, 735, 3),
+(37, '27.258653', 22, 7, 791, 3),
+(38, '25.922406', 20, 6, 751, 3),
+(39, '32.020759', 26, 7, 700, 3),
+(40, '9.259016', 8, 3, 879, 3),
+(41, '8.682886', 8, 3, 888, 3),
+(42, '11.108671', 10, 3, 782, 3),
+(43, '11.881196', 10, 3, 769, 3),
+(44, '7.824439', 8, 3, 903, 3),
+(45, '9.068817', 8, 3, 882, 3),
+(46, '6.162965', 6, 3, 997, 3),
+(47, '5.482007', 6, 3, 1009, 3),
+(48, '9.078208', 10, 3, 816, 3),
+(49, '9.801281', 8, 3, 870, 3);
 
 -- --------------------------------------------------------
 
@@ -228,14 +276,16 @@ CREATE TABLE IF NOT EXISTS `utilisateurs` (
   `remember_token` varchar(255) DEFAULT NULL,
   `score_total` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `utilisateurs`
 --
 
 INSERT INTO `utilisateurs` (`id`, `username`, `password`, `is_admin`, `remember_token`, `score_total`) VALUES
-(1, 'admin', '$2y$10$IC0bqOddvUpyl6vXX/BEReXVR1zBNjGZLUTfzyq7PecliqGGUBxGa', 1, 'HVKw0mJKGAtgWA3Wuf5wDqNJafNWu0ZQkJyaMSGT3LLO5R852DdngfDRz33uW4bA5uR8wubwOOcAr4hu2WqpYe8Ix6xMi3U7i0r7fc3nzvy0gQvhsWRY29jWVCQbLSogACi9iR7hjwAldIc85f2bUjt7ZAA73OqNbVHuUdCWrofD2RSzrcKb91Lsm44rMaSvqXAkkvwX1tFQ3qgtNckDrtJodoUZflZLFSvqZaSvHlEM9RnakR5pHcIXa8', 247);
+(1, 'admin', '$2y$10$IC0bqOddvUpyl6vXX/BEReXVR1zBNjGZLUTfzyq7PecliqGGUBxGa', 1, 'HVKw0mJKGAtgWA3Wuf5wDqNJafNWu0ZQkJyaMSGT3LLO5R852DdngfDRz33uW4bA5uR8wubwOOcAr4hu2WqpYe8Ix6xMi3U7i0r7fc3nzvy0gQvhsWRY29jWVCQbLSogACi9iR7hjwAldIc85f2bUjt7ZAA73OqNbVHuUdCWrofD2RSzrcKb91Lsm44rMaSvqXAkkvwX1tFQ3qgtNckDrtJodoUZflZLFSvqZaSvHlEM9RnakR5pHcIXa8', 247),
+(2, 'martin', '$2y$10$mpAus0DByX42b9L9RU.gHu/pGD.B8nmVzeuDA2AxhHk1VqE/pXP7W', NULL, NULL, 17910),
+(3, 'Jose', '$2y$10$EN9PNsBi7GC/1xZAP3xe6.lqrFZCm4lhiBrxmhgNZd0QVzThtmvXe', NULL, NULL, 20622);
 
 --
 -- Contraintes pour les tables déchargées

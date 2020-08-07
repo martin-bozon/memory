@@ -108,7 +108,7 @@ if (isset($_SESSION['cards'])) {
                         $card->setVisibility($card->switchVisibility($session, $card->getId()));
                     }
                 }
-                header('Refresh: 0.3; memory.php');
+                header('Refresh: 0.05; memory.php');
             }
         }
     }
@@ -151,7 +151,7 @@ if (isset($_SESSION['cards'])) {
                     <h3>Voici votre score :</h3>
                     <p class="">Nombre de coups : <?= $number_coups ?></p>
                     <p class="">Temps : <?= number_format($chrono, 3) ?></p>
-                    <p class="font-weight-bold">Points : <?= $points ?></p>
+                    <p class="font-weight-bold">Points : <span class="score"><?= $points ?></span></p>
                 </div>
                 <div class="modal-footer d-flex flex-row justify-content-around align-items-center">
                     <button type="submit" class="button" data-dismiss="modal" name="play_again">Rejouer
