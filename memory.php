@@ -5,6 +5,8 @@ ob_start();
 require_once 'inc/bootstrap.php';
 
 $auth = App::getAuth();
+$auth->restrict();
+
 $db = App::getDatabase();
 $session = Session::getInstance();
 $board = new Board;
