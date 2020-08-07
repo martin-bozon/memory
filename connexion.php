@@ -76,7 +76,7 @@ if (!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password'])) 
 
             <div>
                 <label for="remember" class="">
-                    <input type="checkbox" name="remember" value="1" class="checkbox mb-3"> Se souvenir de moi
+                    <input type="checkbox" id="remember" name="remember" value="1" class="checkbox mb-3"> Se souvenir de moi
                 </label>
             </div>
 
