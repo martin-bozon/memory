@@ -1,6 +1,6 @@
 <nav class="navbar_media navbar_header position-absolute">
     <div class="flex-grow-1"><a class="text-decoration-none <?= $page_selected == 'index' ? 'navbar_selected' : '' ?>"
-                                href="Index.php">ACCUEIL</a></div>
+                                href="index.php">ACCUEIL</a></div>
     <div class="<?= (App::getAuth()->user(
     )) ? '' : 'd-none' ?> <?= $page_selected == 'memory' ? 'navbar_selected' : '' ?> flex-grow-1"><a
                 class="text-decoration-none" href="memory.php">MEMORY</a>
@@ -48,7 +48,7 @@
                  aria-labelledby="dropdownMenu3">
                 <div class="dropdown-item flex-grow-1"><a
                             class="text-decoration-none"
-                            href="Index.php">ACCUEIL</a></div>
+                            href="index.php">ACCUEIL</a></div>
                 <div class="dropdown-item <?= (App::getAuth()->user(
                 )) ? '' : 'd-none' ?> <?= $page_selected == 'memory' ? 'navbar_selected' : '' ?> flex-grow-1"><a
                             class="text-decoration-none" href="memory.php">MEMORY</a>
